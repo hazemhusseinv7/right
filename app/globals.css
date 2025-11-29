@@ -119,3 +119,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Text Selection */
+::-moz-selection {
+  @apply text-emerald-50 bg-emerald-700;
+}
+
+::selection {
+  @apply text-emerald-50 bg-emerald-700;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  @apply w-[10px];
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-emerald-100;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply hover:from-emerald-400 hover:to-emerald-500 rounded-full bg-linear-to-br from-emerald-500 to-emerald-600;
+}
