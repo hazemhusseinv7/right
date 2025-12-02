@@ -5,7 +5,13 @@ import { useRef } from "react";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
 
-import { FaXTwitter, FaInstagram, FaTiktok, FaSnapchat } from "react-icons/fa6";
+import {
+  FaXTwitter,
+  FaInstagram,
+  FaTiktok,
+  FaSnapchat,
+  FaLinkedin,
+} from "react-icons/fa6";
 import { RiWhatsappLine } from "react-icons/ri";
 
 const AboutUs = () => {
@@ -42,6 +48,11 @@ const AboutUs = () => {
   };
 
   const socialMedia = [
+    {
+      name: "LinkedIn",
+      link: process.env.NEXT_PUBLIC_LINKEDIN,
+      icon: FaLinkedin,
+    },
     {
       name: "Twitter",
       link: process.env.NEXT_PUBLIC_TWITTER,

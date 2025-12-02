@@ -3,6 +3,7 @@ import ButtonHoverMultiple from "@/components/ButtonHoverMultiple";
 import { useEffect, useMemo, useState } from "react";
 import NewItemsLoading from "./new-items-loading";
 import WordAnimator from "./word-animator";
+import Clients from "./Clients";
 
 const Hero = () => {
   const [blocks, setBlocks] = useState([]);
@@ -34,10 +35,10 @@ const Hero = () => {
           {Array.from({ length: amountOfBlocks }, (_, rowIndex) => (
             <div
               key={rowIndex}
-              className={`h-[6vw] w-full border-[1px] dark:border-[rgba(255,255,255,0.015)] border-gray-50 ${
+              className={`h-[6vw] w-full border dark:border-[rgba(255,255,255,0.015)] border-gray-50 ${
                 // @ts-ignore
                 activeDivs[columnIndex]?.has(rowIndex)
-                  ? "dark:bg-[rgba(255,255,255,0.03)] bg-gray-50"
+                  ? "dark:bg-[rgba(255,255,255,0.03)] bg-emerald-50/80"
                   : ""
               }`}
               style={{ height: `${blockSize}px` }}
@@ -59,19 +60,19 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="h-screen  overflow-hidden  relative pb-20 dark:bg-black bg-white"
+      className="min-h-screen overflow-hidden relative pb-20 dark:bg-black bg-white"
     >
-      <div className="absolute inset-0 z-0 h-screen w-full  dark:bg-[radial-gradient(#1d1d1d_1px,transparent_1px)] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
-      <div className="absolute inset-0 top-0 left-0  h-screen w-full items-center px-5 py-24  bg-gradient-to-t dark:from-[#050505] from-white from-0% to-transparent to-60%"></div>
+      <div className="absolute inset-0 z-0 h-screen w-full  dark:bg-[radial-gradient(#1d1d1d_1px,transparent_1px)] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px]" />
+      <div className="absolute inset-0 top-0 left-0  h-screen w-full items-center px-5 py-24  bg-linear-to-t dark:from-[#050505] from-white from-0% to-transparent to-60%" />
 
-      <div className="pointer-events-none absolute inset-0  flex w-screen  justify-end [mask-image:radial-gradient(transparent_5%,white)]">
+      <div className="pointer-events-none absolute inset-0  flex w-screen  justify-end mask-[radial-gradient(transparent_5%,white)]">
         <svg
           width="1512"
           height="1714"
           viewBox="0 0 1512 1714"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="pointer-events-none absolute left-0 top-0 h-auto w-full lg:w-1/2 "
+          className="pointer-events-none absolute left-0 top-0 h-auto w-full lg:w-1/2"
         >
           <g clipPath="url(#clip0_143_13)">
             <g filter="url(#filter0_f_143_13)">
@@ -110,7 +111,7 @@ const Hero = () => {
           </defs>
         </svg>
       </div>
-      <article className="grid 2xl:pt-52 2xl:pb-24 py-40 relative z-2 sm:px-0 px-4">
+      <article className="grid 2xl:pt-40 2xl:pb-24 pt-20 pb-14 relative z-2 sm:px-0 px-4">
         <NewItemsLoading />
         <h1 className="xl:text-7xl md:text-6xl sm:text-5xl text-3xl text-center font-semibold text-black dark:text-white tracking-tight">
           <span className="text-[2.5rem]">Next-Gen Solutions</span>{" "}
@@ -132,9 +133,9 @@ const Hero = () => {
           </span>
         </h1>
         <p className="mx-auto lg:w-[700px] sm:w-[80%] text-center sm:text-lg text-sm mt-5 text-black dark:text-white">
-          We've expanded our expertise to provide end-to-end IT solutions. From
-          proactive cybersecurity to scalable cloud platforms, discover how our
-          new services are engineered to future-proof your business.
+          We&apos;ve expanded our expertise to provide end-to-end IT solutions.
+          From proactive cybersecurity to scalable cloud platforms, discover how
+          our new services are engineered to future-proof your business.
         </p>
         <div className="flex gap-2 justify-center items-center mt-4">
           <ButtonHoverMultiple link="#">Contact Us</ButtonHoverMultiple>
@@ -143,6 +144,8 @@ const Hero = () => {
       <div className="flex h-screen overflow-hidden top-0 left-0  inset-0  z-0 absolute">
         {blocks}
       </div>
+
+      <Clients className="relative z-10" />
     </section>
   );
 };
