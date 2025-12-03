@@ -11,10 +11,19 @@ import {
   FaTiktok,
   FaSnapchat,
   FaLinkedin,
+  FaFacebook,
+  FaYoutube,
 } from "react-icons/fa6";
 import { RiWhatsappLine } from "react-icons/ri";
+import { urlFor } from "@/lib/sanity/image";
 
-const AboutUs = () => {
+const AboutUs = ({
+  settings,
+  aboutUs,
+}: {
+  settings: SettingsType | null;
+  aboutUs: AboutUsType | null;
+}) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const revealVariants = {
     visible: (i: number) => ({
@@ -50,33 +59,43 @@ const AboutUs = () => {
   const socialMedia = [
     {
       name: "LinkedIn",
-      link: process.env.NEXT_PUBLIC_LINKEDIN,
+      link: settings?.linkedin,
       icon: FaLinkedin,
     },
     {
       name: "Twitter",
-      link: process.env.NEXT_PUBLIC_TWITTER,
+      link: settings?.twitter,
       icon: FaXTwitter,
     },
     {
-      name: "Tiktok",
-      link: process.env.NEXT_PUBLIC_TIKTOK,
+      name: "TikTok",
+      link: settings?.tiktok,
       icon: FaTiktok,
     },
     {
       name: "Instagram",
-      link: process.env.NEXT_PUBLIC_INSTAGRAM,
+      link: settings?.instagram,
       icon: FaInstagram,
     },
     {
       name: "Snapchat",
-      link: process.env.NEXT_PUBLIC_SNAPCHAT,
+      link: settings?.snapchat,
       icon: FaSnapchat,
     },
     {
-      name: "Whatsapp",
-      link: process.env.NEXT_PUBLIC_WHATSAPP,
+      name: "WhatsApp",
+      link: settings?.whatsapp,
       icon: RiWhatsappLine,
+    },
+    {
+      name: "Facebook",
+      link: settings?.facebook,
+      icon: FaFacebook,
+    },
+    {
+      name: "YouTube",
+      link: settings?.youtube,
+      icon: FaYoutube,
     },
   ].filter((item) => item.link);
 
@@ -98,7 +117,7 @@ const AboutUs = () => {
                 customVariants={revealVariants}
                 className="text-sm lg:text-2xl font-medium text-gray-600 dark:text-gray-300"
               >
-                About Us
+                {aboutUs?.title}
               </TimelineContent>
             </div>
             <div className="flex gap-4">
@@ -147,7 +166,7 @@ const AboutUs = () => {
                 preserveAspectRatio="xMidYMid slice"
                 width="100%"
                 height="100%"
-                href="/about-us/about-us.jpg"
+                href={urlFor(aboutUs?.heroImage).url()}
               />
             </svg>
           </TimelineContent>
@@ -162,16 +181,20 @@ const AboutUs = () => {
               className="flex gap-4"
             >
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-emerald-700 font-bold">25+</span>
+                <span className="text-emerald-700 font-bold">
+                  {aboutUs?.leftTopStat.value}
+                </span>
                 <span className="text-gray-600 dark:text-gray-300">
-                  Years of Experience
+                  {aboutUs?.leftTopStat.label}
                 </span>
                 <span className="text-gray-300">|</span>
               </div>
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-emerald-700 font-bold">2</span>
+                <span className="text-emerald-700 font-bold">
+                  {aboutUs?.leftBottomStat.value}
+                </span>
                 <span className="text-gray-600 dark:text-gray-300">
-                  Strategic Hubs
+                  {aboutUs?.leftBottomStat.label}
                 </span>
               </div>
             </TimelineContent>
@@ -184,10 +207,12 @@ const AboutUs = () => {
                 className="flex sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
                 <p className="text-emerald-700 font-semibold">
-                  1995
+                  {aboutUs?.rightTopStat.value}
                   {/* <span className="text-gray-600 dark:text-gray-300 font-normal"></span> */}
                 </p>
-                <span className="text-gray-600 uppercase">Founded</span>
+                <span className="text-gray-600 uppercase">
+                  {aboutUs?.rightTopStat.label}
+                </span>
               </TimelineContent>
               <TimelineContent
                 as="div"
@@ -197,9 +222,11 @@ const AboutUs = () => {
                 className="flex items-center gap-2 mb-2 sm:text-base text-xs"
               >
                 <span className="text-emerald-700 dark:text-gray-300 font-bold text-xl lg:text-2xl">
-                  6+
+                  {aboutUs?.rightBottomStat.value}
                 </span>
-                <p className="text-gray-600">Specializations</p>
+                <p className="text-gray-600">
+                  {aboutUs?.rightBottomStat.label}
+                </p>
                 <span className="text-gray-300 lg:hidden block">|</span>
               </TimelineContent>
             </div>
@@ -215,7 +242,7 @@ const AboutUs = () => {
               customVariants={revealVariants}
               className="text-4xl md:text-5xl leading-[110%]! font-semibold text-emerald-800 mb-8"
             >
-              Who We Are?
+              {aboutUs?.heading}
             </TimelineContent>
             <p className="sm:text-3xl md:text-4xl text-xl leading-[170%]! font-semibold text-gray-900 dark:text-gray-300 mb-8 max-w-3xl">
               <VerticalCutReveal
@@ -230,8 +257,7 @@ const AboutUs = () => {
                   delay: 3,
                 }}
               >
-                Right IT Group, a Saudi-based leading ICT Solution & Services
-                company.
+                {aboutUs?.subheading}
               </VerticalCutReveal>
             </p>
 

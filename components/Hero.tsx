@@ -3,9 +3,15 @@ import ButtonHoverMultiple from "@/components/ButtonHoverMultiple";
 import { useEffect, useMemo, useState } from "react";
 import NewItemsLoading from "./new-items-loading";
 import WordAnimator from "./word-animator";
-import Clients from "./Clients";
+import Partners from "./Partners";
 
-const Hero = () => {
+const Hero = ({
+  hero,
+  partners,
+}: {
+  hero: HeroType | null;
+  partners: PartnersType | null;
+}) => {
   const [blocks, setBlocks] = useState([]);
 
   const activeDivs = useMemo(
@@ -24,6 +30,7 @@ const Hero = () => {
     }),
     [] // No dependencies, so `activeDivs` will only be created once
   );
+
   useEffect(() => {
     const updateBlocks = () => {
       const { innerWidth, innerHeight } = window;
@@ -55,7 +62,11 @@ const Hero = () => {
 
     return () => window.removeEventListener("resize", updateBlocks);
   }, [activeDivs]);
-  const words = ["Infrastructure", "Security", "Efficiency"];
+
+  const buttonData = hero?.button;
+  const headingData = hero?.heading;
+  const description = hero?.description;
+  const ctaButton = hero?.ctaButton;
 
   return (
     <section
@@ -112,40 +123,42 @@ const Hero = () => {
         </svg>
       </div>
       <article className="grid 2xl:pt-40 2xl:pb-24 pt-20 pb-14 relative z-2 sm:px-0 px-4">
-        <NewItemsLoading />
+        <NewItemsLoading data={buttonData} />
         <h1 className="xl:text-7xl md:text-6xl sm:text-5xl text-3xl text-center font-semibold text-black dark:text-white tracking-tight">
-          <span className="text-[2.5rem]">Next-Gen Solutions</span>{" "}
+          <span className="text-[2.5rem]">{headingData?.firstLine}</span>{" "}
           <span className="relative translate-x-0 flex max-lg:flex-col gap-2 justify-center">
             <div className="translate-x-0 flex gap-2 justify-center">
-              Elevate{" "}
-              <WordAnimator
-                words={words}
-                duration={5}
-                className="italic w-fit pr-3 dark:bg-gray-800 bg-gray-200 dark:border-neutral-800 border-neutral-200" // Add any additional styling here
-              />{" "}
+              {headingData?.firstWord}{" "}
+              {headingData?.rotatingWords && (
+                <WordAnimator
+                  words={headingData.rotatingWords}
+                  duration={5}
+                  className="italic w-fit pr-3 dark:bg-gray-800 bg-gray-200 dark:border-neutral-800 border-neutral-200"
+                />
+              )}{" "}
             </div>
             <span>
-              with{" "}
+              {headingData?.lastWord}{" "}
               <strong className="text-emerald-700 font-semibold uppercase">
-                Right
+                {headingData?.highlightedWord.text}
               </strong>
             </span>
           </span>
         </h1>
         <p className="mx-auto lg:w-[700px] sm:w-[80%] text-center sm:text-lg text-sm mt-5 text-black dark:text-white">
-          We&apos;ve expanded our expertise to provide end-to-end IT solutions.
-          From proactive cybersecurity to scalable cloud platforms, discover how
-          our new services are engineered to future-proof your business.
+          {description}
         </p>
         <div className="flex gap-2 justify-center items-center mt-4">
-          <ButtonHoverMultiple link="#">Contact Us</ButtonHoverMultiple>
+          <ButtonHoverMultiple link={ctaButton?.link || "#"}>
+            {ctaButton?.text}
+          </ButtonHoverMultiple>
         </div>
       </article>
       <div className="flex h-screen overflow-hidden top-0 left-0  inset-0  z-0 absolute">
         {blocks}
       </div>
 
-      <Clients className="relative z-10" />
+      <Partners className="relative z-10" data={partners} />
     </section>
   );
 };

@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { IconType } from "react-icons";
+import Image from "next/image";
 
 export interface CardItem {
   title: string;
   description: string;
-  icon: IconType;
+  icon: string;
   items?: string[];
 }
 
@@ -35,7 +35,7 @@ export default function ExpandableCard({
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-20">
       <AnimatePresence>
         {current ? (
           <motion.div
@@ -56,9 +56,15 @@ export default function ExpandableCard({
                 ref={ref}
                 layoutId={`cardItem-${current.title}`}
               >
-                <div className="flex w-full items-center gap-4">
+                <div className="flex w-full items-start gap-4">
                   <motion.div layoutId={`cardItemIcon-${current.title}`}>
-                    <current.icon className="size-8 text-emerald-700" />
+                    <Image
+                      src={current.icon}
+                      alt={current.title}
+                      width={32}
+                      height={32}
+                      className="size-8 text-emerald-700"
+                    />
                   </motion.div>
                   <div className="flex grow items-center justify-between">
                     <div className="flex w-full flex-col gap-0.5">
@@ -71,17 +77,40 @@ export default function ExpandableCard({
                         </motion.div>
                       </div>
                       <motion.p
-                        layoutId={`cardItemSubtitle-${current.title}`}
+                        layoutId={`cardItemDescription-${current.description}`}
                         className="text-sm text-primary/70"
                       >
                         {current.description}
                       </motion.p>
-                      <motion.div
-                        className="flex flex-row gap-2 text-xs text-primary/70"
-                        layoutId={`cardItemMetadata-${current.title}`}
-                      >
-                        {current.description}
-                      </motion.div>
+
+                      {current.items && current.items.length > 0 && (
+                        <motion.div
+                          layoutId={`cardItemFeatures-${current.title}`}
+                          className="mt-4"
+                        >
+                          <h4 className="mb-2 text-primary">
+                            Features:
+                          </h4>
+                          <motion.ul
+                            className="space-y-1 pl-5 list-disc"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            {current.items.map((item, index) => (
+                              <motion.li
+                                key={index}
+                                className="text-sm text-primary/70"
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 + index * 0.05 }}
+                              >
+                                {item}
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+                        </motion.div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -115,7 +144,13 @@ export default function ExpandableCard({
                   }}
                 >
                   <motion.div layoutId={`cardItemIcon-${item.title}`}>
-                    <item.icon className="size-8 text-emerald-700" />
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      width={32}
+                      height={32}
+                      className="size-8 text-emerald-700"
+                    />
                   </motion.div>
                   <div className="flex w-full flex-col items-center lg:items-start justify-between gap-0.5">
                     <motion.div
@@ -126,7 +161,7 @@ export default function ExpandableCard({
                     </motion.div>
                     <motion.div
                       className="max-lg:hidden text-xs text-primary/70"
-                      layoutId={`cardItemSubtitle-${item.title}`}
+                      layoutId={`cardItemDescription-${item.description}`}
                     >
                       {truncateText(item.description)}
                     </motion.div>

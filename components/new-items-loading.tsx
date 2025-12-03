@@ -5,19 +5,28 @@ const item = {
   title: "Our new services",
 };
 
-function NewItemsLoading() {
+function NewItemsLoading({
+  data,
+}: {
+  data?: {
+    prefix?: string;
+    action?: string;
+    suffix?: string;
+    link?: string;
+  };
+}) {
   return (
     <>
       <Link
-        href={item?.href}
-        className=" inline-flex justify-center w-fit mx-auto items-center gap-1 rounded-full  bg-emerald-700 border-4 dark:border-neutral-800 border-neutral-200  shadow-[#080808]  py-0.5 pl-0.5 pr-3 text-xs "
+        href={data?.link || "#"}
+        className=" inline-flex justify-center w-fit mx-auto items-center gap-1 rounded-full bg-emerald-700 border-4 dark:border-neutral-800 border-neutral-200  shadow-[#080808]  py-0.5 pl-0.5 pr-3 text-xs "
       >
         <div className="rounded-full bg-[#fcfdff] px-2 py-1 text-xs text-black">
-          Update
+          {data?.prefix}
         </div>
         <p className="text-white sm:text-base text-xs inline-block ps-1">
-          Explore
-          <span className="px-1 font-semibold">{item.title}</span>
+          {data?.action}
+          <span className="px-1 font-semibold">{data?.suffix}</span>
         </p>
 
         <svg

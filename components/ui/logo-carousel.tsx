@@ -125,16 +125,25 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
 );
 
 // Main LogoCarousel component
-function LogoCarousel({ columnCount = 2 }: { columnCount?: number }) {
+function LogoCarousel({
+  columnCount = 2,
+  logos = [],
+}: {
+  columnCount?: number;
+  logos?: Logo[];
+}) {
   const [logoSets, setLogoSets] = useState<Logo[][]>([]);
   const [currentTime, setCurrentTime] = useState(0);
 
   // Memoize the array of logos to prevent unnecessary re-renders
-  const allLogos: Logo[] = useMemo(() => [], []);
+  const allLogos: Logo[] = useMemo(() => {
+    return logos.length > 0 ? logos : [];
+  }, [logos]);
 
   // Distribute logos across columns when the component mounts
   useEffect(() => {
     const distributedLogos = distributeLogos(allLogos, columnCount);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLogoSets(distributedLogos);
   }, [allLogos, columnCount]);
 
