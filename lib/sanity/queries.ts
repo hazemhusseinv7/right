@@ -195,3 +195,57 @@ export async function getAboutData(): Promise<AboutUsType | null> {
     return null;
   }
 }
+
+export async function getBlogPosts(): Promise<BlogPost[] | null> {
+  const query = `*[_type == "blog"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    "author": author->{name, image, bio},
+    "categories": categories[]->{title, description}
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: { revalidate: REVALIDATE_TIME, tags: ["blog", "content"] },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return [];
+  }
+}
+
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  const query = `*[_type == "blog" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    body,
+    "author": author->{name, image, bio},
+    "categories": categories[]->{title, description}
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      { slug },
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: [`blog-post-${slug}`, "content"],
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
+    return null;
+  }
+}

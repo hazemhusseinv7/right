@@ -23,7 +23,7 @@ const Footer = async () => {
     },
     {
       title: "Blog",
-      href: "#blog",
+      href: "/blog",
     },
     {
       title: "Contact Us",

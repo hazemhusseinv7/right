@@ -30,8 +30,9 @@ const Header = () => {
 
   const navItems = [
     { href: "#services", label: "Services", icon: HiServer },
-    { href: "#blog", label: "Blog", icon: HiNewspaper },
+    { href: "/blog", label: "Blog", icon: HiNewspaper },
   ];
+
   return (
     <header className="w-full top-0 z-10 absolute lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0 text-primary-foreground">
       <div className="flex md:max-w-5xl mx-auto w-full items-center relative justify-between  h-16 px-4  p-2 bg-white border dark:border-neutral-800 border-neutral-200   rounded-b-xl  dark:bg-zinc-950">
@@ -82,7 +83,7 @@ const Header = () => {
                         className={cn(
                           "cursor-pointer gap-1 select-none p-2 text-emerald-800 dark:hover:text-blue-200 hover:text-base-blue rounded-md transition-colors duration-200 flex items-center justify-start",
                           pathname.startsWith(item.href) &&
-                            "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-neutral-200"
+                            "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-emerald-100"
                         )}
                       >
                         <item.icon size={20} className="text-emerald-700" />
@@ -125,9 +126,9 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue text-emerald-800 dark:text-white  rounded-md transition-colors duration-200 flex items-center justify-center",
+                    "cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue text-emerald-800 dark:text-white transition-colors duration-200 flex items-center justify-center border-b-2",
                     pathname.startsWith(item.href) &&
-                      "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-neutral-200"
+                      "dark:text-blue-200 dark:border-blue-950 dark:bg-neutral-900  border-b-2 border-emerald-700"
                   )}
                 >
                   <item.icon size={20} className="text-emerald-700" />
