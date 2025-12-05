@@ -28,7 +28,6 @@ interface HeroType {
     link: string;
   };
   heading: {
-    firstLine: string;
     firstWord: string;
     rotatingWords: string[];
     lastWord: string;

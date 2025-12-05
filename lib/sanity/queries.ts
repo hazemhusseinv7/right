@@ -14,7 +14,6 @@ export async function getHeroData(): Promise<HeroType | null> {
       link
     },
     heading {
-      firstLine,
       firstWord,
       rotatingWords,
       lastWord,

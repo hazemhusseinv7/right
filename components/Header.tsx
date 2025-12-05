@@ -55,9 +55,9 @@ const Header = () => {
                     } as React.CSSProperties
                   }
                 >
-                  <div className="dark:bg-black bg-white border border-neutral-200 dark:border-neutral-800 p-2 h-full w-full grow flex flex-col rounded-[16px]">
+                  <div className="dark:bg-black bg-white border border-neutral-200 dark:border-neutral-800 p-2 h-full w-full grow flex flex-col rounded-2xl">
                     <div className="w-full flex justify-between mb-2">
-                      <Link href="/" className="  flex items-center pl-2">
+                      <Link href="/" className="flex items-center pl-2">
                         <div className="text-zinc-950 dark:text-white flex gap-2 items-center">
                           <Image
                             src="/logo/logo.png"
@@ -69,7 +69,7 @@ const Header = () => {
                         </div>
                       </Link>
                       <button
-                        className="rounded-md w-fit bg-neutral-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                        className="rounded-md w-fit bg-neutral-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                         onClick={() => setIsOpen(false)}
                       >
                         <X />
@@ -117,6 +117,9 @@ const Header = () => {
                   />
                 </div>
               </Link>
+            </nav>
+
+            <div className="flex items-center gap-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -131,9 +134,7 @@ const Header = () => {
                   <span>{item.label}</span>
                 </Link>
               ))}
-            </nav>
 
-            <div className="flex items-center gap-2">
               <Link
                 href="#"
                 className=" bg-emerald-700 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
