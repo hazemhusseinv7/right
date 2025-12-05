@@ -136,7 +136,7 @@ const Header = () => {
               ))}
 
               <Link
-                href="#"
+                href="/contact"
                 className=" bg-emerald-700 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
               >
                 Contact Us

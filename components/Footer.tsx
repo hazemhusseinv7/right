@@ -25,6 +25,10 @@ const Footer = async () => {
       title: "Blog",
       href: "#blog",
     },
+    {
+      title: "Contact Us",
+      href: "/contact",
+    },
   ];
 
   const socialMedia = [

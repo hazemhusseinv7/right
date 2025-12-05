@@ -102,7 +102,7 @@ const AboutUs = ({
   return (
     <section
       id="about-us"
-      className="bg-linear-to-t from-muted-foreground/5 relative"
+      className="bg-linear-to-t from-emerald-50 relative"
       ref={heroRef}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-8 pt-20 pb-32">
