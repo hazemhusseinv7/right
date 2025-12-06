@@ -1,6 +1,8 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import AboutUs from "@/components/AboutUs";
+import AboutUs from "@/components/AboutUs/AboutUs";
+import Clients from "@/components/Clients";
+
 import {
   getSettingsData,
   getHeroData,
@@ -23,6 +25,7 @@ export default async function Home() {
       <Hero hero={hero} partners={partners} />
       <Services services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
+      <Clients />
     </main>
   );
 }

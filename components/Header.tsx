@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiServer, HiNewspaper } from "react-icons/hi2";
+import { RiTeamFill } from "react-icons/ri";
 import { Drawer } from "vaul";
 
 export function XIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -29,7 +30,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: "#services", label: "Services", icon: HiServer },
+    { href: "/services", label: "Services", icon: HiServer },
+    { href: "/about-us", label: "About us", icon: RiTeamFill },
     { href: "/blog", label: "Blog", icon: HiNewspaper },
   ];
 

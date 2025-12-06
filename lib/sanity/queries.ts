@@ -196,6 +196,37 @@ export async function getAboutData(): Promise<AboutUsType | null> {
   }
 }
 
+export async function getClientsData(): Promise<ClientsType | null> {
+  const query = `*[_type == "clients"][0]{
+    title,
+    logos[] {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["clients"],
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching clients data:", error);
+    return null;
+  }
+}
+
 export async function getBlogPosts(): Promise<BlogPost[] | null> {
   const query = `*[_type == "blog"] | order(publishedAt desc) {
     _id,

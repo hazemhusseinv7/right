@@ -73,6 +73,11 @@ interface AboutUsType {
   rightBottomStat: { value: string; label: string };
 }
 
+interface ClientsType {
+  title: string;
+  logos: ImageType[];
+}
+
 interface CategoryType {
   title: string;
   description?: any[];

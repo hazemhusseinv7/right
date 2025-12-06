@@ -19,7 +19,11 @@ const Footer = async () => {
   const links = [
     {
       title: "Services",
-      href: "#services",
+      href: "/services",
+    },
+    {
+      title: "About us",
+      href: "/about-us",
     },
     {
       title: "Blog",

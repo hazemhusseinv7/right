@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa6";
 import { RiWhatsappLine } from "react-icons/ri";
 import { urlFor } from "@/lib/sanity/image";
+import AboutUsCards from "./AboutUsCards";
 
 const AboutUs = ({
   settings,
@@ -102,7 +103,7 @@ const AboutUs = ({
   return (
     <section
       id="about-us"
-      className="bg-linear-to-t from-emerald-50 relative"
+      className="bg-linear-to-t from-emerald-50 relative mt-20"
       ref={heroRef}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-8 pt-20 pb-32">
@@ -354,17 +355,9 @@ const AboutUs = ({
             </div>
           </div> */}
         </div>
-      </div>
 
-      {/* Copper Forge Background with Top Glow */}
-      <div
-        className="absolute inset-0 z-0 rotate-180"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(96, 108, 56, 0.25), transparent 70%)",
-        }}
-      />
-      {/* Your Content/Components */}
+        <AboutUsCards />
+      </div>
     </section>
   );
 };

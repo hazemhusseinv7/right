@@ -18,7 +18,7 @@ const Services = ({ services }: { services: ServicesType | null }) => {
   const sectionTitle = services?.title;
 
   return (
-    <section id="services">
+    <section id="services" className="py-40">
       <h2 className="font-semibold text-2xl lg:text-7xl mx-auto w-fit text-emerald-700 mb-4 z-200">
         {sectionTitle}
       </h2>
