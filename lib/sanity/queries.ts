@@ -198,7 +198,6 @@ export async function getAboutData(): Promise<AboutUsType | null> {
 
 export async function getClientsData(): Promise<ClientsType | null> {
   const query = `*[_type == "clients"][0]{
-    title,
     logos[] {
       asset-> {
         _id,

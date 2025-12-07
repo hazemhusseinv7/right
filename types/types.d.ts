@@ -74,7 +74,6 @@ interface AboutUsType {
 }
 
 interface ClientsType {
-  title: string;
   logos: ImageType[];
 }
 

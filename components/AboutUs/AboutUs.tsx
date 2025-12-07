@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
@@ -17,6 +18,30 @@ import {
 import { RiWhatsappLine } from "react-icons/ri";
 import { urlFor } from "@/lib/sanity/image";
 import AboutUsCards from "./AboutUsCards";
+import { PortableText } from "@portabletext/react";
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      return (
+        <div className="my-8">
+          <Image
+            src={urlFor(value).width(800).height(600).url()}
+            alt={value.alt || "Blog image"}
+            width={800}
+            height={600}
+            className="rounded-lg mx-auto"
+          />
+          {value.caption && (
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
+              {value.caption}
+            </p>
+          )}
+        </div>
+      );
+    },
+  },
+};
 
 const AboutUs = ({
   settings,
@@ -274,33 +299,12 @@ const AboutUs = ({
                 animationNum={10}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="sm:text-base text-xs space-y-4"
+                className="space-y-4"
               >
-                <p className="leading-relaxed text-justify">
-                  Founded in 1995, Al Sawab Commercial Company (RIGHT) has
-                  established a strong presence in the Kingdom of Saudi Arabia
-                  for more than 25 years. Originating in Yanbu as a trading and
-                  services company, Al Sawab has evolved into a reputable and
-                  diversified enterprise committed to supporting the
-                  Kingdom&apos;s growth, modernization, and vision for
-                  sustainable development.
-                </p>
-                <p className="leading-relaxed text-justify">
-                  Over the years, Al Sawab has expanded its expertise into
-                  Information Technology, Cybersecurity, Artificial
-                  Intelligence, Strategic Network Solutions, Consultation and
-                  Industrial Supplies, providing innovative and reliable
-                  products and services. Through strong alliances with leading
-                  global partners, Al SAWAB delivers world-class solutions
-                  tailored to meet the needs of clients across both the public
-                  and private sectors.
-                </p>
-                <p className="leading-relaxed text-justify">
-                  From dual hubs in Yanbu and Dammam, Al Sawab empowers Saudi
-                  Arabia with reliable, cutting-edge solutions. Our dedication
-                  to excellence and lasting partnerships fuels client success
-                  and accelerates the Kingdom&apos;s development.
-                </p>
+                <PortableText
+                  value={aboutUs?.content}
+                  components={portableTextComponents}
+                />
               </TimelineContent>
               {/* <TimelineContent
                 as="div"

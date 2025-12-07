@@ -4,7 +4,6 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
 interface LogoCloudProps {
-  title?: string;
   logos: {
     url: string;
     companyName?: string;
@@ -12,15 +11,12 @@ interface LogoCloudProps {
   }[];
 }
 
-export const LogoCloud = ({ logos, title }: LogoCloudProps) => {
+export const LogoCloud = ({ logos }: LogoCloudProps) => {
   return (
     <section className="overflow-hidden pb-28 md:pb-12" dir="ltr">
-      <div className="group relative m-auto max-md:px-0 pl-6">
+      <div className="group relative m-auto max-md:px-0">
         <div className="flex flex-col items-center md:flex-row">
-          <div className="md:min-w-20 md:border-r md:pr-6">
-            <p className="text-end text-xl">{title ? title : "Clients"}</p>
-          </div>
-          <div className="relative py-6 w-full md:w-[calc(100%-5rem)]">
+          <div className="relative py-6 w-full">
             <InfiniteSlider speedOnHover={20} speed={40} gap={80}>
               {logos.map((logo, i) => (
                 <div key={i} className="flex">
