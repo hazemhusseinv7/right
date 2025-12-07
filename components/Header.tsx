@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <header className="w-full top-0 z-10 absolute lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0 text-primary-foreground">
-      <div className="flex md:max-w-5xl mx-auto w-full items-center relative justify-between  h-16 px-4  p-2 bg-white border dark:border-neutral-800 border-neutral-200   rounded-b-xl  dark:bg-zinc-950">
+      <div className="flex md:max-w-5xl mx-auto w-full items-center relative justify-between h-18 px-4 p-2 bg-white border dark:border-neutral-800 border-neutral-200   rounded-b-xl  dark:bg-zinc-950">
         {isMobile && (
           <>
             <Drawer.Root
@@ -45,7 +45,7 @@ const Header = () => {
               open={isOpen}
               onOpenChange={setIsOpen}
             >
-              <Drawer.Trigger className="px-3 text-white h-10 grid place-content-center bg-linear-to-b from-emerald-600 from-100% to-emerald-700  w-fit rounded-lg">
+              <Drawer.Trigger className="px-3 text-white h-10 grid place-content-center bg-primary-blue w-fit rounded-lg">
                 <AlignJustify />
               </Drawer.Trigger>
               <Drawer.Portal>
@@ -85,10 +85,17 @@ const Header = () => {
                         className={cn(
                           "cursor-pointer gap-1 select-none p-2 text-emerald-800 dark:hover:text-blue-200 hover:text-base-blue rounded-md transition-colors duration-200 flex items-center justify-start",
                           pathname.startsWith(item.href) &&
-                            "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-emerald-100"
+                            "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-emerald-100 text-primary-green"
                         )}
                       >
-                        <item.icon size={20} className="text-emerald-700" />
+                        <item.icon
+                          size={20}
+                          className={cn(
+                            "text-primary-blue",
+                            pathname.startsWith(item.href) &&
+                              "text-primary-green"
+                          )}
+                        />
                         <span>{item.label}</span>
                       </Link>
                     ))}
@@ -99,10 +106,11 @@ const Header = () => {
 
             <Image
               src="/logo/logo.png"
-              width={40}
-              height={40}
+              width={56}
+              height={56}
               alt="Logo"
-              className="size-10"
+              className="size-14"
+              priority
             />
           </>
         )}
@@ -113,10 +121,11 @@ const Header = () => {
                 <div className="text-zinc-950 dark:text-white flex gap-2 items-center">
                   <Image
                     src="/logo/logo.png"
-                    width={40}
-                    height={40}
+                    width={56}
+                    height={56}
                     alt="Logo"
-                    className="size-10"
+                    className="size-14"
+                    priority
                   />
                 </div>
               </Link>
@@ -128,19 +137,25 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue text-emerald-800 dark:text-white transition-colors duration-200 flex items-center justify-center border-b-2",
+                    "cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue text-primary-blue dark:text-white transition-colors duration-200 flex items-center justify-center border-b-2",
                     pathname.startsWith(item.href) &&
-                      "dark:text-blue-200 dark:border-blue-950 dark:bg-neutral-900  border-b-2 border-emerald-700"
+                      "dark:text-blue-200 dark:border-blue-950 dark:bg-neutral-900 border-b-2 border-primary-green text-primary-green"
                   )}
                 >
-                  <item.icon size={20} className="text-emerald-700" />
+                  <item.icon
+                    size={20}
+                    className={cn(
+                      "text-primary-blue",
+                      pathname.startsWith(item.href) && "text-primary-green"
+                    )}
+                  />
                   <span>{item.label}</span>
                 </Link>
               ))}
 
               <Link
                 href="/contact"
-                className=" bg-emerald-700 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
+                className=" bg-primary-blue hover:bg-primary-blue/90 transition-colors duration-300 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
               >
                 Contact Us
               </Link>

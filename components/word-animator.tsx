@@ -32,7 +32,7 @@ const WordAnimator: React.FC<WordAnimatorProps> = ({
       }}
       className={cn(" text-left overflow-hidden border rounded-md ", className)}
     >
-      <span className="absolute top-0 left-0 w-full h-full content-[''] z-10 pointer-events-none bg-[url('/noise.gif')] opacity-10"/> 
+      <span className="absolute top-0 left-0 w-full h-full content-[''] z-10 pointer-events-none bg-[url('/noise.gif')] opacity-10" />
       <AnimatePresence mode="popLayout">
         <motion.span
           key={currentIndex}
@@ -49,7 +49,7 @@ const WordAnimator: React.FC<WordAnimatorProps> = ({
             left: 0,
             right: 0,
           }}
-          className="bg-linear-to-t w-full from-emerald-300 to-emerald-700 bg-clip-text text-transparent"
+          className="bg-linear-to-t w-full from-primary-blue/80 to-primary-blue bg-clip-text text-transparent"
         >
           {words[currentIndex]}
         </motion.span>

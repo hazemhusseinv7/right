@@ -35,8 +35,23 @@ const Hero = ({
     <section
       id="hero"
       ref={ref}
-      className="min-h-screen overflow-hidden relative pb-20 bg-linear-to-b from-emerald-50"
+      className="min-h-screen overflow-hidden relative pb-20 bg-linear-to-b from-blue-50"
     >
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+        linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+        linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)
+      `,
+          backgroundSize: "20px 30px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+        }}
+      />
+
       <div className="pointer-events-none absolute inset-0  flex w-screen  justify-end mask-[radial-gradient(transparent_5%,white)]">
         <svg
           width="1512"
@@ -85,7 +100,7 @@ const Hero = ({
       </div>
       <article className="grid 2xl:pt-40 2xl:pb-24 pt-24 pb-14 relative z-2 sm:px-0 px-4">
         <NewItemsLoading data={buttonData} />
-        <h1 className="xl:text-7xl md:text-6xl sm:text-5xl text-3xl text-center font-semibold text-black dark:text-white tracking-tight">
+        <h1 className="xl:text-7xl md:text-6xl sm:text-5xl text-3xl text-center font-semibold text-primary-blue dark:text-white tracking-tight">
           <span className="relative translate-x-0 flex max-lg:flex-col gap-2 justify-center mt-4 lg:mt-8">
             <div className="translate-x-0 flex gap-2 justify-center">
               {headingData?.firstWord}{" "}
@@ -99,13 +114,13 @@ const Hero = ({
             </div>
             <span>
               {headingData?.lastWord}{" "}
-              <strong className="text-emerald-700 font-semibold uppercase">
+              <strong className="text-primary-green font-semibold uppercase">
                 {headingData?.highlightedWord.text}
               </strong>
             </span>
           </span>
         </h1>
-        <p className="mx-auto lg:w-[700px] sm:w-[80%] text-center sm:text-lg text-sm mt-5 text-emerald-950 dark:text-white">
+        <p className="mx-auto lg:w-[700px] sm:w-[80%] text-center sm:text-lg text-sm mt-5 text-primary-blue dark:text-white">
           {description}
         </p>
         <div className="flex gap-2 justify-center items-center mt-4">

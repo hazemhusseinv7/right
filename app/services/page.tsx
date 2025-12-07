@@ -5,7 +5,7 @@ export default async function Page() {
   const services: ServicesType | null = await getServicesData();
 
   return (
-    <main>
+    <main className="bg-linear-to-t from-blue-100">
       <Services services={services} />
     </main>
   );

@@ -158,7 +158,7 @@ const AboutUs = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="md:size-8 size-6 border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 hover:bg-emerald-500 transition-colors duration-300 rounded-lg flex items-center justify-center cursor-pointer"
+                  className="md:size-8 size-6 border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 hover:bg-primary-green transition-colors duration-300 rounded-lg flex items-center justify-center cursor-pointer"
                 >
                   <Icon className="max-sm:size-3" />
                 </TimelineContent>
@@ -207,7 +207,7 @@ const AboutUs = ({
               className="flex gap-4"
             >
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-emerald-700 font-bold">
+                <span className="text-primary-green font-bold">
                   {aboutUs?.leftTopStat.value}
                 </span>
                 <span className="text-gray-600 dark:text-gray-300">
@@ -216,7 +216,7 @@ const AboutUs = ({
                 <span className="text-gray-300">|</span>
               </div>
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-emerald-700 font-bold">
+                <span className="text-primary-green font-bold">
                   {aboutUs?.leftBottomStat.value}
                 </span>
                 <span className="text-gray-600 dark:text-gray-300">
@@ -232,7 +232,7 @@ const AboutUs = ({
                 customVariants={revealVariants}
                 className="flex sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
-                <p className="text-emerald-700 font-semibold">
+                <p className="text-primary-green font-semibold">
                   {aboutUs?.rightTopStat.value}
                   {/* <span className="text-gray-600 dark:text-gray-300 font-normal"></span> */}
                 </p>
@@ -247,7 +247,7 @@ const AboutUs = ({
                 customVariants={revealVariants}
                 className="flex items-center gap-2 mb-2 sm:text-base text-xs"
               >
-                <span className="text-emerald-700 dark:text-gray-300 font-bold text-xl lg:text-2xl">
+                <span className="text-primary-green dark:text-gray-300 font-bold text-xl lg:text-2xl">
                   {aboutUs?.rightBottomStat.value}
                 </span>
                 <p className="text-gray-600">
@@ -266,11 +266,11 @@ const AboutUs = ({
               animationNum={8}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="text-4xl md:text-5xl leading-[110%]! font-semibold text-emerald-800 mb-8"
+              className="text-4xl md:text-5xl leading-[110%]! font-semibold text-primary-green mb-8"
             >
               {aboutUs?.heading}
             </TimelineContent>
-            <p className="sm:text-3xl md:text-4xl text-xl leading-[170%]! font-semibold text-gray-900 dark:text-gray-300 mb-8 max-w-3xl">
+            <p className="sm:text-3xl md:text-4xl text-xl leading-[170%]! font-semibold text-primary-blue dark:text-gray-300 mb-8 max-w-3xl">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.1}

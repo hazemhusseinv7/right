@@ -63,7 +63,7 @@ export default function ExpandableCard({
                       alt={current.title}
                       width={32}
                       height={32}
-                      className="size-8 text-emerald-700"
+                      className="size-8"
                     />
                   </motion.div>
                   <div className="flex grow items-center justify-between">
@@ -88,9 +88,7 @@ export default function ExpandableCard({
                           layoutId={`cardItemFeatures-${current.title}`}
                           className="mt-4"
                         >
-                          <h4 className="mb-2 text-primary">
-                            Features:
-                          </h4>
+                          <h4 className="mb-2 text-primary">Features:</h4>
                           <motion.ul
                             className="space-y-1 pl-5 list-disc"
                             initial={{ opacity: 0, y: 10 }}
@@ -128,7 +126,7 @@ export default function ExpandableCard({
       >
         {items.map((list, i) => (
           <div key={i}>
-            <h3 className="font-medium text-xl lg:text-2xl mx-auto w-fit text-emerald-800 mb-4">
+            <h3 className="font-medium text-xl lg:text-2xl mx-auto w-fit text-primary-blue mb-4">
               {list.title}
             </h3>
             <div className="relative w-full grid grid-cols-2 lg:grid-cols-3 gap-4 px-2">
@@ -149,7 +147,7 @@ export default function ExpandableCard({
                       alt={item.title}
                       width={32}
                       height={32}
-                      className="size-8 text-emerald-700"
+                      className="size-8"
                     />
                   </motion.div>
                   <div className="flex w-full flex-col items-center lg:items-start justify-between gap-0.5">

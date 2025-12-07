@@ -96,7 +96,7 @@ const Footer = async () => {
             <Link
               key={index}
               href={link.href}
-              className="text-muted-foreground hover:text-emerald-700 block transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary-green block transition-colors duration-300"
             >
               <span>{link.title}</span>
             </Link>
@@ -110,7 +110,7 @@ const Footer = async () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={name}
-              className="text-muted-foreground hover:text-emerald-700 transition-colors duration-300"
+              className="text-muted-foreground hover:text-primary-green transition-colors duration-300"
             >
               <Icon className="size-6" />
             </Link>
@@ -122,7 +122,7 @@ const Footer = async () => {
           <span className="px-1">{new Date().getFullYear()}</span>
           <Link
             href="/"
-            className="hover:text-emerald-700 transition-colors duration-300"
+            className="hover:text-primary-green transition-colors duration-300"
           >
             Right
           </Link>

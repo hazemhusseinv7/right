@@ -5,9 +5,11 @@ import { urlFor } from "@/lib/sanity/image";
 const Clients = async () => {
   const clients: ClientsType | null = await getClientsData();
 
+  if (!clients?.logos?.length) return null;
+
   let logos =
     clients?.logos?.map((clientLogo) => ({
-      url: urlFor(clientLogo).width(100).height(50).url(),
+      url: urlFor(clientLogo).url(),
     })) || [];
 
   logos = [...logos, ...logos];

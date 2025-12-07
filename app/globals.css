@@ -6,6 +6,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-primary-blue: var(--color-primary-blue);
+  --color-primary-green: var(--color-primary-green);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-poppins: var(--font-poppins);
@@ -45,6 +48,9 @@
 }
 
 :root {
+  --color-primary-blue: #1f3c61;
+  --color-primary-green: #66bc46;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -124,11 +130,11 @@
 
 /* Text Selection */
 ::-moz-selection {
-  @apply text-emerald-50 bg-emerald-700;
+  @apply text-emerald-50 bg-primary-green;
 }
 
 ::selection {
-  @apply text-emerald-50 bg-emerald-700;
+  @apply text-emerald-50 bg-primary-green;
 }
 
 /* Scrollbar */
@@ -139,10 +145,10 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-emerald-100;
+  @apply bg-primary-blue/10;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply hover:from-emerald-400 hover:to-emerald-500 rounded-full bg-linear-to-br from-emerald-500 to-emerald-600;
+  @apply rounded-full hover:bg-primary-green bg-primary-blue;
 }

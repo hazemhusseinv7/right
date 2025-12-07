@@ -1,10 +1,5 @@
 import Link from "next/link";
 
-const item = {
-  href: "#services",
-  title: "Our new services",
-};
-
 function NewItemsLoading({
   data,
 }: {
@@ -19,7 +14,7 @@ function NewItemsLoading({
     <>
       <Link
         href={data?.link || "#"}
-        className=" inline-flex justify-center w-fit mx-auto items-center gap-1 rounded-full bg-emerald-700 border-4 dark:border-neutral-800 border-neutral-200  shadow-[#080808]  py-0.5 pl-0.5 pr-3 text-xs "
+        className=" inline-flex justify-center w-fit mx-auto items-center gap-1 rounded-full bg-primary-blue border-4 dark:border-neutral-800 border-neutral-200  shadow-[#080808]  py-0.5 pl-0.5 pr-3 text-xs "
       >
         <div className="rounded-full bg-[#fcfdff] px-2 py-1 text-xs text-black">
           {data?.prefix}

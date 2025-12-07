@@ -84,7 +84,7 @@ const ContactComponent = ({
         preset="blur"
         speedReveal={0.3}
         speedSegment={0.3}
-        className="mx-auto text-2xl lg:text-4xl"
+        className="mx-auto text-2xl lg:text-4xl text-primary-blue"
       >
         Contact Us
       </TextEffect>
@@ -117,7 +117,11 @@ const ContactComponent = ({
             onChange={(e) => handleInputChange("message", e.target.value)}
             required
           />
-          <Button type="submit" color="primary" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="bg-primary-green text-white"
+            disabled={isLoading}
+          >
             Send
           </Button>
         </form>

@@ -1,7 +1,7 @@
 "use client";
 
 import { urlFor } from "@/lib/sanity/image";
-import ExpandableCard, { CardList } from "./forgeui/expandable-card";
+import ExpandableCard, { CardList } from "./expandable-card";
 
 const Services = ({ services }: { services: ServicesType | null }) => {
   const servicesData: CardList[] =
@@ -19,7 +19,7 @@ const Services = ({ services }: { services: ServicesType | null }) => {
 
   return (
     <section id="services" className="py-40">
-      <h2 className="font-semibold text-2xl lg:text-7xl mx-auto w-fit text-emerald-700 mb-4 z-200">
+      <h2 className="font-semibold text-2xl lg:text-7xl mx-auto w-fit text-primary-blue mb-4 z-200">
         {sectionTitle}
       </h2>
       <div className="max-w-300 mx-auto">
