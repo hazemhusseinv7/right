@@ -176,6 +176,17 @@ export async function getAboutData(): Promise<AboutUsType | null> {
     rightBottomStat {
       value,
       label
+    },
+    certificateTitle,
+    certificateDescription,
+    certificateImages[] {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
     }
   }`;
 
@@ -276,6 +287,44 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     );
   } catch (error) {
     console.error("Error fetching blog post:", error);
+    return null;
+  }
+}
+
+export async function getCareersData(): Promise<CareersType | null> {
+  const query = `*[_type == "careers"][0]{
+    title,
+    description,
+    jobCards[] {
+      _key,
+      title,
+      description,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      url
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["careers"],
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching careers data:", error);
     return null;
   }
 }

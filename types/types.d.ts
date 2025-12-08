@@ -71,6 +71,9 @@ interface AboutUsType {
   leftBottomStat: { value: string; label: string };
   rightTopStat: { value: string; label: string };
   rightBottomStat: { value: string; label: string };
+  certificateTitle: string;
+  certificateDescription: string;
+  certificateImages: ImageType[];
 }
 
 interface ClientsType {
@@ -99,4 +102,16 @@ interface BlogPost {
   body: any[];
   author?: AuthorType;
   categories?: CategoryType[];
+}
+
+interface CareersType {
+  title: string;
+  description: string;
+  jobCards: {
+    _key?: string;
+    title: string;
+    description: string;
+    image: ImageType;
+    url: string;
+  }[];
 }

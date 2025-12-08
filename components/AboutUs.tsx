@@ -318,7 +318,6 @@ const AboutUs = ({
               </TimelineContent> */}
             </TimelineContent>
           </div>
-
           {/* <div className="md:col-span-1 lg:pt-8">
             <div className="text-right">
               <TimelineContent
@@ -359,6 +358,28 @@ const AboutUs = ({
               </TimelineContent>
             </div>
           </div> */}
+        </div>
+
+        <div className="py-20">
+          <div className="text-3xl leading-[110%]! font-semibold text-primary-green mb-8">
+            {aboutUs?.certificateTitle}
+          </div>
+          <p className="text-lg leading-[170%]! font-semibold text-primary-blue dark:text-gray-300 mb-8 max-w-3xl">
+            {aboutUs?.certificateDescription}
+          </p>
+
+          <div className="flex gap-10">
+            {aboutUs?.certificateImages.map((img, i) => (
+              <Image
+                key={i}
+                src={urlFor(img).url()}
+                width={128}
+                height={128}
+                alt="Certificate Badge"
+                className="size-32 rounded-md"
+              />
+            ))}
+          </div>
         </div>
 
         <div className="max-w-340 py-40 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-20">

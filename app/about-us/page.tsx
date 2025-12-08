@@ -58,6 +58,28 @@ export default async function Page() {
             components={portableTextComponents}
           />
         </article>
+
+        <div className="py-20">
+          <div className="text-3xl leading-[110%]! font-semibold text-primary-green mb-8">
+            {aboutUs?.certificateTitle}
+          </div>
+          <p className="text-lg leading-[170%]! font-semibold text-primary-blue dark:text-gray-300 mb-8 max-w-3xl">
+            {aboutUs?.certificateDescription}
+          </p>
+
+          <div className="flex gap-10">
+            {aboutUs?.certificateImages.map((img, i) => (
+              <Image
+                key={i}
+                src={urlFor(img).url()}
+                width={128}
+                height={128}
+                alt="Certificate Badge"
+                className="size-32 rounded-md"
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="max-w-340 py-40 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-20">
