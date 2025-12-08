@@ -11,6 +11,7 @@ import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
 import Values from "@/components/Values";
 import Stats from "@/components/Stats";
+import Team from "@/components/Team";
 import Clients from "@/components/Clients";
 
 export default async function Home() {
@@ -29,6 +30,7 @@ export default async function Home() {
       <AboutUs settings={settings} aboutUs={aboutUs} />
       <Values />
       <Stats />
+      <Team />
       <Clients />
     </main>
   );
