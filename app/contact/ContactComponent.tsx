@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { addToast, Button, Card, Input, Textarea } from "@heroui/react";
-import { cn } from "@/lib/utils";
+import { addToast, Button, Input, Textarea } from "@heroui/react";
+import { Card } from "@/components/ui/card";
+
+import Link from "next/link";
+import { FaLocationDot } from "react-icons/fa6";
 
 interface FormDataType {
   name: string;
@@ -12,10 +15,7 @@ interface FormDataType {
   message: string;
 }
 
-const ContactComponent = ({
-  className,
-  ...props
-}: React.ComponentProps<"div">) => {
+const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
@@ -77,56 +77,114 @@ const ContactComponent = ({
   };
 
   return (
-    <div className={cn("flex flex-col gap-8", className)} {...props}>
-      <TextEffect
-        per="word"
-        as="h1"
-        preset="blur"
-        speedReveal={0.3}
-        speedSegment={0.3}
-        className="mx-auto text-2xl lg:text-4xl text-primary-blue"
-      >
-        Contact Us
-      </TextEffect>
-
-      <Card className="mx-auto w-full max-w-120 p-4 shadow-2xl shadow-zinc-300 dark:shadow-zinc-900">
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <Input
-            label="Name"
-            type="text"
-            value={formData.name}
-            onChange={(e) => handleInputChange("name", e.target.value)}
-            required
-          />
-          <Input
-            label="Email"
-            type="email"
-            value={formData.email}
-            onChange={(e) => handleInputChange("email", e.target.value)}
-          />
-          <Input
-            label="Phone"
-            type="tel"
-            value={formData.phone}
-            onChange={(e) => handleInputChange("phone", e.target.value)}
-          />
-          <Textarea
-            label="Message"
-            minRows={4}
-            value={formData.message}
-            onChange={(e) => handleInputChange("message", e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            className="bg-primary-green text-white"
-            disabled={isLoading}
+    <section className="py-32">
+      <div className="mx-auto max-w-4xl px-4 lg:px-0">
+        <div className="mb-12 text-center text-4xl font-semibold lg:text-5xl">
+          <TextEffect
+            per="word"
+            as="h1"
+            preset="blur"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            className="mx-auto text-2xl lg:text-4xl text-primary-blue"
           >
-            Send
-          </Button>
-        </form>
-      </Card>
-    </div>
+            Contact Us
+          </TextEffect>
+
+          <TextEffect
+            per="word"
+            as="h1"
+            preset="blur"
+            speedReveal={0.8}
+            speedSegment={0.8}
+            className="mx-auto text-lg font-light mt-4"
+          >
+            For partnership discussions, media inquiries, vendor outreach, or
+            general questions contact us to start the conversation Submit your
+            inquiry below we&apos;ll route it to the appropriate team Full Name
+            Work Email Phone Number Company Name Message Al Sawab Headquarter
+          </TextEffect>
+        </div>
+        <div className="grid divide-y border md:grid-cols-2 md:gap-4 md:divide-x md:divide-y-0">
+          <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">
+            <div className="flex flex-col">
+              <h2 className="mb-3 text-lg font-semibold">Email Address</h2>
+
+              {settings?.emails.map((email, i) => (
+                <Link
+                  key={i}
+                  href={email}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {email}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">
+            <div className="flex flex-col">
+              <h3 className="mb-3 text-lg font-semibold">Phone Number</h3>
+
+              {settings?.phones.map((phone, i) => (
+                <p key={i} className="mt-3 text-sm">
+                  {phone}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="col-span-2 border-t p-8">
+            <span>Al Sawab Headquarter</span>
+
+            <div className="felx justify-center items-center">
+              <FaLocationDot className="inline me-2 text-primary-green" />
+              <p className="inline">{settings?.location}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="h-3 border-x bg-[repeating-linear-gradient(-45deg,var(--color-border),var(--color-border)_1px,transparent_1px,transparent_6px)]"></div>
+        <div className="border px-4 py-12 lg:px-0 lg:py-24">
+          <Card className="mx-auto w-full max-w-120 p-4 shadow-2xl shadow-zinc-300 dark:shadow-zinc-900">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              <Input
+                label="Name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                required
+              />
+              <Input
+                label="Email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+              />
+              <Input
+                label="Phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+              />
+              <Textarea
+                label="Message"
+                minRows={4}
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                required
+              />
+              <Button
+                type="submit"
+                className="bg-primary-green text-white"
+                disabled={isLoading}
+              >
+                Send
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,11 +1,14 @@
+import { getSettingsData } from "@/lib/sanity/queries";
 import ContactComponent from "./ContactComponent";
 
-export default function Page() {
+export default async function Page() {
+  const settings: SettingsType | null = await getSettingsData();
+
   return (
     <main>
-      <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-linear-to-t from-blue-100">
+      <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
         <div className="w-full">
-          <ContactComponent />
+          <ContactComponent settings={settings || undefined} />
         </div>
       </div>
     </main>

@@ -5,6 +5,38 @@ const REVALIDATE_TIME =
     ? Number(process.env.REVALIDATE_TIME) || 3600
     : 0;
 
+export async function getSettingsData(): Promise<SettingsType | null> {
+  const query = `*[_type == "settings"][0]{
+    location,
+    phones,
+    emails,
+    twitter,
+    linkedin,
+    tiktok,
+    instagram,
+    snapchat,
+    whatsapp,
+    facebook,
+    youtube
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["settings", "content"],
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching settings data:", error);
+    return null;
+  }
+}
+
 export async function getHeroData(): Promise<HeroType | null> {
   const query = `*[_type == "main"][0]{
     button {
@@ -35,7 +67,7 @@ export async function getHeroData(): Promise<HeroType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["main"],
+          tags: ["main", "content"],
         },
       }
     );
@@ -66,7 +98,7 @@ export async function getPartnersData(): Promise<PartnersType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["partners"],
+          tags: ["partners", "content"],
         },
       }
     );
@@ -105,43 +137,12 @@ export async function getServicesData(): Promise<ServicesType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["services"],
+          tags: ["services", "content"],
         },
       }
     );
   } catch (error) {
     console.error("Error fetching services data:", error);
-    return null;
-  }
-}
-
-export async function getSettingsData(): Promise<SettingsType | null> {
-  const query = `*[_type == "settings"][0]{
-    email,
-    phone, 
-    twitter,
-    linkedin,
-    tiktok,
-    instagram,
-    snapchat,
-    whatsapp,
-    facebook,
-    youtube
-  }`;
-
-  try {
-    return await sanityClient.fetch(
-      query,
-      {},
-      {
-        next: {
-          revalidate: REVALIDATE_TIME,
-          tags: ["settings"],
-        },
-      }
-    );
-  } catch (error) {
-    console.error("Error fetching settings data:", error);
     return null;
   }
 }
@@ -197,7 +198,7 @@ export async function getAboutData(): Promise<AboutUsType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["aboutUs"],
+          tags: ["aboutUs", "content"],
         },
       }
     );
@@ -227,7 +228,7 @@ export async function getClientsData(): Promise<ClientsType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["clients"],
+          tags: ["clients", "content"],
         },
       }
     );
@@ -319,12 +320,38 @@ export async function getCareersData(): Promise<CareersType | null> {
       {
         next: {
           revalidate: REVALIDATE_TIME,
-          tags: ["careers"],
+          tags: ["careers", "content"],
         },
       }
     );
   } catch (error) {
     console.error("Error fetching careers data:", error);
+    return null;
+  }
+}
+
+export async function getTestimonialsData(): Promise<TestimonialsType | null> {
+  const query = `*[_type == "testimonials"][0]{
+    testimonials[] {
+      _key,
+      name,
+      content
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["testimonials", "content"],
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Error fetching testimonials data:", error);
     return null;
   }
 }

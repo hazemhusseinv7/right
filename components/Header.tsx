@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { FaBriefcase, FaUser, FaUserCheck } from "react-icons/fa6";
 import { HiServer, HiNewspaper } from "react-icons/hi2";
 import { RiTeamFill } from "react-icons/ri";
 import { Drawer } from "vaul";
@@ -31,7 +32,10 @@ const Header = () => {
 
   const navItems = [
     { href: "/services", label: "Services", icon: HiServer },
-    { href: "/about-us", label: "About us", icon: RiTeamFill },
+    { href: "/about-us", label: "About us", icon: FaUser },
+    { href: "/team", label: "Team", icon: RiTeamFill },
+    { href: "/careers", label: "Careers", icon: FaBriefcase },
+    { href: "/partners", label: "Partners", icon: FaUserCheck },
     { href: "/blog", label: "Blog", icon: HiNewspaper },
   ];
 

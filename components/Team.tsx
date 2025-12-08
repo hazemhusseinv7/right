@@ -2,7 +2,7 @@ import { FaUser } from "react-icons/fa6";
 // import Image from "next/image";
 
 const Team = () => {
-  const members = [
+  const team = [
     {
       name: "Name",
       role: "Role",
@@ -38,31 +38,47 @@ const Team = () => {
   ];
 
   return (
-    <section className="py-12 md:py-32">
-      <div className="mx-auto max-w-3xl px-8 lg:px-0">
-        <h2 className="mb-8 text-4xl font-bold md:mb-16 lg:text-5xl">
-          Our team
-        </h2>
-
-        <div>
-          <div className="grid grid-cols-2 gap-4 border-t py-6 md:grid-cols-4">
-            {members.map((member, index) => (
-              <div key={index}>
-                <div className="bg-background size-20 rounded-full border p-0.5 shadow shadow-zinc-950/5 flex justify-center items-center">
-                  <FaUser className="size-5" />
-                  {/* <Image
-                    className="aspect-square rounded-full object-cover"
-                    src={}
-                    alt={member.name}
-                    height={460}
-                    width={460}
-                    loading="lazy"
-                  /> */}
+    <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
+      <div className="mx-auto max-w-5xl border-t px-6">
+        <span className="text-caption -ml-6 -mt-3.5 block w-max text-primary-green bg-gray-50 px-6 dark:bg-gray-950">
+          Team
+        </span>
+        <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
+          <div className="sm:w-2/5">
+            <h2 className="text-3xl font-bold sm:text-4xl">Our Team</h2>
+          </div>
+          <div className="mt-6 sm:mt-0">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non
+              perferendis, corrupti dignissimos cupiditate consequuntur saepe
+              ipsam illum fugiat aliquam eum nisi dolorem consectetur minus aut
+              ipsa mollitia soluta tempora magnam.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 md:mt-24">
+          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {team.map((member, index) => (
+              <div key={index} className="group overflow-hidden">
+                <img
+                  className="h-96 w-full rounded-md object-cover object-top grayscale transition-all duration-500 hover:grayscale-0 group-hover:h-[22.5rem] group-hover:rounded-xl"
+                  src="/logo/logo.png"
+                  alt="team member"
+                  width="826"
+                  height="1239"
+                />
+                <div className="px-2 pt-2 sm:pb-0 sm:pt-4">
+                  <div className="flex justify-between">
+                    <h3 className="text-base font-medium transition-all duration-500 group-hover:tracking-wider">
+                      {member.name}
+                    </h3>
+                  </div>
+                  <div className="mt-1 flex items-center justify-between">
+                    <span className="text-muted-foreground inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      {member.role}
+                    </span>
+                  </div>
                 </div>
-                <span className="mt-2 block text-sm">{member.name}</span>
-                <span className="text-muted-foreground block text-xs">
-                  {member.role}
-                </span>
               </div>
             ))}
           </div>

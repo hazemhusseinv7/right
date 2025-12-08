@@ -8,8 +8,9 @@ interface ImageType {
 }
 
 interface SettingsType {
-  phone: string;
-  email: string;
+  location?: string;
+  phones: string[];
+  emails: string[];
   twitter?: string;
   linkedin?: string;
   tiktok?: string;
@@ -113,5 +114,12 @@ interface CareersType {
     description: string;
     image: ImageType;
     url: string;
+  }[];
+}
+
+interface TestimonialsType {
+  testimonials: {
+    name: string;
+    content: string;
   }[];
 }
