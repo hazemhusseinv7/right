@@ -1,11 +1,3 @@
-import {
-  Cpu,
-  Fingerprint,
-  Pencil,
-  Settings2,
-  Sparkles,
-  Zap,
-} from "lucide-react";
 import { FaShieldAlt } from "react-icons/fa";
 import {
   FaAward,

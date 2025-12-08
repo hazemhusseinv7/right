@@ -9,8 +9,9 @@ import {
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
-import Clients from "@/components/Clients";
 import Values from "@/components/Values";
+import Stats from "@/components/Stats";
+import Clients from "@/components/Clients";
 
 export default async function Home() {
   const [settings, hero, partners, services, aboutUs] = await Promise.all([
@@ -27,6 +28,7 @@ export default async function Home() {
       <Services services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
       <Values />
+      <Stats />
       <Clients />
     </main>
   );
