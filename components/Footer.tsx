@@ -26,6 +26,10 @@ const Footer = async () => {
       href: "/about-us",
     },
     {
+      title: "Industries",
+      href: "/industries",
+    },
+    {
       title: "Team",
       href: "/team",
     },

@@ -97,7 +97,7 @@ export default async function Page() {
 
           <div className="relative md:ms-4">
             <Image
-              src={img}
+              src={"/about-us/vision.jpg"}
               width={1000}
               height={1000}
               alt="Our Vision"
@@ -235,10 +235,10 @@ export default async function Page() {
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           <div className="relative md:ms-4">
             <Image
-              src={img}
+              src={"/about-us/mission.jpg"}
               width={1000}
               height={1000}
-              alt="Our Vision"
+              alt="Our Mission"
               className="w-full rounded-md"
             />
 
