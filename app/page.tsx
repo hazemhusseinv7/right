@@ -14,6 +14,7 @@ import Values from "@/components/Values";
 import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import Clients from "@/components/Clients";
+import Milestones from "@/components/Milestones";
 
 export default async function Home() {
   const [settings, hero, partners, services, aboutUs, testimonials] =
@@ -31,6 +32,7 @@ export default async function Home() {
       <Hero hero={hero} partners={partners} />
       <Services services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
+      <Milestones />
       <Values />
       <Stats />
       <Testimonials testimonials={testimonials} />

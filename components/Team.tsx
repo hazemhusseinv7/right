@@ -45,7 +45,7 @@ const Team = () => {
         </span>
         <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
           <div className="sm:w-2/5">
-            <h2 className="text-3xl font-bold sm:text-4xl">Our Team</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl text-primary-blue">Our Team</h2>
           </div>
           <div className="mt-6 sm:mt-0">
             <p>

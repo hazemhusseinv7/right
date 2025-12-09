@@ -109,14 +109,16 @@ const Header = () => {
               </Drawer.Portal>
             </Drawer.Root>
 
-            <Image
-              src="/logo/logo.png"
-              width={56}
-              height={56}
-              alt="Logo"
-              className="size-14"
-              priority
-            />
+            <Link href="/">
+              <Image
+                src="/logo/logo.png"
+                width={56}
+                height={56}
+                alt="Logo"
+                className="size-14"
+                priority
+              />
+            </Link>
           </>
         )}
         {!isMobile && (

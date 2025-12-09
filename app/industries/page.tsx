@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <main>
-      <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
+      <section className="bg-zinc-50 py-28 md:py-32 dark:bg-transparent">
         <div className="@container mx-auto max-w-5xl px-6">
           <div className="text-center">
             <h1 className="text-balance text-4xl font-semibold lg:text-5xl text-primary-blue">
