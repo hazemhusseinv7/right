@@ -8,22 +8,25 @@ export default async function Page() {
     getClientsData(),
   ]);
 
+  const itPartners = partners?.itPartners || [];
+  const industrialPartners = partners?.industrialPartners || [];
+
   return (
     <main className="my-20">
       <section className="bg-background py-16">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <span className="text-center text-2xl lg:text-4xl font-medium text-primary-green">
-            Partners
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
+            IT Partners
           </span>
-          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
-            {partners?.logos.map((logo, i) => (
+          <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
+            {itPartners.map((logo, i) => (
               <Image
                 key={`partners-${i}`}
-                className="h-14 lg:h-20 w-fit dark:invert"
+                className="h-14 w-fit lg:h-20 dark:invert"
                 src={urlFor(logo).url()}
                 alt="Logo"
-                height={96}
-                width={96}
+                height={80}
+                width={80}
               />
             ))}
           </div>
@@ -31,19 +34,39 @@ export default async function Page() {
       </section>
 
       <section className="bg-background py-16">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <span className="text-center text-2xl lg:text-4xl font-medium text-primary-green">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
+            Industrial Partners
+          </span>
+          <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
+            {industrialPartners.map((logo, i) => (
+              <Image
+                key={`partners-${i}`}
+                className="h-14 w-fit lg:h-20 dark:invert"
+                src={urlFor(logo).url()}
+                alt="Logo"
+                height={80}
+                width={80}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-16">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             Clients
           </span>
-          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
+          <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {clients?.logos.map((logo, i) => (
               <Image
                 key={`clients-${i}`}
-                className="h-14 lg:h-20 w-fit dark:invert"
+                className="h-14 w-fit lg:h-20 dark:invert"
                 src={urlFor(logo).url()}
                 alt="Logo"
-                height={96}
-                width={96}
+                height={80}
+                width={80}
               />
             ))}
           </div>

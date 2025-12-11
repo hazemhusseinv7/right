@@ -1,37 +1,74 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { useInView } from "motion/react";
+import { AnimatedNumber } from "./motion-primitives/animated-number";
+
+interface StatItemProps {
+  targetValue: string;
+  description: string;
+}
+
+const StatItem = ({ targetValue, description }: StatItemProps) => {
+  const [value, setValue] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  const numericMatch = targetValue.match(/(\d+(\.\d+)?)/);
+  const numericValue = numericMatch ? parseFloat(numericMatch[1]) : 0;
+
+  const suffix = targetValue.replace(numericMatch?.[0] || "", "");
+
+  if (isInView && value === 0) {
+    setValue(numericValue);
+  }
+
+  return (
+    <div ref={ref} className="text-primary-blue space-y-4">
+      <div className="text-5xl font-bold">
+        <AnimatedNumber
+          springOptions={{
+            bounce: 0,
+            duration: 3000,
+          }}
+          value={value}
+        />
+        {suffix && <span>{suffix}</span>}
+      </div>
+      <p>{description}</p>
+    </div>
+  );
+};
+
 const Stats = () => {
   const stats = [
     {
-      title: "30",
+      targetValue: "30",
       description: "Years delivering IT and industrial solutions",
     },
     {
-      title: "15+",
+      targetValue: "15+",
       description: "Major Industries Served.",
     },
     {
-      title: "98%",
+      targetValue: "98%",
       description: "On Time Delivery for Projects.",
     },
   ];
 
   return (
     <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
+      <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center">
-          <h2 className="text-4xl font-medium lg:text-5xl text-primary-blue">
+          <h2 className="text-primary-green text-4xl font-medium lg:text-5xl">
             Al Sawab
           </h2>
-          <p>In Numbers</p>
+          <p className="text-primary-blue">In Numbers</p>
         </div>
 
         <div className="grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">
           {stats.map((stat, i) => (
-            <div key={i} className="space-y-4">
-              <div className="text-5xl font-bold text-primary-blue">
-                {stat.title}
-              </div>
-              <p>{stat.description}</p>
-            </div>
+            <StatItem key={i} {...stat} />
           ))}
         </div>
       </div>

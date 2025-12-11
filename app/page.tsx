@@ -15,6 +15,7 @@ import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import Clients from "@/components/Clients";
 import Milestones from "@/components/Milestones";
+import ContactComponent from "./contact/ContactComponent";
 
 export default async function Home() {
   const [settings, hero, partners, services, aboutUs, testimonials] =
@@ -30,13 +31,19 @@ export default async function Home() {
   return (
     <main>
       <Hero hero={hero} partners={partners} />
-      <Services services={services} />
+      <Services settings={settings} services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
       <Milestones />
       <Values />
       <Stats />
       <Testimonials testimonials={testimonials} />
       <Clients />
+
+      <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+        <div className="w-full">
+          <ContactComponent settings={settings || undefined} />
+        </div>
+      </div>
     </main>
   );
 }

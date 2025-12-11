@@ -18,9 +18,9 @@ const Milestones = () => {
   ];
 
   return (
-    <section className="py-12 md:py-20 px-4">
-      <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-12 mb-10">
-        <h2 className="text-balance text-4xl font-medium lg:text-5xl text-primary-blue">
+    <section className="px-4 py-12 md:py-20">
+      <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center md:space-y-12">
+        <h2 className="text-primary-green text-4xl font-medium text-balance lg:text-5xl">
           Milestones
         </h2>
       </div>
@@ -43,17 +43,17 @@ const Milestones = () => {
                 loading={index === 2}
                 className="relative items-start not-last:flex-1"
               >
-                <StepperTrigger className="items-start pb-12 last:pb-0 gap-2.5">
-                  <StepperIndicator className="bg-primary-blue! data-[state=completed]:bg-primary-green! data-[state=completed]:text-white data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-gray-500">
+                <StepperTrigger className="items-start gap-2.5 pb-12 last:pb-0">
+                  <StepperIndicator className="bg-primary-blue! data-[state=completed]:bg-primary-green! data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=completed]:text-white data-[state=inactive]:text-gray-500">
                     {index + 1}
                   </StepperIndicator>
-                  <div className="mt-0.5 text-left space-y-2">
+                  <div className="mt-0.5 space-y-2 text-left">
                     <StepperTitle>{step.title}</StepperTitle>
                     <StepperDescription>{step.year}</StepperDescription>
                   </div>
                 </StepperTrigger>
                 {index < steps.length - 1 && (
-                  <StepperSeparator className="absolute inset-y-0 top-7 left-3 -order-1 m-0 -translate-x-1/2 group-data-[orientation=vertical]/stepper-nav:h-[calc(100%-2rem)] group-data-[state=completed]/step:bg-primary-green" />
+                  <StepperSeparator className="group-data-[state=completed]/step:bg-primary-green absolute inset-y-0 top-7 left-3 -order-1 m-0 -translate-x-1/2 group-data-[orientation=vertical]/stepper-nav:h-[calc(100%-2rem)]" />
                 )}
               </StepperItem>
             ))}
@@ -67,9 +67,9 @@ const Milestones = () => {
           completed: <Check className="size-4" />,
           loading: <LoaderCircleIcon className="size-4 animate-spin" />,
         }}
-        className="space-y-8 max-w-7xl mx-auto max-lg:hidden"
+        className="mx-auto max-w-6xl space-y-8 max-lg:hidden"
       >
-        <StepperNav className="gap-3 mb-15">
+        <StepperNav className="mb-15 gap-3">
           {steps.map((step, index) => {
             return (
               <StepperItem
@@ -78,23 +78,23 @@ const Milestones = () => {
                 className="relative flex items-start"
               >
                 <StepperTrigger
-                  className="flex flex-col items-start justify-center gap-2.5 grow"
+                  className="flex grow flex-col items-start justify-center gap-2.5"
                   asChild
                 >
-                  <StepperIndicator className="size-8 bg-primary-blue! border-2 data-[state=completed]:text-white data-[state=completed]:bg-primary-green! data-[state=inactive]:bg-transparent data-[state=inactive]:border-border data-[state=inactive]:text-muted-foreground">
+                  <StepperIndicator className="bg-primary-blue! data-[state=completed]:bg-primary-green! data-[state=inactive]:border-border data-[state=inactive]:text-muted-foreground size-8 border-2 data-[state=completed]:text-white data-[state=inactive]:bg-transparent">
                     <LoaderCircleIcon className="size-4 animate-spin" />
                   </StepperIndicator>
                   <div className="flex flex-col items-start gap-1">
-                    <div className="text-[10px] font-semibold uppercase text-muted-foreground">
+                    <div className="text-muted-foreground text-[10px] font-semibold uppercase">
                       {step.year}
                     </div>
-                    <StepperTitle className="text-primary-blue text-start text-base font-semibold group-data-[state=inactive]/step:text-muted-foreground">
+                    <StepperTitle className="text-primary-blue group-data-[state=inactive]/step:text-muted-foreground text-start text-base font-semibold">
                       {step.title}
                     </StepperTitle>
                   </div>
                 </StepperTrigger>
                 {steps.length > index + 1 && (
-                  <StepperSeparator className="absolute top-4 inset-x-0 start-9 m-0 group-data-[orientation=horizontal]/stepper-nav:w-[calc(100%-2rem)] group-data-[orientation=horizontal]/stepper-nav:flex-none  group-data-[state=completed]/step:bg-primary-green" />
+                  <StepperSeparator className="group-data-[state=completed]/step:bg-primary-green absolute inset-x-0 start-9 top-4 m-0 group-data-[orientation=horizontal]/stepper-nav:w-[calc(100%-2rem)] group-data-[orientation=horizontal]/stepper-nav:flex-none" />
                 )}
               </StepperItem>
             );

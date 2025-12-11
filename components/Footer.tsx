@@ -26,6 +26,10 @@ const Footer = async () => {
       href: "/about-us",
     },
     {
+      title: "Partners",
+      href: "/partners",
+    },
+    {
       title: "Industries",
       href: "/industries",
     },
@@ -34,16 +38,12 @@ const Footer = async () => {
       href: "/team",
     },
     {
-      title: "Careers",
-      href: "/careers",
-    },
-    {
-      title: "Partners",
-      href: "/partners",
-    },
-    {
       title: "Blog",
       href: "/blog",
+    },
+    {
+      title: "Careers",
+      href: "/careers",
     },
     {
       title: "Contact Us",
@@ -133,7 +133,7 @@ const Footer = async () => {
           ))}
         </div>
 
-        <p className="flex items-center justify-center text-muted-foreground text-center text-sm">
+        <p className="text-muted-foreground flex items-center justify-center text-center text-sm">
           <FaRegCopyright className="inline" />
           <span className="px-1">{new Date().getFullYear()}</span>
           <Link

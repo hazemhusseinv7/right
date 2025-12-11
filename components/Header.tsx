@@ -33,16 +33,16 @@ const Header = () => {
   const navItems = [
     { href: "/services", label: "Services", icon: HiServer },
     { href: "/about-us", label: "About us", icon: FaUser },
+    { href: "/partners", label: "Partners", icon: FaUserCheck },
     { href: "/industries", label: "Industries", icon: FaCloud },
     { href: "/team", label: "Team", icon: RiTeamFill },
-    { href: "/careers", label: "Careers", icon: FaBriefcase },
-    { href: "/partners", label: "Partners", icon: FaUserCheck },
     { href: "/blog", label: "Blog", icon: HiNewspaper },
+    { href: "/careers", label: "Careers", icon: FaBriefcase },
   ];
 
   return (
-    <header className="w-full top-0 z-10 absolute lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0 text-primary-foreground">
-      <div className="flex md:max-w-5xl mx-auto w-full items-center relative justify-between h-18 px-4 p-2 bg-white border dark:border-neutral-800 border-neutral-200   rounded-b-xl  dark:bg-zinc-950">
+    <header className="text-primary-foreground absolute top-0 z-10 w-full lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0">
+      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-xl border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl dark:border-neutral-800 dark:bg-zinc-950">
         {isMobile && (
           <>
             <Drawer.Root
@@ -50,23 +50,23 @@ const Header = () => {
               open={isOpen}
               onOpenChange={setIsOpen}
             >
-              <Drawer.Trigger className="px-3 text-white h-10 grid place-content-center bg-primary-blue w-fit rounded-lg">
+              <Drawer.Trigger className="bg-primary-blue grid h-10 w-fit place-content-center rounded-lg px-3 text-white">
                 <AlignJustify />
               </Drawer.Trigger>
               <Drawer.Portal>
-                <Drawer.Overlay className="fixed inset-0 bg-black/40 z-50" />
+                <Drawer.Overlay className="fixed inset-0 z-50 bg-black/40" />
                 <Drawer.Content
-                  className="left-2 top-2 bottom-2 fixed z-50 outline-none w-72 flex"
+                  className="fixed top-2 bottom-2 left-2 z-50 flex w-72 outline-none"
                   style={
                     {
                       "--initial-transform": "calc(100% + 8px)",
                     } as React.CSSProperties
                   }
                 >
-                  <div className="dark:bg-black bg-white border border-neutral-200 dark:border-neutral-800 p-2 h-full w-full grow flex flex-col rounded-2xl">
-                    <div className="w-full flex justify-between mb-2">
+                  <div className="flex h-full w-full grow flex-col rounded-2xl border border-neutral-200 bg-white p-2 dark:border-neutral-800 dark:bg-black">
+                    <div className="mb-2 flex w-full justify-between">
                       <Link href="/" className="flex items-center pl-2">
-                        <div className="text-zinc-950 dark:text-white flex gap-2 items-center">
+                        <div className="flex items-center gap-2 text-zinc-950 dark:text-white">
                           <Image
                             src="/logo/logo.png"
                             width={40}
@@ -77,7 +77,7 @@ const Header = () => {
                         </div>
                       </Link>
                       <button
-                        className="rounded-md w-fit bg-neutral-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                        className="w-fit rounded-md bg-neutral-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                         onClick={() => setIsOpen(false)}
                       >
                         <X />
@@ -88,9 +88,9 @@ const Header = () => {
                         key={item.href}
                         href={item.href}
                         className={cn(
-                          "cursor-pointer gap-1 select-none p-2 text-emerald-800 dark:hover:text-blue-200 hover:text-base-blue rounded-md transition-colors duration-200 flex items-center justify-start",
+                          "hover:text-base-blue flex cursor-pointer items-center justify-start gap-1 rounded-md p-2 text-emerald-800 transition-colors duration-200 select-none dark:hover:text-blue-200",
                           pathname.startsWith(item.href) &&
-                            "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-emerald-100 text-primary-green"
+                            "text-base-blue text-primary-green bg-emerald-100 dark:border dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
                         )}
                       >
                         <item.icon
@@ -98,7 +98,7 @@ const Header = () => {
                           className={cn(
                             "text-primary-blue",
                             pathname.startsWith(item.href) &&
-                              "text-primary-green"
+                              "text-primary-green",
                           )}
                         />
                         <span>{item.label}</span>
@@ -123,9 +123,9 @@ const Header = () => {
         )}
         {!isMobile && (
           <>
-            <nav className="flex gap-2 items-center font-medium">
-              <Link href="/" className="  flex items-center pl-2">
-                <div className="text-zinc-950 dark:text-white flex gap-2 items-center">
+            <nav className="flex items-center gap-2 font-medium">
+              <Link href="/" className="flex items-center pl-2">
+                <div className="flex items-center gap-2 text-zinc-950 dark:text-white">
                   <Image
                     src="/logo/logo.png"
                     width={56}
@@ -144,16 +144,16 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue text-primary-blue dark:text-white transition-colors duration-200 flex items-center justify-center border-b-2",
+                    "hover:text-base-blue text-primary-blue flex cursor-pointer items-center justify-center gap-1 border-b-2 p-2 transition-colors duration-200 select-none dark:text-white dark:hover:text-blue-200",
                     pathname.startsWith(item.href) &&
-                      "dark:text-blue-200 dark:border-blue-950 dark:bg-neutral-900 border-b-2 border-primary-green text-primary-green"
+                      "border-primary-green text-primary-green border-b-2 dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
                   )}
                 >
                   <item.icon
                     size={20}
                     className={cn(
                       "text-primary-blue",
-                      pathname.startsWith(item.href) && "text-primary-green"
+                      pathname.startsWith(item.href) && "text-primary-green",
                     )}
                   />
                   <span>{item.label}</span>
@@ -162,7 +162,7 @@ const Header = () => {
 
               <Link
                 href="/contact"
-                className=" bg-primary-blue hover:bg-primary-blue/90 transition-colors duration-300 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
+                className="bg-primary-blue hover:bg-primary-blue/90 flex h-10 items-center justify-center rounded-md border border-neutral-200 px-3 text-white transition-colors duration-300 dark:border-neutral-800"
               >
                 Contact Us
               </Link>

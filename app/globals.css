@@ -130,11 +130,11 @@
 
 /* Text Selection */
 ::-moz-selection {
-  @apply text-emerald-50 bg-primary-green;
+  @apply bg-primary-green text-emerald-50;
 }
 
 ::selection {
-  @apply text-emerald-50 bg-primary-green;
+  @apply bg-primary-green text-emerald-50;
 }
 
 /* Scrollbar */
@@ -150,5 +150,5 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full hover:bg-primary-green bg-primary-blue;
+  @apply hover:bg-primary-green bg-primary-blue rounded-full;
 }

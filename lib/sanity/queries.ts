@@ -29,7 +29,7 @@ export async function getSettingsData(): Promise<SettingsType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["settings", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching settings data:", error);
@@ -69,7 +69,7 @@ export async function getHeroData(): Promise<HeroType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["main", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching hero data:", error);
@@ -80,7 +80,16 @@ export async function getHeroData(): Promise<HeroType | null> {
 export async function getPartnersData(): Promise<PartnersType | null> {
   const query = `*[_type == "partners"][0]{
     title,
-    logos[] {
+    itPartners[] {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    industrialPartners[] {
       asset-> {
         _id,
         url,
@@ -100,7 +109,7 @@ export async function getPartnersData(): Promise<PartnersType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["partners", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching partners data:", error);
@@ -139,7 +148,7 @@ export async function getServicesData(): Promise<ServicesType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["services", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching services data:", error);
@@ -200,7 +209,7 @@ export async function getAboutData(): Promise<AboutUsType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["aboutUs", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching about data:", error);
@@ -230,7 +239,7 @@ export async function getClientsData(): Promise<ClientsType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["clients", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching clients data:", error);
@@ -255,7 +264,7 @@ export async function getBlogPosts(): Promise<BlogPost[] | null> {
       {},
       {
         next: { revalidate: REVALIDATE_TIME, tags: ["blog", "content"] },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching blog posts:", error);
@@ -284,7 +293,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
           revalidate: REVALIDATE_TIME,
           tags: [`blog-post-${slug}`, "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching blog post:", error);
@@ -322,7 +331,7 @@ export async function getCareersData(): Promise<CareersType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["careers", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching careers data:", error);
@@ -348,7 +357,7 @@ export async function getTestimonialsData(): Promise<TestimonialsType | null> {
           revalidate: REVALIDATE_TIME,
           tags: ["testimonials", "content"],
         },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching testimonials data:", error);

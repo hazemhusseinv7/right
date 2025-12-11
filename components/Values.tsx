@@ -59,9 +59,9 @@ const Values = () => {
 
   return (
     <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
+      <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-12">
-          <h2 className="text-balance text-4xl font-medium lg:text-5xl text-primary-blue">
+          <h2 className="text-primary-green text-4xl font-medium text-balance lg:text-5xl">
             Our Values
           </h2>
           <p>
@@ -72,11 +72,11 @@ const Values = () => {
           </p>
         </div>
 
-        <div className="relative mx-auto grid max-w-4xl divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto grid divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((value, i) => (
             <div key={i} className="space-y-3">
               <div className="flex items-center gap-2">
-                <value.icon className="size-5 text-primary-green" />
+                <value.icon className="text-primary-green size-5" />
                 <h3 className="text-sm font-medium">{value.title}</h3>
               </div>
               <p className="text-sm">{value.description}</p>

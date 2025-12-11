@@ -13,7 +13,7 @@ const ContactButtonComponent = ({ whatsapp }: { whatsapp: string }) => {
       rel="noopener noreferrer"
       color="success"
       endContent={<RiWhatsappFill className="size-4" />}
-      className="fixed bottom-4 end-4 z-90"
+      className="fixed end-4 bottom-4 z-90"
     />
   );
 };

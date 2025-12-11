@@ -65,7 +65,7 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
     return (
       // Framer Motion component for the column container
       <motion.div
-        className="w-24 h-14 md:w-48 md:h-24 overflow-hidden relative"
+        className="relative h-14 w-24 overflow-hidden md:h-24 md:w-48"
         initial={{ opacity: 0, y: 50 }} // Start invisible and below final position
         animate={{ opacity: 1, y: 0 }} // Animate to full opacity and final position
         transition={{
@@ -112,16 +112,16 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
               <Image
                 src={logos[currentIndex].img}
                 alt={logos[currentIndex].name}
-                width={80}
-                height={80}
-                className="size-20 md:w-32 md:h-32 max-w-[80%] max-h-[80%] object-contain"
+                width={128}
+                height={128}
+                className="size-20 max-h-[80%] max-w-[80%] object-contain md:size-32"
               />
             )}
           </motion.div>
         </AnimatePresence>
       </motion.div>
     );
-  }
+  },
 );
 
 // Main LogoCarousel component

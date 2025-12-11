@@ -35,7 +35,7 @@ const Hero = ({
     <section
       id="hero"
       ref={ref}
-      className="min-h-screen overflow-hidden relative pb-20 bg-linear-to-b from-blue-50"
+      className="relative min-h-screen overflow-hidden bg-linear-to-b from-blue-50 pb-20"
     >
       <div
         className="absolute inset-0 z-0"
@@ -52,14 +52,14 @@ const Hero = ({
         }}
       />
 
-      <div className="pointer-events-none absolute inset-0  flex w-screen  justify-end mask-[radial-gradient(transparent_5%,white)]">
+      <div className="pointer-events-none absolute inset-0 flex w-screen justify-end mask-[radial-gradient(transparent_5%,white)]">
         <svg
           width="1512"
           height="1714"
           viewBox="0 0 1512 1714"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="pointer-events-none absolute left-0 top-0 h-auto w-full lg:w-1/2"
+          className="pointer-events-none absolute top-0 left-0 h-auto w-full lg:w-1/2"
         >
           <g clipPath="url(#clip0_143_13)">
             <g filter="url(#filter0_f_143_13)">
@@ -98,17 +98,17 @@ const Hero = ({
           </defs>
         </svg>
       </div>
-      <article className="grid 2xl:pt-40 2xl:pb-24 pt-24 pb-14 relative z-2 sm:px-0 px-4">
+      <article className="relative z-2 grid px-4 pt-24 pb-14 sm:px-0 2xl:pt-40 2xl:pb-24">
         <NewItemsLoading data={buttonData} />
-        <h1 className="xl:text-7xl md:text-6xl sm:text-5xl text-3xl text-center font-semibold text-primary-blue dark:text-white tracking-tight">
-          <span className="relative translate-x-0 flex max-lg:flex-col gap-2 justify-center mt-4 lg:mt-8">
-            <div className="translate-x-0 flex gap-2 justify-center">
+        <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl dark:text-white">
+          <span className="relative mt-4 flex translate-x-0 justify-center gap-2 max-lg:flex-col lg:mt-8">
+            <div className="flex translate-x-0 justify-center gap-2">
               {headingData?.firstWord}{" "}
               {headingData?.rotatingWords && (
                 <WordAnimator
                   words={headingData.rotatingWords}
                   duration={5}
-                  className="italic w-fit pr-3 dark:bg-gray-800 bg-gray-200 dark:border-neutral-800 border-neutral-200"
+                  className="w-fit border-neutral-200 bg-gray-200 pr-3 italic dark:border-neutral-800 dark:bg-gray-800"
                 />
               )}{" "}
             </div>
@@ -120,17 +120,17 @@ const Hero = ({
             </span>
           </span>
         </h1>
-        <p className="mx-auto lg:w-[700px] sm:w-[80%] text-center sm:text-lg text-sm mt-5 text-primary-blue dark:text-white">
+        <p className="text-primary-blue mx-auto mt-5 text-center text-sm sm:w-[80%] sm:text-lg lg:w-[700px] dark:text-white">
           {description}
         </p>
-        <div className="flex gap-2 justify-center items-center mt-4">
+        <div className="mt-4 flex items-center justify-center gap-2">
           <ButtonHoverMultiple link={ctaButton?.link || "#"}>
             {ctaButton?.text}
           </ButtonHoverMultiple>
         </div>
       </article>
 
-      <div className="h-140 w-full absolute top-65 sm:top-70 lg:top-50 xl:top-50 xl:scale-150 overflow-clip">
+      <div className="absolute top-65 h-140 w-full overflow-clip sm:top-70 lg:top-50 xl:top-50 xl:scale-150">
         <GoogleGeminiEffect
           pathLengths={[
             pathLengthFirst,

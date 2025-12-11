@@ -29,10 +29,10 @@ const portableTextComponents = {
             alt={value.alt || "Blog image"}
             width={800}
             height={600}
-            className="rounded-lg mx-auto"
+            className="mx-auto rounded-lg"
           />
           {value.caption && (
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
+            <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
               {value.caption}
             </p>
           )}
@@ -129,20 +129,20 @@ const AboutUs = ({
   return (
     <section
       id="about-us"
-      className="bg-linear-to-t from-emerald-50 relative mt-20"
+      className="relative mt-4 bg-linear-to-t from-emerald-50"
       ref={heroRef}
     >
-      <div className="relative z-10 max-w-6xl mx-auto px-8 pt-20 pb-32">
+      <div className="relative z-10 mx-auto max-w-6xl px-8 pt-20 pb-32">
         <div className="relative">
           {/* Header with social icons */}
-          <div className="flex justify-between items-center mb-8 w-[85%] absolute left-0 lg:top-2 md:top-0 sm:-top-2 -top-3 z-10">
+          <div className="absolute -top-3 left-0 z-10 mb-8 flex w-[85%] items-center justify-between sm:-top-2 md:top-0 lg:top-2">
             <div className="flex items-center gap-2 text-xl">
               <TimelineContent
                 as="h2"
                 animationNum={0}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-sm lg:text-2xl font-medium text-gray-600 dark:text-gray-300"
+                className="text-primary-green text-sm font-medium lg:text-2xl dark:text-gray-300"
               >
                 {aboutUs?.title}
               </TimelineContent>
@@ -159,7 +159,7 @@ const AboutUs = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="md:size-8 size-6 border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 hover:bg-primary-green transition-colors duration-300 rounded-lg flex items-center justify-center cursor-pointer"
+                  className="hover:bg-primary-green flex size-6 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-gray-100 transition-colors duration-300 md:size-8 dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Icon className="max-sm:size-3" />
                 </TimelineContent>
@@ -172,7 +172,7 @@ const AboutUs = ({
             animationNum={4}
             timelineRef={heroRef}
             customVariants={scaleVariants}
-            className="relative group"
+            className="group relative"
           >
             <svg
               className="w-full"
@@ -199,7 +199,7 @@ const AboutUs = ({
           </TimelineContent>
 
           {/* Stats */}
-          <div className="flex flex-wrap lg:justify-start justify-between items-center py-3 text-sm rtl:sm:flex-row-reverse">
+          <div className="flex flex-wrap items-center justify-between py-3 text-sm lg:justify-start rtl:sm:flex-row-reverse">
             <TimelineContent
               as="div"
               animationNum={5}
@@ -207,7 +207,7 @@ const AboutUs = ({
               customVariants={revealVariants}
               className="flex gap-4"
             >
-              <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
+              <div className="mb-2 flex items-center gap-2 text-xs sm:text-base">
                 <span className="text-primary-green font-bold">
                   {aboutUs?.leftTopStat.value}
                 </span>
@@ -216,7 +216,7 @@ const AboutUs = ({
                 </span>
                 <span className="text-gray-300">|</span>
               </div>
-              <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
+              <div className="mb-2 flex items-center gap-2 text-xs sm:text-base">
                 <span className="text-primary-green font-bold">
                   {aboutUs?.leftBottomStat.value}
                 </span>
@@ -225,13 +225,13 @@ const AboutUs = ({
                 </span>
               </div>
             </TimelineContent>
-            <div className="lg:absolute right-0 bottom-16 flex lg:flex-col lg:gap-0 gap-4 lg:ps-5">
+            <div className="right-0 bottom-16 flex gap-4 lg:absolute lg:flex-col lg:gap-0 lg:ps-5">
               <TimelineContent
                 as="div"
                 animationNum={6}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="flex sm:text-3xl text-2xl items-center gap-2 mb-2"
+                className="mb-2 flex items-center gap-2 text-2xl sm:text-3xl"
               >
                 <p className="text-primary-green font-semibold">
                   {aboutUs?.rightTopStat.value}
@@ -246,32 +246,33 @@ const AboutUs = ({
                 animationNum={7}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="flex items-center gap-2 mb-2 sm:text-base text-xs"
+                className="mb-2 flex items-center gap-2 text-xs sm:text-base"
               >
-                <span className="text-primary-green dark:text-gray-300 font-bold text-xl lg:text-2xl">
+                <span className="text-primary-green text-xl font-bold lg:text-2xl dark:text-gray-300">
                   {aboutUs?.rightBottomStat.value}
                 </span>
                 <p className="text-gray-600">
                   {aboutUs?.rightBottomStat.label}
                 </p>
-                <span className="text-gray-300 lg:hidden block">|</span>
+                <span className="block text-gray-300 lg:hidden">|</span>
               </TimelineContent>
             </div>
           </div>
         </div>
+
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
           <div className="md:col-span-2">
             <TimelineContent
               as="p"
               animationNum={8}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="text-4xl md:text-5xl leading-[110%]! font-semibold text-primary-green mb-8"
+              className="text-primary-green mb-8 text-4xl leading-[110%]! font-semibold md:text-5xl"
             >
               {aboutUs?.heading}
             </TimelineContent>
-            <p className="sm:text-3xl md:text-4xl text-xl leading-[170%]! font-semibold text-primary-blue dark:text-gray-300 mb-8 max-w-3xl">
+            <p className="text-primary-blue mb-8 max-w-3xl text-xl leading-[170%]! font-semibold sm:text-3xl md:text-4xl dark:text-gray-300">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.1}
@@ -361,32 +362,34 @@ const AboutUs = ({
         </div>
 
         <div className="py-20">
-          <div className="text-3xl leading-[110%]! font-semibold text-primary-green mb-8">
+          <div className="text-primary-green mb-8 text-3xl leading-[110%]! font-semibold lg:-mb-8">
             {aboutUs?.certificateTitle}
           </div>
-          <p className="text-lg leading-[170%]! font-semibold text-primary-blue dark:text-gray-300 mb-8 max-w-3xl">
-            {aboutUs?.certificateDescription}
-          </p>
+          <div className="flex items-center justify-between gap-8 max-lg:flex-col">
+            <p className="text-primary-blue max-w-3xl text-lg leading-[170%]! font-semibold dark:text-gray-300">
+              {aboutUs?.certificateDescription}
+            </p>
 
-          <div className="flex gap-10">
-            {aboutUs?.certificateImages.map((img, i) => (
-              <Image
-                key={i}
-                src={urlFor(img).url()}
-                width={128}
-                height={128}
-                alt="Certificate Badge"
-                className="size-32 rounded-md"
-              />
-            ))}
+            <div className="flex gap-10">
+              {aboutUs?.certificateImages.map((img, i) => (
+                <Image
+                  key={i}
+                  src={urlFor(img).url()}
+                  width={192}
+                  height={192}
+                  alt="Certificate Badge"
+                  className="size-48 rounded-md"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="max-w-340 py-40 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-20">
+        <div className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
           {/* Grid */}
-          <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+          <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
             <div>
-              <h3 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+              <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
                 Our Vision
               </h3>
               <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
@@ -405,12 +408,12 @@ const AboutUs = ({
                 className="w-full rounded-md"
               />
 
-              <div className="absolute inset-0 -z-1 bg-linear-to-tr from-primary-green/40 via-white/0 to-white/0 size-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
+              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
 
               {/* SVG*/}
-              <div className="absolute bottom-0 start-0 rounded-md overflow-hidden">
+              <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
                 <svg
-                  className="w-2/3 ms-auto h-auto text-primary-green dark:text-neutral-900"
+                  className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
                   width="630"
                   height="451"
                   viewBox="0 0 630 451"
@@ -533,8 +536,20 @@ const AboutUs = ({
           {/* End Grid */}
 
           {/* Grid */}
-          <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
-            <div className="relative md:ms-4">
+          <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
+            <div className="md:order-2">
+              <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+                Our Mission
+              </h3>
+              <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
+                Delivering advanced solutions that optimize business
+                performance, build enduring partnerships, and empower
+                organizations to thrive.
+              </p>
+            </div>
+            {/* End Col */}
+
+            <div className="relative md:order-1 md:me-4">
               <Image
                 src={"/about-us/mission.jpg"}
                 width={1000}
@@ -543,12 +558,12 @@ const AboutUs = ({
                 className="w-full rounded-md"
               />
 
-              <div className="absolute inset-0 -z-1 bg-linear-to-tr from-primary-green/40 via-white/0 to-white/0 size-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
+              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
 
               {/* SVG*/}
-              <div className="absolute bottom-0 start-0 rounded-md overflow-hidden">
+              <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
                 <svg
-                  className="w-2/3 ms-auto h-auto text-primary-green dark:text-neutral-900"
+                  className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
                   width="630"
                   height="451"
                   viewBox="0 0 630 451"
@@ -665,18 +680,6 @@ const AboutUs = ({
                 </svg>
               </div>
               {/* End SVG*/}
-            </div>
-            {/* End Col */}
-
-            <div>
-              <h3 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-                Our Mission
-              </h3>
-              <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-                Delivering advanced solutions that optimize business
-                performance, build enduring partnerships, and empower
-                organizations to thrive.
-              </p>
             </div>
             {/* End Col */}
           </div>

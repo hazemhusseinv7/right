@@ -3,7 +3,13 @@
 import { urlFor } from "@/lib/sanity/image";
 import ExpandableCard, { CardList } from "./expandable-card";
 
-const Services = ({ services }: { services: ServicesType | null }) => {
+const Services = ({
+  settings,
+  services,
+}: {
+  settings: SettingsType | null;
+  services: ServicesType | null;
+}) => {
   const servicesData: CardList[] =
     services?.serviceCategories?.map((category) => ({
       title: category.categoryTitle,
@@ -17,13 +23,15 @@ const Services = ({ services }: { services: ServicesType | null }) => {
 
   const sectionTitle = services?.title;
 
+  const cta = settings?.whatsapp;
+
   return (
-    <section id="services" className="py-40">
-      <h2 className="font-semibold text-2xl lg:text-7xl mx-auto w-fit text-primary-blue mb-4 z-200">
+    <section id="services" className="py-12">
+      <h2 className="text-primary-green z-200 mx-auto mb-4 w-fit text-2xl font-semibold lg:text-7xl">
         {sectionTitle}
       </h2>
-      <div className="max-w-300 mx-auto">
-        <ExpandableCard items={servicesData} />
+      <div className="mx-auto max-w-300">
+        <ExpandableCard items={servicesData} cta={cta} />
       </div>
     </section>
   );

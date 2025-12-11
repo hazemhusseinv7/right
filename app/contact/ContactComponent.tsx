@@ -86,7 +86,7 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
             preset="blur"
             speedReveal={0.3}
             speedSegment={0.3}
-            className="mx-auto text-2xl lg:text-4xl text-primary-blue"
+            className="text-primary-blue mx-auto text-2xl lg:text-4xl"
           >
             Contact Us
           </TextEffect>
@@ -97,7 +97,7 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
             preset="blur"
             speedReveal={0.8}
             speedSegment={0.8}
-            className="mx-auto text-lg font-light mt-4"
+            className="mx-auto mt-4 text-lg font-light"
           >
             For partnership discussions, media inquiries, vendor outreach, or
             general questions contact us to start the conversation Submit your
@@ -108,7 +108,9 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
         <div className="grid divide-y border md:grid-cols-2 md:gap-4 md:divide-x md:divide-y-0">
           <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">
             <div className="flex flex-col">
-              <h2 className="mb-3 text-lg font-semibold">Email Address</h2>
+              <h2 className="text-primary-blue mb-3 text-lg font-semibold">
+                Email Address
+              </h2>
 
               {settings?.emails.map((email, i) => (
                 <Link
@@ -123,7 +125,9 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
           </div>
           <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">
             <div className="flex flex-col">
-              <h3 className="mb-3 text-lg font-semibold">Phone Number</h3>
+              <h3 className="text-primary-blue mb-3 text-lg font-semibold">
+                Phone Number
+              </h3>
 
               {settings?.phones.map((phone, i) => (
                 <p key={i} className="mt-3 text-sm">
@@ -136,8 +140,8 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
           <div className="col-span-2 border-t p-8">
             <span>Al Sawab Headquarter</span>
 
-            <div className="felx justify-center items-center">
-              <FaLocationDot className="inline me-2 text-primary-green" />
+            <div className="felx items-center justify-center">
+              <FaLocationDot className="text-primary-green me-2 inline" />
               <p className="inline">{settings?.location}</p>
             </div>
           </div>

@@ -45,7 +45,8 @@ interface HeroType {
 
 interface PartnersType {
   title: string;
-  logos: ImageType[];
+  itPartners: ImageType[];
+  industrialPartners: ImageType[];
 }
 
 interface ServicesType {
