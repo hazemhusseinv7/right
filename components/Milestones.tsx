@@ -8,27 +8,37 @@ import {
   StepperTitle,
   StepperTrigger,
 } from "@/components/ui/stepper";
+import { getMilestonesData } from "@/lib/sanity/queries";
 import { Check, LoaderCircleIcon } from "lucide-react";
 
-const Milestones = () => {
-  const steps = [
-    { year: 1995, title: "Established in Yanbu Al Bahar" },
-    { year: 2015, title: "ISO Certified" },
-    { year: new Date().getFullYear(), title: "Ongoing" },
-  ];
+const Milestones = async () => {
+  const data: MilestonesType | null = await getMilestonesData();
+
+  const milestones = data?.milestones
+    ? [
+        ...data?.milestones,
+        {
+          year: new Date().getFullYear().toString(),
+          title: "Ongoing",
+          _key: "ongoing",
+        },
+      ]
+    : [];
+
+  if (!data) return;
 
   return (
     <section className="px-4 py-12 md:py-20">
       <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center md:space-y-12">
-        <h2 className="text-primary-green text-4xl font-medium text-balance lg:text-5xl">
-          Milestones
+        <h2 className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl">
+          {data.title}
         </h2>
       </div>
 
       <div className="flex items-center justify-center lg:hidden">
         <Stepper
           className="flex flex-col items-center justify-center gap-10"
-          value={steps.length}
+          value={milestones.length}
           orientation="vertical"
           indicators={{
             completed: <Check className="size-4" />,
@@ -36,7 +46,7 @@ const Milestones = () => {
           }}
         >
           <StepperNav>
-            {steps.map((step, index) => (
+            {milestones.map((step, index) => (
               <StepperItem
                 key={index}
                 step={index + 1}
@@ -52,7 +62,7 @@ const Milestones = () => {
                     <StepperDescription>{step.year}</StepperDescription>
                   </div>
                 </StepperTrigger>
-                {index < steps.length - 1 && (
+                {index < milestones.length - 1 && (
                   <StepperSeparator className="group-data-[state=completed]/step:bg-primary-green absolute inset-y-0 top-7 left-3 -order-1 m-0 -translate-x-1/2 group-data-[orientation=vertical]/stepper-nav:h-[calc(100%-2rem)]" />
                 )}
               </StepperItem>
@@ -62,15 +72,15 @@ const Milestones = () => {
       </div>
 
       <Stepper
-        value={steps.length}
+        value={milestones.length}
         indicators={{
           completed: <Check className="size-4" />,
           loading: <LoaderCircleIcon className="size-4 animate-spin" />,
         }}
-        className="mx-auto max-w-6xl space-y-8 max-lg:hidden"
+        className="mx-auto max-w-7xl space-y-8 max-lg:hidden"
       >
         <StepperNav className="mb-15 gap-3">
-          {steps.map((step, index) => {
+          {milestones.map((step, index) => {
             return (
               <StepperItem
                 key={index}
@@ -93,7 +103,7 @@ const Milestones = () => {
                     </StepperTitle>
                   </div>
                 </StepperTrigger>
-                {steps.length > index + 1 && (
+                {milestones.length > index + 1 && (
                   <StepperSeparator className="group-data-[state=completed]/step:bg-primary-green absolute inset-x-0 start-9 top-4 m-0 group-data-[orientation=horizontal]/stepper-nav:w-[calc(100%-2rem)] group-data-[orientation=horizontal]/stepper-nav:flex-none" />
                 )}
               </StepperItem>

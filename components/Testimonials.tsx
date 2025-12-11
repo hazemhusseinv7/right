@@ -11,11 +11,11 @@ const DURATION = 5000;
 const BAR_WIDTH = 50;
 const CIRCLE_SIZE = 12;
 
-interface TestimonialsProps {
+const Testimonials = ({
+  testimonials,
+}: {
   testimonials: TestimonialsType | null;
-}
-
-const Testimonials = ({ testimonials }: TestimonialsProps) => {
+}) => {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         Testimonials
       </TextEffect>
 
-      <div className="flex w-full max-w-5xl flex-col items-center justify-center px-4">
+      <div className="flex w-full max-w-350 flex-col items-center justify-center px-4">
         <div className="min-h-[120px] w-full">
           <AnimatePresence mode="wait">
             <motion.blockquote

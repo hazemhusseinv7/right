@@ -27,10 +27,10 @@ const Services = ({
 
   return (
     <section id="services" className="py-12">
-      <h2 className="text-primary-green z-200 mx-auto mb-4 w-fit text-2xl font-semibold lg:text-7xl">
+      <h2 className="text-primary-green z-200 mx-auto mb-4 w-fit text-5xl font-semibold lg:text-7xl">
         {sectionTitle}
       </h2>
-      <div className="mx-auto max-w-300">
+      <div className="mx-auto max-w-350">
         <ExpandableCard items={servicesData} cta={cta} />
       </div>
     </section>

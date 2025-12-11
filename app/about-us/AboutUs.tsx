@@ -54,7 +54,7 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
   return (
     <div
       ref={heroRef}
-      className="relative z-10 mx-auto max-w-340 px-8 pt-20 pb-32"
+      className="relative z-10 mx-auto max-w-350 px-8 pt-20 pb-32"
     >
       {/* Main Content */}
       <div className="grid gap-8 md:grid-cols-2">
@@ -170,33 +170,33 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
             {aboutUs?.certificateImages.map((img, i) => (
               <Image
                 key={i}
-                src={urlFor(img).url()}
+                src={urlFor(img.badge).url()}
                 width={192}
                 height={192}
                 alt="Certificate Badge"
-                className="size-48 rounded-md"
+                className="size-48"
               />
             ))}
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-350 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
         {/* Grid */}
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div>
             <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-              Our Vision
+              {aboutUs?.ourVision.title}
             </h3>
             <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-              Empowering our clients with innovative IT & Industrial solutions.
+              {aboutUs?.ourVision.description}
             </p>
           </div>
           {/* End Col */}
 
           <div className="relative md:ms-4">
             <Image
-              src={"/about-us/vision.jpg"}
+              src={urlFor(aboutUs?.ourVision.image).url()}
               width={1000}
               height={1000}
               alt="Our Vision"
@@ -334,18 +334,17 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div className="md:order-2">
             <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-              Our Mission
+              {aboutUs?.ourMission.title}
             </h3>
             <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-              Delivering advanced solutions that optimize business performance,
-              build enduring partnerships, and empower organizations to thrive.
+              {aboutUs?.ourMission.description}
             </p>
           </div>
           {/* End Col */}
 
           <div className="relative md:order-1 md:me-4">
             <Image
-              src={"/about-us/mission.jpg"}
+              src={urlFor(aboutUs?.ourMission.image).url()}
               width={1000}
               height={1000}
               alt="Our Mission"

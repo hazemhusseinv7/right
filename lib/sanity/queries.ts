@@ -77,46 +77,6 @@ export async function getHeroData(): Promise<HeroType | null> {
   }
 }
 
-export async function getPartnersData(): Promise<PartnersType | null> {
-  const query = `*[_type == "partners"][0]{
-    title,
-    itPartners[] {
-      asset-> {
-        _id,
-        url,
-        metadata {
-          dimensions
-        }
-      }
-    },
-    industrialPartners[] {
-      asset-> {
-        _id,
-        url,
-        metadata {
-          dimensions
-        }
-      }
-    }
-  }`;
-
-  try {
-    return await sanityClient.fetch(
-      query,
-      {},
-      {
-        next: {
-          revalidate: REVALIDATE_TIME,
-          tags: ["partners", "content"],
-        },
-      },
-    );
-  } catch (error) {
-    console.error("Error fetching partners data:", error);
-    return null;
-  }
-}
-
 export async function getServicesData(): Promise<ServicesType | null> {
   const query = `*[_type == "services"][0]{
     title,
@@ -187,14 +147,52 @@ export async function getAboutData(): Promise<AboutUsType | null> {
       value,
       label
     },
+    ourVision {
+      title,
+      description,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      }
+    },
+    ourMission {
+      title,
+      description,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      }
+    },
     certificateTitle,
     certificateDescription,
     certificateImages[] {
-      asset-> {
-        _id,
-        url,
-        metadata {
-          dimensions
+      _key,
+      badge {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      certificateImage {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
         }
       }
     }
@@ -213,6 +211,124 @@ export async function getAboutData(): Promise<AboutUsType | null> {
     );
   } catch (error) {
     console.error("Error fetching about data:", error);
+    return null;
+  }
+}
+
+export async function getMilestonesData(): Promise<MilestonesType | null> {
+  const query = `*[_type == "milestones"][0]{
+    title,
+    milestones[] {
+      _key,
+      year,
+      title
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["milestones", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching milestones data:", error);
+    return null;
+  }
+}
+
+export async function getValuesData(): Promise<ValuesType | null> {
+  const query = `*[_type == "values"][0]{
+    title,
+    description,
+    cards[] {
+      _key,
+      icon {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      title,
+      description
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["values", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching values data:", error);
+    return null;
+  }
+}
+
+export async function getStatsData(): Promise<StatsType | null> {
+  const query = `*[_type == "stats"][0]{
+    title,
+    description,
+    items[] {
+      _key,
+      value,
+      description
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["stats", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching stats data:", error);
+    return null;
+  }
+}
+
+export async function getTestimonialsData(): Promise<TestimonialsType | null> {
+  const query = `*[_type == "testimonials"][0]{
+    testimonials[] {
+      _key,
+      name,
+      content
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["testimonials", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching testimonials data:", error);
     return null;
   }
 }
@@ -243,6 +359,157 @@ export async function getClientsData(): Promise<ClientsType | null> {
     );
   } catch (error) {
     console.error("Error fetching clients data:", error);
+    return null;
+  }
+}
+
+export async function getPartnersData(): Promise<PartnersType | null> {
+  const query = `*[_type == "partners"][0]{
+    title,
+    itPartners[] {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    industrialPartners[] {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["partners", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching partners data:", error);
+    return null;
+  }
+}
+
+export async function getIndustriesData(): Promise<IndustriesType | null> {
+  const query = `*[_type == "industries"][0]{
+    title,
+    cards[] {
+      _key,
+      icon {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      title,
+      description
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["industries", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching industries data:", error);
+    return null;
+  }
+}
+
+export async function getTeamData(): Promise<TeamType | null> {
+  const query = `*[_type == "team"][0]{
+    title,
+    description,
+    teamMembers[] {
+      _key,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      name,
+      role
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["team", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching team data:", error);
+    return null;
+  }
+}
+
+export async function getCareersData(): Promise<CareersType | null> {
+  const query = `*[_type == "careers"][0]{
+    title,
+    description,
+    jobCards[] {
+      _key,
+      title,
+      description,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      url
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["careers", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching careers data:", error);
     return null;
   }
 }
@@ -297,70 +564,6 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     );
   } catch (error) {
     console.error("Error fetching blog post:", error);
-    return null;
-  }
-}
-
-export async function getCareersData(): Promise<CareersType | null> {
-  const query = `*[_type == "careers"][0]{
-    title,
-    description,
-    jobCards[] {
-      _key,
-      title,
-      description,
-      image {
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
-          }
-        }
-      },
-      url
-    }
-  }`;
-
-  try {
-    return await sanityClient.fetch(
-      query,
-      {},
-      {
-        next: {
-          revalidate: REVALIDATE_TIME,
-          tags: ["careers", "content"],
-        },
-      },
-    );
-  } catch (error) {
-    console.error("Error fetching careers data:", error);
-    return null;
-  }
-}
-
-export async function getTestimonialsData(): Promise<TestimonialsType | null> {
-  const query = `*[_type == "testimonials"][0]{
-    testimonials[] {
-      _key,
-      name,
-      content
-    }
-  }`;
-
-  try {
-    return await sanityClient.fetch(
-      query,
-      {},
-      {
-        next: {
-          revalidate: REVALIDATE_TIME,
-          tags: ["testimonials", "content"],
-        },
-      },
-    );
-  } catch (error) {
-    console.error("Error fetching testimonials data:", error);
     return null;
   }
 }

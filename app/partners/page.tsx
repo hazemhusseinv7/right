@@ -13,8 +13,8 @@ export default async function Page() {
 
   return (
     <main className="my-20">
-      <section className="bg-background py-16">
-        <div className="mx-auto max-w-6xl px-6 text-center">
+      <section className="bg-background py-27">
+        <div className="mx-auto max-w-350 px-6 text-center">
           <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             IT Partners
           </span>
@@ -34,7 +34,7 @@ export default async function Page() {
       </section>
 
       <section className="bg-background py-16">
-        <div className="mx-auto max-w-6xl px-6 text-center">
+        <div className="mx-auto max-w-350 px-6 text-center">
           <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             Industrial Partners
           </span>
@@ -54,7 +54,7 @@ export default async function Page() {
       </section>
 
       <section className="bg-background py-16">
-        <div className="mx-auto max-w-6xl px-6 text-center">
+        <div className="mx-auto max-w-350 px-6 text-center">
           <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             Clients
           </span>

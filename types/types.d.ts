@@ -43,12 +43,6 @@ interface HeroType {
   };
 }
 
-interface PartnersType {
-  title: string;
-  itPartners: ImageType[];
-  industrialPartners: ImageType[];
-}
-
 interface ServicesType {
   title: string;
   titleColor: string;
@@ -73,13 +67,103 @@ interface AboutUsType {
   leftBottomStat: { value: string; label: string };
   rightTopStat: { value: string; label: string };
   rightBottomStat: { value: string; label: string };
+  ourVision: {
+    title: string;
+    description: string;
+    image: ImageType;
+  };
+  ourMission: {
+    title: string;
+    description: string;
+    image: ImageType;
+  };
   certificateTitle: string;
   certificateDescription: string;
-  certificateImages: ImageType[];
+  certificateImages: {
+    _key?: string;
+    badge: ImageType;
+    certificateImage?: ImageType;
+  }[];
+}
+
+interface MilestonesType {
+  title: string;
+  milestones: {
+    _key?: string;
+    year: number;
+    title: string;
+  }[];
+}
+
+interface ValuesType {
+  title: string;
+  description: string;
+  cards: {
+    _key?: string;
+    icon: ImageType;
+    title: string;
+    description: string;
+  }[];
+}
+
+interface StatsType {
+  title: string;
+  description: string;
+  items: {
+    _key?: string;
+    value: string;
+    description: string;
+  }[];
+}
+
+interface TestimonialsType {
+  testimonials: {
+    name: string;
+    content: string;
+  }[];
 }
 
 interface ClientsType {
   logos: ImageType[];
+}
+
+interface PartnersType {
+  title: string;
+  itPartners: ImageType[];
+  industrialPartners: ImageType[];
+}
+
+interface IndustriesType {
+  title: string;
+  cards: {
+    _key?: string;
+    icon: ImageType;
+    title: string;
+    description: string;
+  }[];
+}
+
+interface TeamType {
+  title: string;
+  description: string;
+  teamMembers: {
+    _key?: string;
+    image?: ImageType;
+    name: string;
+    role: string;
+  }[];
+}
+
+interface CareersType {
+  title: string;
+  description: string;
+  jobCards: {
+    _key?: string;
+    title: string;
+    description: string;
+    image: ImageType;
+    url: string;
+  }[];
 }
 
 interface CategoryType {
@@ -104,23 +188,4 @@ interface BlogPost {
   body: any[];
   author?: AuthorType;
   categories?: CategoryType[];
-}
-
-interface CareersType {
-  title: string;
-  description: string;
-  jobCards: {
-    _key?: string;
-    title: string;
-    description: string;
-    image: ImageType;
-    url: string;
-  }[];
-}
-
-interface TestimonialsType {
-  testimonials: {
-    name: string;
-    content: string;
-  }[];
 }

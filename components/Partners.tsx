@@ -26,7 +26,9 @@ const Partners = ({
     <div className={cn(className, "space-y-8 md:py-24")}>
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center space-y-8">
         <div className="text-center">
-          <GradientHeading variant="secondary">{sectionTitle}</GradientHeading>
+          <GradientHeading variant="secondary" asChild>
+            {sectionTitle}
+          </GradientHeading>
         </div>
         <LogoCarousel columnCount={3} logos={carouselLogos} />
       </div>

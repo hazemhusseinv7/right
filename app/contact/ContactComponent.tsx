@@ -86,7 +86,7 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
             preset="blur"
             speedReveal={0.3}
             speedSegment={0.3}
-            className="text-primary-blue mx-auto text-2xl lg:text-4xl"
+            className="text-primary-green mx-auto text-5xl font-semibold lg:text-7xl"
           >
             Contact Us
           </TextEffect>
@@ -105,7 +105,7 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
             Work Email Phone Number Company Name Message Al Sawab Headquarter
           </TextEffect>
         </div>
-        <div className="grid divide-y border md:grid-cols-2 md:gap-4 md:divide-x md:divide-y-0">
+        <div className="grid grid-cols-1 divide-y border md:grid-cols-2 md:gap-4 md:divide-x md:divide-y-0">
           <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">
             <div className="flex flex-col">
               <h2 className="text-primary-blue mb-3 text-lg font-semibold">
@@ -137,7 +137,7 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
             </div>
           </div>
 
-          <div className="col-span-2 border-t p-8">
+          <div className="border-t p-8 md:col-span-2">
             <span>Al Sawab Headquarter</span>
 
             <div className="felx items-center justify-center">

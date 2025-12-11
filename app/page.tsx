@@ -1,31 +1,33 @@
 import {
   getSettingsData,
   getHeroData,
-  getPartnersData,
   getServicesData,
   getAboutData,
+  getStatsData,
   getTestimonialsData,
+  getPartnersData,
 } from "@/lib/sanity/queries";
 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
+import Milestones from "@/components/Milestones";
 import Values from "@/components/Values";
 import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import Clients from "@/components/Clients";
-import Milestones from "@/components/Milestones";
 import ContactComponent from "./contact/ContactComponent";
 
 export default async function Home() {
-  const [settings, hero, partners, services, aboutUs, testimonials] =
+  const [settings, hero, services, aboutUs, stats, testimonials, partners] =
     await Promise.all([
       getSettingsData(),
       getHeroData(),
-      getPartnersData(),
       getServicesData(),
       getAboutData(),
+      getStatsData(),
       getTestimonialsData(),
+      getPartnersData(),
     ]);
 
   return (
@@ -35,7 +37,7 @@ export default async function Home() {
       <AboutUs settings={settings} aboutUs={aboutUs} />
       <Milestones />
       <Values />
-      <Stats />
+      <Stats stats={stats} />
       <Testimonials testimonials={testimonials} />
       <Clients />
 

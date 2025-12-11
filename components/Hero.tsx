@@ -98,7 +98,7 @@ const Hero = ({
           </defs>
         </svg>
       </div>
-      <article className="relative z-2 grid px-4 pt-24 pb-14 sm:px-0 2xl:pt-40 2xl:pb-24">
+      <article className="relative z-2 grid px-4 pt-24 pb-14 sm:px-0 lg:pt-40 lg:pb-24">
         <NewItemsLoading data={buttonData} />
         <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl dark:text-white">
           <span className="relative mt-4 flex translate-x-0 justify-center gap-2 max-lg:flex-col lg:mt-8">

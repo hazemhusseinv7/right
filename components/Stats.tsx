@@ -5,11 +5,11 @@ import { useInView } from "motion/react";
 import { AnimatedNumber } from "./motion-primitives/animated-number";
 
 interface StatItemProps {
-  targetValue: string;
+  value: string;
   description: string;
 }
 
-const StatItem = ({ targetValue, description }: StatItemProps) => {
+const StatItem = ({ value: targetValue, description }: StatItemProps) => {
   const [value, setValue] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -40,34 +40,21 @@ const StatItem = ({ targetValue, description }: StatItemProps) => {
   );
 };
 
-const Stats = () => {
-  const stats = [
-    {
-      targetValue: "30",
-      description: "Years delivering IT and industrial solutions",
-    },
-    {
-      targetValue: "15+",
-      description: "Major Industries Served.",
-    },
-    {
-      targetValue: "98%",
-      description: "On Time Delivery for Projects.",
-    },
-  ];
+const Stats = ({ stats }: { stats: StatsType | null }) => {
+  if (!stats) return;
 
   return (
     <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
+      <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center">
-          <h2 className="text-primary-green text-4xl font-medium lg:text-5xl">
-            Al Sawab
+          <h2 className="text-primary-green text-5xl font-semibold lg:text-7xl">
+            {stats.title}
           </h2>
-          <p className="text-primary-blue">In Numbers</p>
+          <p className="text-primary-blue">{stats.description}</p>
         </div>
 
         <div className="grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">
-          {stats.map((stat, i) => (
+          {stats.items.map((stat, i) => (
             <StatItem key={i} {...stat} />
           ))}
         </div>

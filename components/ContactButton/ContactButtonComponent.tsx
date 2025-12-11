@@ -14,6 +14,7 @@ const ContactButtonComponent = ({ whatsapp }: { whatsapp: string }) => {
       color="success"
       endContent={<RiWhatsappFill className="size-4" />}
       className="fixed end-4 bottom-4 z-90"
+      aria-label="Contact us on WhatsApp"
     />
   );
 };

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaBriefcase, FaCloud, FaUser, FaUserCheck } from "react-icons/fa6";
+import { FaBriefcase, FaUser, FaUserCheck } from "react-icons/fa6";
 import { HiServer, HiNewspaper } from "react-icons/hi2";
 import { RiTeamFill } from "react-icons/ri";
 import { Drawer } from "vaul";
@@ -34,7 +34,6 @@ const Header = () => {
     { href: "/services", label: "Services", icon: HiServer },
     { href: "/about-us", label: "About us", icon: FaUser },
     { href: "/partners", label: "Partners", icon: FaUserCheck },
-    { href: "/industries", label: "Industries", icon: FaCloud },
     { href: "/team", label: "Team", icon: RiTeamFill },
     { href: "/blog", label: "Blog", icon: HiNewspaper },
     { href: "/careers", label: "Careers", icon: FaBriefcase },
@@ -42,7 +41,7 @@ const Header = () => {
 
   return (
     <header className="text-primary-foreground absolute top-0 z-10 w-full lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0">
-      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-xl border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl dark:border-neutral-800 dark:bg-zinc-950">
+      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-xl border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl lg:h-29 dark:border-neutral-800 dark:bg-zinc-950">
         {isMobile && (
           <>
             <Drawer.Root
@@ -50,7 +49,10 @@ const Header = () => {
               open={isOpen}
               onOpenChange={setIsOpen}
             >
-              <Drawer.Trigger className="bg-primary-blue grid h-10 w-fit place-content-center rounded-lg px-3 text-white">
+              <Drawer.Trigger
+                className="bg-primary-blue hover:bg-primary-blue/90 grid h-10 w-fit cursor-pointer place-content-center rounded-lg px-3 text-white transition-colors duration-300"
+                aria-label="Open menu"
+              >
                 <AlignJustify />
               </Drawer.Trigger>
               <Drawer.Portal>
@@ -64,6 +66,9 @@ const Header = () => {
                   }
                 >
                   <div className="flex h-full w-full grow flex-col rounded-2xl border border-neutral-200 bg-white p-2 dark:border-neutral-800 dark:bg-black">
+                    <Drawer.Title className="sr-only">
+                      Navigation Menu
+                    </Drawer.Title>
                     <div className="mb-2 flex w-full justify-between">
                       <Link href="/" className="flex items-center pl-2">
                         <div className="flex items-center gap-2 text-zinc-950 dark:text-white">
@@ -77,7 +82,7 @@ const Header = () => {
                         </div>
                       </Link>
                       <button
-                        className="w-fit rounded-md bg-neutral-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-800 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                        className="bg-primary-blue hover:bg-primary-blue/90 w-fit cursor-pointer rounded-md px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                         onClick={() => setIsOpen(false)}
                       >
                         <X />
@@ -88,7 +93,7 @@ const Header = () => {
                         key={item.href}
                         href={item.href}
                         className={cn(
-                          "hover:text-base-blue flex cursor-pointer items-center justify-start gap-1 rounded-md p-2 text-emerald-800 transition-colors duration-200 select-none dark:hover:text-blue-200",
+                          "hover:text-base-blue text-primary-blue flex cursor-pointer items-center justify-start gap-1 rounded-md p-2 transition-colors duration-200 select-none dark:hover:text-blue-200",
                           pathname.startsWith(item.href) &&
                             "text-base-blue text-primary-green bg-emerald-100 dark:border dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
                         )}
@@ -128,10 +133,10 @@ const Header = () => {
                 <div className="flex items-center gap-2 text-zinc-950 dark:text-white">
                   <Image
                     src="/logo/logo.png"
-                    width={56}
-                    height={56}
+                    width={96}
+                    height={96}
                     alt="Logo"
-                    className="size-14"
+                    className="size-24"
                     priority
                   />
                 </div>
@@ -144,7 +149,7 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "hover:text-base-blue text-primary-blue flex cursor-pointer items-center justify-center gap-1 border-b-2 p-2 transition-colors duration-200 select-none dark:text-white dark:hover:text-blue-200",
+                    "hover:text-base-blue text-primary-blue flex cursor-pointer items-center justify-center gap-1 border-b-2 p-2 text-xl transition-colors duration-200 select-none dark:text-white dark:hover:text-blue-200",
                     pathname.startsWith(item.href) &&
                       "border-primary-green text-primary-green border-b-2 dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
                   )}
@@ -159,14 +164,14 @@ const Header = () => {
                   <span>{item.label}</span>
                 </Link>
               ))}
-
-              <Link
-                href="/contact"
-                className="bg-primary-blue hover:bg-primary-blue/90 flex h-10 items-center justify-center rounded-md border border-neutral-200 px-3 text-white transition-colors duration-300 dark:border-neutral-800"
-              >
-                Contact Us
-              </Link>
             </div>
+
+            <Link
+              href="/contact"
+              className="bg-primary-green hover:bg-primary-blue/90 flex h-10 items-center justify-center rounded-md border border-neutral-200 px-3 text-white transition-colors duration-300 dark:border-neutral-800"
+            >
+              Contact Us
+            </Link>
           </>
         )}
       </div>
