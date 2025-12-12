@@ -24,7 +24,7 @@ const StatItem = ({ value: targetValue, description }: StatItemProps) => {
   }
 
   return (
-    <div ref={ref} className="text-primary-blue space-y-4">
+    <div ref={ref} className="space-y-4 text-white">
       <div className="text-5xl font-bold">
         <AnimatedNumber
           springOptions={{
@@ -44,13 +44,13 @@ const Stats = ({ stats }: { stats: StatsType | null }) => {
   if (!stats) return;
 
   return (
-    <section className="min-h-140 bg-linear-to-t from-emerald-50 py-12 md:py-20">
+    <section className="from-primary-green to-primary-green/80 flex min-h-140 items-center bg-linear-to-t py-12 md:py-20">
       <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
-        <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center">
-          <h2 className="text-primary-green text-5xl font-semibold lg:text-7xl">
+        <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center lg:mb-24">
+          <h2 className="text-5xl font-semibold text-white lg:text-7xl">
             {stats.title}
           </h2>
-          <p className="text-primary-blue">{stats.description}</p>
+          <p className="text-2xl text-emerald-50">{stats.description}</p>
         </div>
 
         <div className="grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">

@@ -95,7 +95,7 @@ const Footer = async () => {
   ].filter((item) => item.link);
 
   return (
-    <footer className="bg-linear-to-tr from-emerald-50 to-emerald-200/80 py-16">
+    <footer className="border-t py-16">
       <div className="mx-auto max-w-5xl px-6">
         <Link href="/" aria-label="go home" className="mx-auto block size-fit">
           <Image

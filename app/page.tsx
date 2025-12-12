@@ -35,12 +35,12 @@ export default async function Home() {
       <Hero hero={hero} partners={partners} />
       <Services settings={settings} services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
-      <Milestones />
-      <Values />
       <Stats stats={stats} />
+      <Values />
+      <Milestones />
       <Testimonials testimonials={testimonials} />
       <Clients />
-
+      
       <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
         <div className="w-full">
           <ContactComponent settings={settings || undefined} />
