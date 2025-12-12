@@ -44,7 +44,7 @@ const Stats = ({ stats }: { stats: StatsType | null }) => {
   if (!stats) return;
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="min-h-140 bg-linear-to-t from-emerald-50 py-12 md:py-20">
       <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center">
           <h2 className="text-primary-green text-5xl font-semibold lg:text-7xl">

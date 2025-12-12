@@ -18,6 +18,7 @@ import {
 import { RiWhatsappLine } from "react-icons/ri";
 import { urlFor } from "@/lib/sanity/image";
 import { PortableText } from "@portabletext/react";
+import ImagePreview from "./ImagePreview";
 
 const portableTextComponents = {
   types: {
@@ -129,7 +130,7 @@ const AboutUs = ({
   return (
     <section
       id="about-us"
-      className="relative mt-4 bg-linear-to-t from-emerald-50"
+      className="relative mt-20 bg-linear-to-t from-emerald-50"
       ref={heroRef}
     >
       <div className="relative z-10 mx-auto max-w-350 px-8 pt-20 pb-32">
@@ -372,13 +373,16 @@ const AboutUs = ({
 
             <div className="flex gap-10">
               {aboutUs?.certificateImages.map((img, i) => (
-                <Image
+                <ImagePreview
                   key={i}
-                  src={urlFor(img.badge).url()}
-                  width={192}
-                  height={192}
-                  alt="Certificate Badge"
-                  className="size-48"
+                  badgeSrc={urlFor(img.badge).url()}
+                  certificateSrc={
+                    img.certificateImage
+                      ? urlFor(img.certificateImage).url()
+                      : urlFor(img.badge).url()
+                  }
+                  badgeAlt={`Certificate Badge ${i + 1}`}
+                  certificateAlt={`Certificate ${i + 1}`}
                 />
               ))}
             </div>

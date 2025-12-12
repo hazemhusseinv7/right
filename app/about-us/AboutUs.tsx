@@ -8,6 +8,7 @@ import { urlFor } from "@/lib/sanity/image";
 
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
+import ImagePreview from "@/components/ImagePreview";
 
 const portableTextComponents = {
   types: {
@@ -168,13 +169,16 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
 
           <div className="flex gap-10">
             {aboutUs?.certificateImages.map((img, i) => (
-              <Image
+              <ImagePreview
                 key={i}
-                src={urlFor(img.badge).url()}
-                width={192}
-                height={192}
-                alt="Certificate Badge"
-                className="size-48"
+                badgeSrc={urlFor(img.badge).url()}
+                certificateSrc={
+                  img.certificateImage
+                    ? urlFor(img.certificateImage).url()
+                    : urlFor(img.badge).url()
+                }
+                badgeAlt={`Certificate Badge ${i + 1}`}
+                certificateAlt={`Certificate ${i + 1}`}
               />
             ))}
           </div>

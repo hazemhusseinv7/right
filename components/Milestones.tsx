@@ -28,7 +28,7 @@ const Milestones = async () => {
   if (!data) return;
 
   return (
-    <section className="px-4 py-12 md:py-20">
+    <section className="min-h-140 bg-linear-to-t from-emerald-50 px-4 py-12 md:py-20">
       <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center md:space-y-12">
         <h2 className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl">
           {data.title}

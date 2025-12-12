@@ -10,7 +10,7 @@ const Values = async () => {
   if (!data || !values) return;
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="bg-linear-to-b from-emerald-50 py-12 md:py-20">
       <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-3xl space-y-6 text-center md:space-y-12">
           <h2 className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl">
