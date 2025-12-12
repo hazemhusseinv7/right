@@ -403,42 +403,6 @@ export async function getPartnersData(): Promise<PartnersType | null> {
   }
 }
 
-export async function getIndustriesData(): Promise<IndustriesType | null> {
-  const query = `*[_type == "industries"][0]{
-    title,
-    cards[] {
-      _key,
-      icon {
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
-          }
-        }
-      },
-      title,
-      description
-    }
-  }`;
-
-  try {
-    return await sanityClient.fetch(
-      query,
-      {},
-      {
-        next: {
-          revalidate: REVALIDATE_TIME,
-          tags: ["industries", "content"],
-        },
-      },
-    );
-  } catch (error) {
-    console.error("Error fetching industries data:", error);
-    return null;
-  }
-}
-
 export async function getTeamData(): Promise<TeamType | null> {
   const query = `*[_type == "team"][0]{
     title,
@@ -510,6 +474,43 @@ export async function getCareersData(): Promise<CareersType | null> {
     );
   } catch (error) {
     console.error("Error fetching careers data:", error);
+    return null;
+  }
+}
+
+export async function getIndustriesData(): Promise<IndustriesType | null> {
+  const query = `*[_type == "industries"][0]{
+    title,
+    description,
+    cards[] {
+      _key,
+      icon {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      title,
+      description
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["industries", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching industries data:", error);
     return null;
   }
 }

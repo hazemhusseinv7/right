@@ -1,81 +1,37 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { FaConciergeBell, FaHeartbeat } from "react-icons/fa";
-import {
-  FaChartLine,
-  FaGraduationCap,
-  FaHelmetSafety,
-  FaLandmark,
-  FaWater,
-} from "react-icons/fa6";
-import { RiOilFill } from "react-icons/ri";
+import Image from "next/image";
 
-const Industries = () => {
-  const industries = [
-    {
-      title: "Energy, Oil, Gas & Petrochemicals",
-      description:
-        "Advanced network systems, cybersecurity, OT/IT integration and industrial equipment to enhance safety and operational efficiency",
-      icon: RiOilFill,
-    },
-    {
-      title: "Environment & Utilities",
-      description:
-        "Reliable IT systems, monitoring solutions, and industrial hardware for stable, compliant, and efficient services.",
-      icon: FaWater,
-    },
-    {
-      title: "Construction & Engineering",
-      description:
-        "We provide reliable IT infrastructure, on site technical support, and essential industrial tools that keeps projects running smoothly.",
-      icon: FaHelmetSafety,
-    },
-    {
-      title: "Government & Public Sector",
-      description:
-        "Secure IT environmental, data center solutions, and digital transformation services built to met national standards.",
-      icon: FaLandmark,
-    },
-    {
-      title: "Hospitality & Tourism",
-      description:
-        "Fast, secure IT systems, guest experience technologies, and responsive technical support for seamless operations.",
-      icon: FaConciergeBell,
-    },
-    {
-      title: "Finance & Investment",
-      description:
-        "Highsecurity infrastructure, Cybersecurity services, and cloud solutions tailored for mission critical financial operations.",
-      icon: FaChartLine,
-    },
-    {
-      title: "Education",
-      description:
-        "Digital learning tools, strong network infrastructure, and managed services that modernize and support academic environments.",
-      icon: FaGraduationCap,
-    },
-    {
-      title: "Healthcare",
-      description:
-        "Protected networks, cloud systems, and technical support that ensure confidentiality and smooth clinical operations.",
-      icon: FaHeartbeat,
-    },
-  ];
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { getIndustriesData } from "@/lib/sanity/queries";
+import { urlFor } from "@/lib/sanity/image";
+
+const Industries = async () => {
+  const data: IndustriesType | null = await getIndustriesData();
+
+  const industries = data?.cards;
+
+  if (!data || !industries) return;
 
   return (
     <section id="industries" className="py-28 md:py-32 dark:bg-transparent">
       <div className="@container mx-auto max-w-350 px-6">
         <div className="text-center">
-          <h1 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl">
-            Industries
-          </h1>
-          {/* <p className="mt-4"></p> */}
+          <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl">
+            {data.title}
+          </h2>
+          <p className="mt-4">{data.description}</p>
         </div>
         <Card className="mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16 @min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0">
-          {industries.map(({ title, description, icon: Icon }, i) => (
+          {industries.map(({ title, description, icon }, i) => (
             <div key={i} className="group shadow-zinc-950/5">
               <CardHeader className="pb-3">
                 <CardDecorator>
-                  <Icon className="text-primary-green size-6" aria-hidden />
+                  <Image
+                    src={urlFor(icon).url()}
+                    width={1000}
+                    height={1000}
+                    alt={title}
+                    className="size-5"
+                  />
                 </CardDecorator>
 
                 <h3 className="text-primary-blue mt-6 font-medium">{title}</h3>

@@ -166,6 +166,17 @@ interface CareersType {
   }[];
 }
 
+interface IndustriesType {
+  title: string;
+  description?: string;
+  cards: {
+    _key?: string;
+    icon: ImageType;
+    title: string;
+    description: string;
+  }[];
+}
+
 interface CategoryType {
   title: string;
   description?: any[];
