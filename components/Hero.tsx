@@ -81,7 +81,7 @@ const Hero = ({
           </defs>
         </svg>
       </div>
-      <article className="relative z-2 grid px-4 pt-24 pb-14 sm:px-0 lg:pt-40 lg:pb-24">
+      <article className="relative z-2 grid px-4 pt-32 pb-14 sm:px-0 lg:pt-56 lg:pb-24">
         <NewItemsLoading data={buttonData} />
         <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl dark:text-white">
           <span className="relative mt-4 flex translate-x-0 justify-center gap-2 max-lg:flex-col lg:mt-8">
@@ -112,10 +112,14 @@ const Hero = ({
           </ButtonHoverMultiple>
         </div>
       </article>
-      <Partners className="relative z-10 py-0!" data={partners} />
+
+      <Partners
+        className="relative z-10 mt-4 py-0! lg:mt-20"
+        data={partners}
+      />
 
       <div className="absolute end-0 size-full">
-        <div className="relative -end-20 bottom-110 z-1 mx-auto me-0 h-[800px] max-w-[800px] overflow-hidden py-5 lg:-end-48 lg:bottom-80">
+        <div className="relative -end-20 bottom-100 z-1 mx-auto me-0 h-[800px] max-w-[800px] overflow-hidden py-5 lg:-end-48">
           <div className="relative z-10 h-full pt-4">
             <Earth
               mapBrightness={6}

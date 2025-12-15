@@ -19,13 +19,13 @@ export const LogoCloud = ({ logos }: LogoCloudProps) => {
           <div className="relative w-full py-6">
             <InfiniteSlider speedOnHover={20} speed={40} gap={80}>
               {logos.map((logo, i) => (
-                <div key={i} className="flex">
+                <div key={i} className="flex items-center justify-center">
                   <Image
-                    className="mx-auto h-12 w-fit"
+                    className="mx-auto h-fit w-20"
                     src={logo.url}
                     alt={logo.alt || logo.companyName || "Client logo"}
-                    height={48}
-                    width={48}
+                    height={80}
+                    width={80}
                   />
                 </div>
               ))}
