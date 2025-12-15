@@ -20,7 +20,7 @@ const Industries = async () => {
           </h2>
           <p className="mt-4">{data.description}</p>
         </div>
-        <Card className="mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 *:text-center md:mt-16 @min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0">
+        <Card className="mx-auto mt-8 grid max-w-sm divide-y overflow-hidden rounded-none shadow-zinc-950/5 *:text-center md:mt-16 @min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0">
           {industries.map(({ title, description, icon }, i) => (
             <div key={i} className="group shadow-zinc-950/5">
               <CardHeader className="pb-3">

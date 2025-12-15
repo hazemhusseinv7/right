@@ -93,7 +93,7 @@ export default async function Page({
 
               {post.publishedAt && (
                 <span className="block text-xs text-gray-800 sm:text-sm dark:text-neutral-200">
-                  {new Date(post.publishedAt).toLocaleDateString("ar-EG", {
+                  {new Date(post.publishedAt).toLocaleDateString("en", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",

@@ -13,19 +13,14 @@ const Team = async () => {
 
   return (
     <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
-      <div className="mx-auto max-w-5xl border-t px-6">
-        <span className="text-caption text-primary-green -mt-3.5 -ml-6 block w-max bg-gray-50 px-6 dark:bg-gray-950">
-          Team
-        </span>
-        <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
-          <div className="sm:w-2/5">
-            <h2 className="text-primary-green text-3xl font-bold sm:text-4xl">
-              {data?.title}
-            </h2>
-          </div>
-          <div className="text-primary-blue mt-6 sm:mt-0">
-            <p>{data?.description}</p>
-          </div>
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="relative flex w-full flex-col items-center justify-center">
+          <h1 className="text-primary-green relative text-4xl leading-tight uppercase opacity-70 lg:text-5xl">
+            {data?.title}
+          </h1>
+          <p className="mt-1 text-gray-600 dark:text-neutral-400">
+            {data?.description}
+          </p>
         </div>
         <div className="mt-12 md:mt-24">
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">

@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { AnimatedNumber } from "./motion-primitives/animated-number";
+import { TextEffect } from "./motion-primitives/text-effect";
 
 interface StatItemProps {
   value: string;
@@ -24,7 +25,7 @@ const StatItem = ({ value: targetValue, description }: StatItemProps) => {
   }
 
   return (
-    <div ref={ref} className="space-y-4 text-white">
+    <div ref={ref} className="space-y-4 px-10 text-white">
       <div className="text-5xl font-bold">
         <AnimatedNumber
           springOptions={{
@@ -41,16 +42,40 @@ const StatItem = ({ value: targetValue, description }: StatItemProps) => {
 };
 
 const Stats = ({ stats }: { stats: StatsType | null }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   if (!stats) return;
 
   return (
-    <section className="from-primary-green to-primary-green/80 flex min-h-140 items-center bg-linear-to-t py-12 md:py-20">
+    <section
+      ref={sectionRef}
+      className="from-primary-green to-primary-green/80 flex min-h-140 items-center bg-linear-to-t py-12 md:py-20"
+    >
       <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center lg:mb-24">
-          <h2 className="text-5xl font-semibold text-white lg:text-7xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="h2"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            trigger={inView}
+            className="text-5xl font-semibold text-white lg:text-7xl"
+          >
             {stats.title}
-          </h2>
-          <p className="text-2xl text-emerald-50">{stats.description}</p>
+          </TextEffect>
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="h2"
+            speedReveal={0.8}
+            speedSegment={0.8}
+            trigger={inView}
+            className="text-2xl text-emerald-50"
+          >
+            {stats.description}
+          </TextEffect>
         </div>
 
         <div className="grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">

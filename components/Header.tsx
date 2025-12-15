@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <header className="text-primary-foreground absolute top-0 z-10 w-full lg:z-10 lg:flex lg:items-center lg:px-8 lg:py-0">
-      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-xl border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl lg:h-29 dark:border-neutral-800 dark:bg-zinc-950">
+      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-sm border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl lg:h-29 dark:border-neutral-800 dark:bg-zinc-950">
         {isMobile && (
           <>
             <Drawer.Root

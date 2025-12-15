@@ -8,7 +8,7 @@ export default async function Page() {
   ]);
 
   return (
-    <main className="bg-linear-to-t from-blue-100 py-40">
+    <main  >
       <Services settings={settings} services={services} />
     </main>
   );

@@ -1,25 +1,49 @@
-import Image from "next/image";
-import { getValuesData } from "@/lib/sanity/queries";
-import { urlFor } from "@/lib/sanity/image";
+"use client";
 
-const Values = async () => {
-  const data: ValuesType | null = await getValuesData();
+import Image from "next/image";
+import { urlFor } from "@/lib/sanity/image";
+import { TextEffect } from "./motion-primitives/text-effect";
+import { useInView } from "motion/react";
+import { useRef } from "react";
+
+const Values = ({ values: data }: { values: ValuesType | null }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const values = data?.cards;
 
   if (!data || !values) return;
 
   return (
-    <section className="bg-linear-to-b from-emerald-50 py-12 md:py-20">
+    <section ref={sectionRef} className="py-12 md:py-20">
       <div className="mx-auto max-w-350 space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-3xl space-y-6 text-center md:space-y-12">
-          <h2 className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="h2"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            trigger={inView}
+            className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl"
+          >
             {data.title}
-          </h2>
-          <p className="text-primary-blue">{data.description}</p>
+          </TextEffect>
+
+          <TextEffect
+            per="word"
+            preset="blur"
+            speedReveal={0.8}
+            speedSegment={0.8}
+            trigger={inView}
+            className="text-primary-blue"
+          >
+            {data.description}
+          </TextEffect>
         </div>
 
-        <div className="relative mx-auto grid divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="bg-background relative mx-auto grid divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3">
           {values.map(({ title, description, icon }, i) => (
             <div key={i} className="space-y-3">
               <div className="flex items-center gap-2">

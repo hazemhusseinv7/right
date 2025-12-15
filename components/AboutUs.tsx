@@ -136,19 +136,8 @@ const AboutUs = ({
       <div className="relative z-10 mx-auto max-w-350 px-8 pt-20 pb-32">
         <div className="relative">
           {/* Header with social icons */}
-          <div className="absolute -top-3 left-0 z-10 mb-8 flex w-[85%] items-center justify-between sm:-top-2 md:top-0 lg:top-2">
-            <div className="flex items-center gap-2 text-xl">
-              <TimelineContent
-                as="h2"
-                animationNum={0}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="text-primary-green text-sm font-medium lg:text-2xl dark:text-gray-300"
-              >
-                {aboutUs?.title}
-              </TimelineContent>
-            </div>
-            <div className="flex gap-4">
+          <div className="mb-4 flex items-start justify-between gap-4 max-lg:flex-col lg:items-center">
+            <div className="flex gap-4 lg:order-2">
               {socialMedia.map(({ name, link, icon: Icon }) => (
                 <TimelineContent
                   key={name}
@@ -160,11 +149,44 @@ const AboutUs = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="hover:bg-primary-green flex size-6 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-gray-100 transition-colors duration-300 md:size-8 dark:border-gray-700 dark:bg-gray-800"
+                  className="hover:bg-primary-green flex size-6 cursor-pointer items-center justify-center rounded-sm border border-gray-200 bg-gray-100 transition-colors duration-300 md:size-8 dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Icon className="max-sm:size-3" />
                 </TimelineContent>
               ))}
+            </div>
+            <div className="flex items-center gap-2 text-xl lg:order-1">
+              <div className="flex gap-4">
+                <TimelineContent
+                  as="div"
+                  animationNum={6}
+                  timelineRef={heroRef}
+                  customVariants={revealVariants}
+                  className="mb-2 flex items-center gap-2 text-xs sm:text-base"
+                >
+                  <p className="text-primary-green text-xl font-bold lg:text-2xl dark:text-gray-300">
+                    {aboutUs?.rightTopStat.value}
+                    {/* <span className="text-gray-600 dark:text-gray-300 font-normal"></span> */}
+                  </p>
+                  <span className="text-gray-600">
+                    {aboutUs?.rightTopStat.label}
+                  </span>
+                </TimelineContent>
+                <TimelineContent
+                  as="div"
+                  animationNum={7}
+                  timelineRef={heroRef}
+                  customVariants={revealVariants}
+                  className="mb-2 flex items-center gap-2 text-xs sm:text-base"
+                >
+                  <span className="text-primary-green text-xl font-bold lg:text-2xl dark:text-gray-300">
+                    {aboutUs?.rightBottomStat.value}
+                  </span>
+                  <p className="text-gray-600">
+                    {aboutUs?.rightBottomStat.label}
+                  </p>
+                </TimelineContent>
+              </div>
             </div>
           </div>
 
@@ -173,30 +195,17 @@ const AboutUs = ({
             animationNum={4}
             timelineRef={heroRef}
             customVariants={scaleVariants}
-            className="group relative"
+            className="relative"
           >
-            <svg
-              className="w-full"
-              width="100%"
-              height="100%"
-              viewBox="0 0 100 40"
-            >
-              <defs>
-                <clipPath id="clip-inverted" clipPathUnits="objectBoundingBox">
-                  <path
-                    d="M0.0998072 1H0.422076H0.749756C0.767072 1 0.774207 0.961783 0.77561 0.942675V0.807325C0.777053 0.743631 0.791844 0.731953 0.799059 0.734076H0.969813C0.996268 0.730255 1.00088 0.693206 0.999875 0.675159V0.0700637C0.999875 0.0254777 0.985045 0.00477707 0.977629 0H0.902473C0.854975 0 0.890448 0.138535 0.850165 0.138535H0.0204424C0.00408849 0.142357 0 0.180467 0 0.199045V0.410828C0 0.449045 0.0136283 0.46603 0.0204424 0.469745H0.0523086C0.0696245 0.471019 0.0735527 0.497877 0.0733523 0.511146V0.915605C0.0723903 0.983121 0.090588 1 0.0998072 1Z"
-                    fill="#D9D9D9"
-                  />
-                </clipPath>
-              </defs>
-              <image
-                clipPath="url(#clip-inverted)"
-                preserveAspectRatio="xMidYMid slice"
-                width="100%"
-                height="100%"
-                href={img}
+            <div className="h-80 w-full overflow-hidden rounded-sm lg:h-120">
+              <Image
+                src={img}
+                width={1920}
+                height={1080}
+                alt="About"
+                className="size-full object-cover"
               />
-            </svg>
+            </div>
           </TimelineContent>
 
           {/* Stats */}
@@ -226,44 +235,12 @@ const AboutUs = ({
                 </span>
               </div>
             </TimelineContent>
-            <div className="right-0 bottom-16 flex gap-4 lg:absolute lg:flex-col lg:gap-0 lg:ps-5">
-              <TimelineContent
-                as="div"
-                animationNum={6}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="mb-2 flex items-center gap-2 text-2xl sm:text-3xl"
-              >
-                <p className="text-primary-green font-semibold">
-                  {aboutUs?.rightTopStat.value}
-                  {/* <span className="text-gray-600 dark:text-gray-300 font-normal"></span> */}
-                </p>
-                <span className="text-gray-600 uppercase">
-                  {aboutUs?.rightTopStat.label}
-                </span>
-              </TimelineContent>
-              <TimelineContent
-                as="div"
-                animationNum={7}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="mb-2 flex items-center gap-2 text-xs sm:text-base"
-              >
-                <span className="text-primary-green text-xl font-bold lg:text-2xl dark:text-gray-300">
-                  {aboutUs?.rightBottomStat.value}
-                </span>
-                <p className="text-gray-600">
-                  {aboutUs?.rightBottomStat.label}
-                </p>
-                <span className="block text-gray-300 lg:hidden">|</span>
-              </TimelineContent>
-            </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="md:col-span-2">
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          <div className="text-center md:col-span-2">
             <TimelineContent
               as="p"
               animationNum={8}
@@ -273,8 +250,9 @@ const AboutUs = ({
             >
               {aboutUs?.heading}
             </TimelineContent>
-            <p className="text-primary-blue mb-8 max-w-3xl text-xl leading-[170%]! font-semibold sm:text-3xl md:text-4xl dark:text-gray-300">
+            <p className="text-primary-blue mx-auto mb-8 max-w-3xl text-xl leading-[170%]! font-semibold sm:text-3xl md:text-4xl dark:text-gray-300">
               <VerticalCutReveal
+                containerClassName="justify-center"
                 splitBy="words"
                 staggerDuration={0.1}
                 staggerFrom="first"
@@ -362,11 +340,11 @@ const AboutUs = ({
           </div> */}
         </div>
 
-        <div className="py-20">
-          <div className="text-primary-green mb-8 text-3xl leading-[110%]! font-semibold lg:-mb-8">
+        <div className="flex flex-col gap-4 py-20 text-center">
+          <div className="text-primary-green mb-4 text-3xl font-semibold">
             {aboutUs?.certificateTitle}
           </div>
-          <div className="flex items-center justify-between gap-8 max-lg:flex-col">
+          <div className="flex flex-col items-center justify-between gap-8">
             <p className="text-primary-blue max-w-3xl text-lg leading-[170%]! font-semibold dark:text-gray-300">
               {aboutUs?.certificateDescription}
             </p>
@@ -405,134 +383,13 @@ const AboutUs = ({
             <div className="relative md:ms-4">
               <Image
                 src={urlFor(aboutUs?.ourVision.image).url()}
-                width={1000}
+                width={1500}
                 height={1000}
                 alt="Our Vision"
-                className="w-full rounded-md"
+                className="w-full rounded-sm"
               />
 
-              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-
-              {/* SVG*/}
-              <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
-                <svg
-                  className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
-                  width="630"
-                  height="451"
-                  viewBox="0 0 630 451"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="531"
-                    y="352"
-                    width="99"
-                    height="99"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="140"
-                    y="352"
-                    width="106"
-                    height="99"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="482"
-                    y="402"
-                    width="64"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="433"
-                    y="402"
-                    width="63"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="384"
-                    y="352"
-                    width="49"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="531"
-                    y="328"
-                    width="50"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="303"
-                    width="49"
-                    height="58"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="352"
-                    width="49"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="392"
-                    width="49"
-                    height="59"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="44"
-                    y="402"
-                    width="66"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="234"
-                    y="402"
-                    width="62"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="334"
-                    y="303"
-                    width="50"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect x="581" width="49" height="49" fill="currentColor" />
-                  <rect x="581" width="49" height="64" fill="currentColor" />
-                  <rect
-                    x="482"
-                    y="123"
-                    width="49"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="507"
-                    y="124"
-                    width="49"
-                    height="24"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="531"
-                    y="49"
-                    width="99"
-                    height="99"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              {/* End SVG*/}
+              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
             </div>
             {/* End Col */}
           </div>
@@ -553,134 +410,13 @@ const AboutUs = ({
             <div className="relative md:order-1 md:me-4">
               <Image
                 src={urlFor(aboutUs?.ourMission.image).url()}
-                width={1000}
+                width={1500}
                 height={1000}
                 alt="Our Mission"
-                className="w-full rounded-md"
+                className="w-full rounded-sm"
               />
 
-              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-
-              {/* SVG*/}
-              <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
-                <svg
-                  className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
-                  width="630"
-                  height="451"
-                  viewBox="0 0 630 451"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="531"
-                    y="352"
-                    width="99"
-                    height="99"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="140"
-                    y="352"
-                    width="106"
-                    height="99"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="482"
-                    y="402"
-                    width="64"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="433"
-                    y="402"
-                    width="63"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="384"
-                    y="352"
-                    width="49"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="531"
-                    y="328"
-                    width="50"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="303"
-                    width="49"
-                    height="58"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="352"
-                    width="49"
-                    height="50"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="99"
-                    y="392"
-                    width="49"
-                    height="59"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="44"
-                    y="402"
-                    width="66"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="234"
-                    y="402"
-                    width="62"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="334"
-                    y="303"
-                    width="50"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect x="581" width="49" height="49" fill="currentColor" />
-                  <rect x="581" width="49" height="64" fill="currentColor" />
-                  <rect
-                    x="482"
-                    y="123"
-                    width="49"
-                    height="49"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="507"
-                    y="124"
-                    width="49"
-                    height="24"
-                    fill="currentColor"
-                  />
-                  <rect
-                    x="531"
-                    y="49"
-                    width="99"
-                    height="99"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              {/* End SVG*/}
+              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
             </div>
             {/* End Col */}
           </div>

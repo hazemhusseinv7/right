@@ -48,7 +48,7 @@ export default function Page() {
       <div className="mx-auto max-w-340 px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
         {/* Title */}
         <div className="relative flex w-full flex-col items-center justify-center pt-32 pb-32 sm:pt-40">
-          <h1 className="relative max-w-[12ch] text-4xl leading-tight uppercase opacity-70 lg:text-8xl">
+          <h1 className="text-primary-green relative max-w-[12ch] text-4xl leading-tight uppercase opacity-70 lg:text-8xl">
             Blog
           </h1>
         </div>
@@ -71,13 +71,13 @@ export default function Page() {
                     {currentPosts.map(({ _id, title, slug, mainImage }) => (
                       // Card
                       <Link
-                        className="group rounded-xl bg-gray-200/70 p-5 transition hover:bg-gray-300/70 focus:bg-gray-100 focus:outline-hidden dark:bg-white/5 dark:hover:bg-white/20 dark:focus:bg-white/10"
+                        className="group rounded-sm bg-gray-200/70 p-5 transition hover:bg-gray-300/70 focus:bg-gray-100 focus:outline-hidden dark:bg-white/5 dark:hover:bg-white/20 dark:focus:bg-white/10"
                         href={`/blog/${slug.current}`}
                         key={_id}
                       >
                         <div className="aspect-16/10">
                           <Image
-                            className="size-full rounded-xl object-cover"
+                            className="size-full rounded-sm object-cover"
                             width={400}
                             height={250}
                             src={urlFor(mainImage).width(400).height(250).url()}

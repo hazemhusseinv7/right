@@ -58,7 +58,7 @@ export default function ExpandableCard({
           <>
             <div className="fixed inset-0 z-10 mx-4 grid place-items-center">
               <motion.div
-                className="bg-background flex h-fit w-full max-w-xl cursor-pointer flex-col items-start gap-4 overflow-hidden rounded-md border p-4"
+                className="bg-background flex h-fit w-full max-w-xl cursor-pointer flex-col items-start gap-4 overflow-hidden border p-4"
                 ref={ref}
                 layoutId={`cardItem-${current.title}`}
               >
@@ -129,7 +129,7 @@ export default function ExpandableCard({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Request now <FiArrowUpRight className="size-5"/>
+                    Request now <FiArrowUpRight className="size-5" />
                   </Button>
                 )}
               </motion.div>
@@ -156,7 +156,7 @@ export default function ExpandableCard({
                   key={item.title}
                   initial={{ scale: 1 }}
                   whileHover={{ scale: 1.02 }}
-                  className="bg-background flex w-full cursor-pointer flex-row items-center gap-4 rounded-md border p-2 shadow-md max-lg:flex-col md:p-4"
+                  className="bg-background flex w-full cursor-pointer flex-row items-center gap-4 border p-2 shadow-md max-lg:flex-col md:p-4"
                   onClick={() => {
                     setCurrent(item);
                   }}

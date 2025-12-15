@@ -1,11 +1,8 @@
-"use client";
 import ButtonHoverMultiple from "@/components/ButtonHoverMultiple";
-import { useRef } from "react";
 import NewItemsLoading from "./new-items-loading";
 import WordAnimator from "./word-animator";
 import Partners from "./Partners";
-import { GoogleGeminiEffect } from "./ui/google-gemini-effect";
-import { useScroll, useTransform } from "motion/react";
+import Earth from "./globe";
 
 const Hero = ({
   hero,
@@ -19,23 +16,10 @@ const Hero = ({
   const description = hero?.description;
   const ctaButton = hero?.ctaButton;
 
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
-  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
-  const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
-  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
-  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
-
   return (
     <section
       id="hero"
-      ref={ref}
-      className="relative min-h-screen overflow-hidden bg-linear-to-b from-blue-50 pb-20"
+      className="relative h-screen min-h-[900px] overflow-hidden bg-linear-to-b from-blue-50 pb-20"
     >
       <div
         className="absolute inset-0 z-0"
@@ -51,7 +35,6 @@ const Hero = ({
             "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
         }}
       />
-
       <div className="pointer-events-none absolute inset-0 flex w-screen justify-end mask-[radial-gradient(transparent_5%,white)]">
         <svg
           width="1512"
@@ -129,20 +112,21 @@ const Hero = ({
           </ButtonHoverMultiple>
         </div>
       </article>
+      <Partners className="relative z-10 py-0!" data={partners} />
 
-      <div className="absolute top-65 h-140 w-full overflow-clip sm:top-70 lg:top-50 xl:top-50 xl:scale-150">
-        <GoogleGeminiEffect
-          pathLengths={[
-            pathLengthFirst,
-            pathLengthSecond,
-            pathLengthThird,
-            pathLengthFourth,
-            pathLengthFifth,
-          ]}
-        />
+      <div className="absolute end-0 size-full">
+        <div className="relative -end-20 bottom-110 z-1 mx-auto me-0 h-[800px] max-w-[800px] overflow-hidden py-5 lg:-end-48 lg:bottom-80">
+          <div className="relative z-10 h-full pt-4">
+            <Earth
+              mapBrightness={6}
+              dark={0}
+              baseColor={[1, 1, 1]}
+              glowColor={[1, 1, 1]}
+              className="absolute right-0 -bottom-10 h-[550px] max-w-[1000px] translate-y-4 sm:-right-20 sm:bottom-auto sm:h-[750px] sm:max-w-[800px]"
+            />
+          </div>
+        </div>
       </div>
-
-      <Partners className="relative z-10 max-xl:mt-20" data={partners} />
     </section>
   );
 };

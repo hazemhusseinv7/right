@@ -20,54 +20,66 @@ export default async function Page() {
           </span>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {itPartners.map((logo, i) => (
-              <Image
-                key={`partners-${i}`}
-                className="h-14 w-fit lg:h-20 dark:invert"
-                src={urlFor(logo).url()}
-                alt="Logo"
-                height={80}
-                width={80}
-              />
+              <div
+                key={`it-partners-${i}`}
+                className="relative flex min-h-10 items-center justify-center pr-12 after:absolute after:top-1/2 after:-right-1.5 after:h-8 after:w-px after:-translate-y-1/2 after:bg-gray-300 last:after:hidden sm:pr-16 sm:after:-right-2 sm:after:h-12 lg:min-h-32"
+              >
+                <Image
+                  className="h-fit w-14 lg:w-48 dark:invert"
+                  src={urlFor(logo).url()}
+                  alt="Logo"
+                  height={192}
+                  width={192}
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16">
+      <section className="bg-background py-27">
         <div className="mx-auto max-w-350 px-6 text-center">
           <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             Industrial Partners
           </span>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {industrialPartners.map((logo, i) => (
-              <Image
-                key={`partners-${i}`}
-                className="h-14 w-fit lg:h-20 dark:invert"
-                src={urlFor(logo).url()}
-                alt="Logo"
-                height={80}
-                width={80}
-              />
+              <div
+                key={`industrial-partners-${i}`}
+                className="relative flex min-h-10 items-center justify-center pr-12 after:absolute after:top-1/2 after:-right-1.5 after:h-8 after:w-px after:-translate-y-1/2 after:bg-gray-300 last:after:hidden sm:pr-16 sm:after:-right-2 sm:after:h-12 lg:min-h-32"
+              >
+                <Image
+                  className="h-fit w-14 lg:w-48 dark:invert"
+                  src={urlFor(logo).url()}
+                  alt="Logo"
+                  height={192}
+                  width={192}
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16">
+      <section className="bg-background py-27">
         <div className="mx-auto max-w-350 px-6 text-center">
           <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
             Clients
           </span>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {clients?.logos.map((logo, i) => (
-              <Image
+              <div
                 key={`clients-${i}`}
-                className="h-14 w-fit lg:h-20 dark:invert"
-                src={urlFor(logo).url()}
-                alt="Logo"
-                height={80}
-                width={80}
-              />
+                className="relative flex min-h-10 items-center justify-center pr-12 after:absolute after:top-1/2 after:-right-1.5 after:h-8 after:w-px after:-translate-y-1/2 after:bg-gray-300 last:after:hidden sm:pr-16 sm:after:-right-2 sm:after:h-12 lg:min-h-32"
+              >
+                <Image
+                  className="h-fit w-14 lg:w-48 dark:invert"
+                  src={urlFor(logo).url()}
+                  alt="Logo"
+                  height={192}
+                  width={192}
+                />
+              </div>
             ))}
           </div>
         </div>

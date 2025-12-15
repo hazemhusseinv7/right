@@ -13,7 +13,7 @@ export default async function Page() {
       <div className="mx-auto max-w-340 px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
         {/* Title */}
         <div className="relative flex w-full flex-col items-center justify-center pt-32 pb-32 sm:pt-40">
-          <h1 className="relative text-4xl leading-tight uppercase opacity-70 lg:text-5xl">
+          <h1 className="text-primary-green relative text-4xl leading-tight uppercase opacity-70 lg:text-5xl">
             {careers?.title}
           </h1>
           <p className="mt-1 text-gray-600 dark:text-neutral-400">

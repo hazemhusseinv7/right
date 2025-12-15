@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Stepper,
   StepperDescription,
@@ -8,11 +10,18 @@ import {
   StepperTitle,
   StepperTrigger,
 } from "@/components/ui/stepper";
-import { getMilestonesData } from "@/lib/sanity/queries";
 import { Check, LoaderCircleIcon } from "lucide-react";
+import { TextEffect } from "./motion-primitives/text-effect";
+import { useRef } from "react";
+import { useInView } from "motion/react";
 
-const Milestones = async () => {
-  const data: MilestonesType | null = await getMilestonesData();
+const Milestones = ({
+  milestones: data,
+}: {
+  milestones: MilestonesType | null;
+}) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const milestones = data?.milestones
     ? [
@@ -28,11 +37,22 @@ const Milestones = async () => {
   if (!data) return;
 
   return (
-    <section className="flex min-h-140 flex-col justify-center gap-10 bg-linear-to-t from-emerald-50 px-4 py-12 md:py-20">
+    <section
+      ref={sectionRef}
+      className="flex min-h-140 flex-col justify-center gap-10 bg-linear-to-t from-emerald-50 px-4 py-12 md:py-20"
+    >
       <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center md:space-y-12">
-        <h2 className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl">
+        <TextEffect
+          per="word"
+          preset="blur"
+          as="h2"
+          speedReveal={0.3}
+          speedSegment={0.3}
+          trigger={inView}
+          className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl"
+        >
           {data.title}
-        </h2>
+        </TextEffect>
       </div>
 
       <div className="flex items-center justify-center lg:hidden">

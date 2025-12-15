@@ -58,8 +58,8 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
       className="relative z-10 mx-auto max-w-350 px-8 pt-20 pb-32"
     >
       {/* Main Content */}
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="md:col-span-2">
+      <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="text-center md:col-span-2">
           <TimelineContent
             as="p"
             animationNum={8}
@@ -69,8 +69,9 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
           >
             {aboutUs?.heading}
           </TimelineContent>
-          <p className="text-primary-blue mb-8 max-w-3xl text-xl leading-[170%]! font-semibold sm:text-3xl md:text-4xl dark:text-gray-300">
+          <p className="text-primary-blue mx-auto mb-8 max-w-3xl text-xl leading-[170%]! font-semibold sm:text-3xl md:text-4xl dark:text-gray-300">
             <VerticalCutReveal
+              containerClassName="justify-center"
               splitBy="words"
               staggerDuration={0.1}
               staggerFrom="first"
@@ -158,11 +159,11 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
           </div> */}
       </div>
 
-      <div className="py-20">
-        <div className="text-primary-green mb-8 text-3xl leading-[110%]! font-semibold lg:-mb-8">
+      <div className="flex flex-col gap-4 py-20 text-center">
+        <div className="text-primary-green mb-4 text-3xl font-semibold">
           {aboutUs?.certificateTitle}
         </div>
-        <div className="flex items-center justify-between gap-8 max-lg:flex-col">
+        <div className="flex flex-col items-center justify-between gap-8">
           <p className="text-primary-blue max-w-3xl text-lg leading-[170%]! font-semibold dark:text-gray-300">
             {aboutUs?.certificateDescription}
           </p>
@@ -185,7 +186,7 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-350 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
         {/* Grid */}
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div>
@@ -201,134 +202,13 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
           <div className="relative md:ms-4">
             <Image
               src={urlFor(aboutUs?.ourVision.image).url()}
-              width={1000}
+              width={1500}
               height={1000}
               alt="Our Vision"
-              className="w-full rounded-md"
+              className="w-full rounded-sm"
             />
 
-            <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-
-            {/* SVG*/}
-            <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
-              <svg
-                className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
-                width="630"
-                height="451"
-                viewBox="0 0 630 451"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="531"
-                  y="352"
-                  width="99"
-                  height="99"
-                  fill="currentColor"
-                />
-                <rect
-                  x="140"
-                  y="352"
-                  width="106"
-                  height="99"
-                  fill="currentColor"
-                />
-                <rect
-                  x="482"
-                  y="402"
-                  width="64"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="433"
-                  y="402"
-                  width="63"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="384"
-                  y="352"
-                  width="49"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="531"
-                  y="328"
-                  width="50"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="303"
-                  width="49"
-                  height="58"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="352"
-                  width="49"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="392"
-                  width="49"
-                  height="59"
-                  fill="currentColor"
-                />
-                <rect
-                  x="44"
-                  y="402"
-                  width="66"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="234"
-                  y="402"
-                  width="62"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="334"
-                  y="303"
-                  width="50"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect x="581" width="49" height="49" fill="currentColor" />
-                <rect x="581" width="49" height="64" fill="currentColor" />
-                <rect
-                  x="482"
-                  y="123"
-                  width="49"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="507"
-                  y="124"
-                  width="49"
-                  height="24"
-                  fill="currentColor"
-                />
-                <rect
-                  x="531"
-                  y="49"
-                  width="99"
-                  height="99"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-            {/* End SVG*/}
+            <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
           </div>
           {/* End Col */}
         </div>
@@ -349,134 +229,13 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
           <div className="relative md:order-1 md:me-4">
             <Image
               src={urlFor(aboutUs?.ourMission.image).url()}
-              width={1000}
+              width={1500}
               height={1000}
               alt="Our Mission"
-              className="w-full rounded-md"
+              className="w-full rounded-sm"
             />
 
-            <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-md bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-
-            {/* SVG*/}
-            <div className="absolute start-0 bottom-0 overflow-hidden rounded-md">
-              <svg
-                className="text-primary-green ms-auto h-auto w-2/3 dark:text-neutral-900"
-                width="630"
-                height="451"
-                viewBox="0 0 630 451"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="531"
-                  y="352"
-                  width="99"
-                  height="99"
-                  fill="currentColor"
-                />
-                <rect
-                  x="140"
-                  y="352"
-                  width="106"
-                  height="99"
-                  fill="currentColor"
-                />
-                <rect
-                  x="482"
-                  y="402"
-                  width="64"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="433"
-                  y="402"
-                  width="63"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="384"
-                  y="352"
-                  width="49"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="531"
-                  y="328"
-                  width="50"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="303"
-                  width="49"
-                  height="58"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="352"
-                  width="49"
-                  height="50"
-                  fill="currentColor"
-                />
-                <rect
-                  x="99"
-                  y="392"
-                  width="49"
-                  height="59"
-                  fill="currentColor"
-                />
-                <rect
-                  x="44"
-                  y="402"
-                  width="66"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="234"
-                  y="402"
-                  width="62"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="334"
-                  y="303"
-                  width="50"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect x="581" width="49" height="49" fill="currentColor" />
-                <rect x="581" width="49" height="64" fill="currentColor" />
-                <rect
-                  x="482"
-                  y="123"
-                  width="49"
-                  height="49"
-                  fill="currentColor"
-                />
-                <rect
-                  x="507"
-                  y="124"
-                  width="49"
-                  height="24"
-                  fill="currentColor"
-                />
-                <rect
-                  x="531"
-                  y="49"
-                  width="99"
-                  height="99"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-            {/* End SVG*/}
+            <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
           </div>
           {/* End Col */}
         </div>
