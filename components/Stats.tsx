@@ -26,7 +26,7 @@ const StatItem = ({ value: targetValue, description }: StatItemProps) => {
 
   return (
     <div ref={ref} className="space-y-4 px-10 text-white">
-      <div className="text-5xl font-bold">
+      <div className="text-5xl font-medium lg:text-7xl ">
         <AnimatedNumber
           springOptions={{
             bounce: 0,
@@ -36,7 +36,7 @@ const StatItem = ({ value: targetValue, description }: StatItemProps) => {
         />
         {suffix && <span>{suffix}</span>}
       </div>
-      <p>{description}</p>
+      <p className="text-primary-blue font-semibold ">{description}</p>
     </div>
   );
 };
@@ -72,7 +72,7 @@ const Stats = ({ stats }: { stats: StatsType | null }) => {
             speedReveal={0.8}
             speedSegment={0.8}
             trigger={inView}
-            className="text-2xl text-emerald-50"
+            className="text-primary-blue text-2xl"
           >
             {stats.description}
           </TextEffect>

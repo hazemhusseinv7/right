@@ -10,7 +10,7 @@ import {
   getPartnersData,
 } from "@/lib/sanity/queries";
 
-import Hero from "@/components/Hero";
+import Hero from "@/components/Hero/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
 import Milestones from "@/components/Milestones";

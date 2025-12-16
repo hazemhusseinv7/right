@@ -22,6 +22,7 @@ interface SettingsType {
 }
 
 interface HeroType {
+  heroImage: ImageType;
   button: {
     prefix: string;
     action: string;

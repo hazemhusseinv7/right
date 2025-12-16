@@ -9,6 +9,8 @@ import { urlFor } from "@/lib/sanity/image";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
 import ImagePreview from "@/components/ImagePreview";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { useInView } from "motion/react";
 
 const portableTextComponents = {
   types: {
@@ -34,6 +36,9 @@ const portableTextComponents = {
 };
 
 const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-100px" });
+
   const heroRef = useRef<HTMLDivElement>(null);
   const revealVariants = {
     visible: (i: number) => ({
@@ -186,16 +191,38 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8">
+      <div
+        className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8"
+        ref={containerRef}
+      >
         {/* Grid */}
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div>
-            <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-              {aboutUs?.ourVision.title}
-            </h3>
-            <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-              {aboutUs?.ourVision.description}
-            </p>
+            {aboutUs?.ourVision.title && (
+              <TextEffect
+                per="word"
+                preset="blur"
+                as="h2"
+                speedReveal={0.3}
+                speedSegment={0.3}
+                trigger={inView}
+                className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white"
+              >
+                {aboutUs.ourVision.title}
+              </TextEffect>
+            )}
+            {aboutUs?.ourVision.description && (
+              <TextEffect
+                per="word"
+                preset="blur"
+                speedReveal={0.3}
+                speedSegment={0.3}
+                trigger={inView}
+                className="mt-3 text-lg text-gray-800 dark:text-neutral-400"
+              >
+                {aboutUs.ourVision.description}
+              </TextEffect>
+            )}
           </div>
           {/* End Col */}
 
@@ -217,12 +244,31 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
         {/* Grid */}
         <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
           <div className="md:order-2">
-            <h3 className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-              {aboutUs?.ourMission.title}
-            </h3>
-            <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-              {aboutUs?.ourMission.description}
-            </p>
+            {aboutUs?.ourMission.title && (
+              <TextEffect
+                per="word"
+                preset="blur"
+                as="h2"
+                speedReveal={0.3}
+                speedSegment={0.3}
+                trigger={inView}
+                className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white"
+              >
+                {aboutUs.ourMission.title}
+              </TextEffect>
+            )}
+            {aboutUs?.ourMission.description && (
+              <TextEffect
+                per="word"
+                preset="blur"
+                speedReveal={0.3}
+                speedSegment={0.3}
+                trigger={inView}
+                className="mt-3 text-lg text-gray-800 dark:text-neutral-400"
+              >
+                {aboutUs.ourMission.description}
+              </TextEffect>
+            )}
           </div>
           {/* End Col */}
 
