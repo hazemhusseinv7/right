@@ -31,8 +31,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: "/services", label: "Services", icon: HiServer },
     { href: "/about-us", label: "About us", icon: FaUser },
+    { href: "/services", label: "Services", icon: HiServer },
     { href: "/partners", label: "Partners", icon: FaUserCheck },
     { href: "/team", label: "Team", icon: RiTeamFill },
     { href: "/blog", label: "Blog", icon: HiNewspaper },

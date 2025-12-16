@@ -6,13 +6,7 @@ import { useRef } from "react";
 import { TextEffect } from "./motion-primitives/text-effect";
 import { useInView } from "motion/react";
 
-const Services = ({
-  settings,
-  services,
-}: {
-  settings: SettingsType | null;
-  services: ServicesType | null;
-}) => {
+const Services = ({ services }: { services: ServicesType | null }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -29,8 +23,6 @@ const Services = ({
 
   const sectionTitle = services?.title;
 
-  const cta = settings?.whatsapp;
-
   return (
     <section
       id="services"
@@ -38,21 +30,23 @@ const Services = ({
       className="bg-linear-to-b from-emerald-50 py-24 lg:py-40"
     >
       {sectionTitle && (
-        <TextEffect
-          per="word"
-          preset="blur"
-          as="h2"
-          speedReveal={0.3}
-          speedSegment={0.3}
-          trigger={inView}
-          className="text-primary-green z-200 mx-auto mb-4 w-fit text-5xl font-semibold lg:text-7xl"
-        >
-          {sectionTitle}
-        </TextEffect>
+        <div className="min-h-16 lg:min-h-22">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="h2"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            trigger={inView}
+            className="text-primary-green z-200 mx-auto mb-4 w-fit text-5xl font-semibold lg:text-7xl"
+          >
+            {sectionTitle}
+          </TextEffect>
+        </div>
       )}
 
       <div className="mx-auto max-w-350">
-        <ExpandableCard items={servicesData} cta={cta} />
+        <ExpandableCard items={servicesData} />
       </div>
     </section>
   );

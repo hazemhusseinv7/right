@@ -13,6 +13,7 @@ import { getBlogPosts } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
 
 import { GoChevronRight } from "react-icons/go";
+import { TextEffect } from "@/components/motion-primitives/text-effect";
 
 const POSTS_PER_PAGE = 6;
 
@@ -48,9 +49,16 @@ export default function Page() {
       <div className="mx-auto max-w-340 px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
         {/* Title */}
         <div className="relative flex w-full flex-col items-center justify-center pt-32 pb-32 sm:pt-40">
-          <h1 className="text-primary-green relative max-w-[12ch] text-4xl leading-tight uppercase opacity-70 lg:text-8xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="h1"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            className="text-primary-green relative max-w-[12ch] text-4xl leading-tight uppercase opacity-70 lg:text-8xl"
+          >
             Blog
-          </h1>
+          </TextEffect>
         </div>
         {/* End Title */}
         {loading ? (

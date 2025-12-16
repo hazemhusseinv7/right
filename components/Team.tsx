@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTeamData } from "@/lib/sanity/queries";
 import { FaUserCheck } from "react-icons/fa6";
 import { urlFor } from "@/lib/sanity/image";
+import { TextEffect } from "./motion-primitives/text-effect";
 
 const Team = async () => {
   const data: TeamType | null = await getTeamData();
@@ -15,12 +16,29 @@ const Team = async () => {
     <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
       <div className="mx-auto max-w-5xl px-6">
         <div className="relative flex w-full flex-col items-center justify-center">
-          <h1 className="text-primary-green relative text-4xl leading-tight uppercase opacity-70 lg:text-5xl">
-            {data?.title}
-          </h1>
-          <p className="mt-1 text-gray-600 dark:text-neutral-400">
-            {data?.description}
-          </p>
+          {data?.title && (
+            <TextEffect
+              per="word"
+              preset="blur"
+              as="h1"
+              speedReveal={0.3}
+              speedSegment={0.3}
+              className="text-primary-green relative text-4xl leading-tight uppercase opacity-70 lg:text-5xl"
+            >
+              {data.title}
+            </TextEffect>
+          )}
+          {data?.description && (
+            <TextEffect
+              per="word"
+              preset="blur"
+              speedReveal={0.8}
+              speedSegment={0.8}
+              className="mt-1 text-gray-600 dark:text-neutral-400"
+            >
+              {data.description}
+            </TextEffect>
+          )}
         </div>
         <div className="mt-12 md:mt-24">
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">

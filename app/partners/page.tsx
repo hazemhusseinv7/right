@@ -1,3 +1,4 @@
+import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { urlFor } from "@/lib/sanity/image";
 import { getPartnersData, getClientsData } from "@/lib/sanity/queries";
 import Image from "next/image";
@@ -15,9 +16,16 @@ export default async function Page() {
     <main className="my-20">
       <section className="bg-background py-27">
         <div className="mx-auto max-w-350 px-6 text-center">
-          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="span"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            className="text-primary-green text-center text-2xl font-medium lg:text-4xl"
+          >
             IT Partners
-          </span>
+          </TextEffect>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {itPartners.map((logo, i) => (
               <div
@@ -39,9 +47,16 @@ export default async function Page() {
 
       <section className="bg-background py-27">
         <div className="mx-auto max-w-350 px-6 text-center">
-          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="span"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            className="text-primary-green text-center text-2xl font-medium lg:text-4xl"
+          >
             Industrial Partners
-          </span>
+          </TextEffect>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {industrialPartners.map((logo, i) => (
               <div
@@ -63,9 +78,16 @@ export default async function Page() {
 
       <section className="bg-background py-27">
         <div className="mx-auto max-w-350 px-6 text-center">
-          <span className="text-primary-green text-center text-2xl font-medium lg:text-4xl">
+          <TextEffect
+            per="word"
+            preset="blur"
+            as="span"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            className="text-primary-green text-center text-2xl font-medium lg:text-4xl"
+          >
             Clients
-          </span>
+          </TextEffect>
           <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
             {clients?.logos.map((logo, i) => (
               <div

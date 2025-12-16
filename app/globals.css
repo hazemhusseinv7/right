@@ -150,5 +150,5 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply hover:bg-primary-green bg-primary-blue rounded-full;
+  @apply hover:bg-primary-blue bg-primary-green rounded-full;
 }

@@ -113,10 +113,7 @@ const Hero = ({
         </div>
       </article>
 
-      <Partners
-        className="relative z-10 mt-4 py-0! lg:mt-20"
-        data={partners}
-      />
+      <Partners className="relative z-10 mt-4 py-0! lg:mt-20" data={partners} />
 
       <div className="absolute end-0 size-full">
         <div className="relative -end-20 bottom-100 z-1 mx-auto me-0 h-[800px] max-w-[800px] overflow-hidden py-5 lg:-end-48">

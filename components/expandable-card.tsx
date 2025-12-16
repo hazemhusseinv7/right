@@ -24,13 +24,11 @@ export interface CardList {
 export interface ExpandableCardProps {
   items: CardList[];
   className?: string;
-  cta?: string;
 }
 
 export default function ExpandableCard({
   items,
   className,
-  cta,
 }: ExpandableCardProps) {
   const [current, setCurrent] = useState<CardItem | null>(null);
   const ref = useOutsideClick(() => setCurrent(null));
@@ -121,17 +119,13 @@ export default function ExpandableCard({
                   </div>
                 </div>
 
-                {cta && (
-                  <Button
-                    className="bg-primary-green mx-auto mt-8 w-fit px-8 text-white"
-                    as="a"
-                    href={cta}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Request now <FiArrowUpRight className="size-5" />
-                  </Button>
-                )}
+                <Button
+                  className="bg-primary-green mx-auto mt-8 w-fit px-8 text-white"
+                  as="a"
+                  href="/contact"
+                >
+                  Request now <FiArrowUpRight className="size-5" />
+                </Button>
               </motion.div>
             </div>
           </>
@@ -146,9 +140,9 @@ export default function ExpandableCard({
       >
         {items.map((list, i) => (
           <div key={i}>
-            <h3 className="text-primary-green mx-auto mb-4 w-fit text-xl font-medium lg:text-2xl">
+            <span className="text-primary-green mx-auto mb-4 block w-fit text-xl font-medium lg:text-2xl">
               {list.title}
-            </h3>
+            </span>
             <div className="relative grid w-full grid-cols-2 gap-4 px-2 lg:grid-cols-3">
               {list.list.map((item) => (
                 <motion.div
