@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { Button } from "@heroui/react";
 
 import { cn } from "@/lib/utils";
 import { FiArrowUpRight } from "react-icons/fi";
+import { AnimatedGroup } from "./motion-primitives/animated-group";
 
 export interface CardItem {
   title: string;
@@ -30,6 +31,9 @@ export default function ExpandableCard({
   items,
   className,
 }: ExpandableCardProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-100px" });
+
   const [current, setCurrent] = useState<CardItem | null>(null);
   const ref = useOutsideClick(() => setCurrent(null));
 
@@ -39,7 +43,7 @@ export default function ExpandableCard({
   };
 
   return (
-    <div className="relative z-20">
+    <div className="relative z-20" ref={containerRef}>
       <AnimatePresence>
         {current ? (
           <motion.div
@@ -140,10 +144,38 @@ export default function ExpandableCard({
       >
         {items.map((list, i) => (
           <div key={i}>
-            <span className="text-primary-green mx-auto mb-4 block w-fit text-xl font-medium lg:text-2xl">
+            <h3 className="text-primary-green mx-auto mb-4 w-fit text-xl font-medium lg:text-2xl">
               {list.title}
-            </span>
-            <div className="relative grid w-full grid-cols-2 gap-4 px-2 lg:grid-cols-3">
+            </h3>
+
+            <AnimatedGroup
+              trigger={inView}
+              className="relative grid w-full grid-cols-2 gap-4 px-2 lg:grid-cols-3"
+              variants={{
+                container: {
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.3,
+                    },
+                  },
+                },
+                item: {
+                  hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: {
+                      duration: 1.2,
+                      type: "spring",
+                      bounce: 0.3,
+                    },
+                  },
+                },
+              }}
+            >
               {list.list.map((item) => (
                 <motion.div
                   layoutId={`cardItem-${item.title}`}
@@ -180,7 +212,7 @@ export default function ExpandableCard({
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </AnimatedGroup>
           </div>
         ))}
       </div>

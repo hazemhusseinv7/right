@@ -14,6 +14,7 @@ import { Check, LoaderCircleIcon } from "lucide-react";
 import { TextEffect } from "./motion-primitives/text-effect";
 import { useRef } from "react";
 import { useInView } from "motion/react";
+import { FaMapLocationDot } from "react-icons/fa6";
 
 const Milestones = ({
   milestones: data,
@@ -42,17 +43,20 @@ const Milestones = ({
       className="flex min-h-140 flex-col justify-center gap-10 bg-linear-to-t from-emerald-50 px-4 py-12 md:py-20"
     >
       <div className="relative z-10 mx-auto mb-10 max-w-xl space-y-6 text-center md:space-y-12">
-        <TextEffect
-          per="word"
-          preset="blur"
-          as="h2"
-          speedReveal={0.3}
-          speedSegment={0.3}
-          trigger={inView}
-          className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl"
-        >
-          {data.title}
-        </TextEffect>
+        <h2>
+          <FaMapLocationDot className="text-primary-green mx-auto size-10 lg:size-12" />
+
+          <TextEffect
+            per="word"
+            preset="blur"
+            speedReveal={0.3}
+            speedSegment={0.3}
+            trigger={inView}
+            className="text-primary-green text-5xl font-semibold text-balance lg:text-7xl"
+          >
+            {data.title}
+          </TextEffect>
+        </h2>
       </div>
 
       <div className="flex items-center justify-center lg:hidden">
@@ -78,7 +82,17 @@ const Milestones = ({
                     {index + 1}
                   </StepperIndicator>
                   <div className="mt-0.5 space-y-2 text-left">
-                    <StepperTitle>{step.title}</StepperTitle>
+                    <StepperTitle>
+                      <TextEffect
+                        per="word"
+                        preset="blur"
+                        speedReveal={0.2}
+                        speedSegment={0.2}
+                        trigger={inView}
+                      >
+                        {step.title}
+                      </TextEffect>
+                    </StepperTitle>
                     <StepperDescription>{step.year}</StepperDescription>
                   </div>
                 </StepperTrigger>
@@ -119,7 +133,15 @@ const Milestones = ({
                       {step.year}
                     </div>
                     <StepperTitle className="text-primary-blue group-data-[state=inactive]/step:text-muted-foreground text-start text-base font-semibold">
-                      {step.title}
+                      <TextEffect
+                        per="word"
+                        preset="blur"
+                        speedReveal={0.2}
+                        speedSegment={0.2}
+                        trigger={inView}
+                      >
+                        {step.title}
+                      </TextEffect>
                     </StepperTitle>
                   </div>
                 </StepperTrigger>

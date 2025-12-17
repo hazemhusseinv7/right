@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useInView } from "motion/react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 
 import { FaQuoteLeft, FaQuoteRight, FaUser } from "react-icons/fa6";
+import { RiChatCheckFill } from "react-icons/ri";
 
 const DURATION = 5000;
 const BAR_WIDTH = 50;
@@ -43,6 +44,8 @@ const Testimonials = ({
       ref={sectionRef}
       className="relative flex flex-col items-center justify-center bg-linear-to-t from-emerald-50 py-16 lg:min-h-180"
     >
+      <RiChatCheckFill className="text-primary-green size-10 lg:size-12" />
+
       <TextEffect
         per="word"
         preset="blur"

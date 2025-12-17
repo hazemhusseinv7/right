@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 import { useInView } from "motion/react";
+import { MdMarkChatUnread } from "react-icons/md";
 
 interface FormDataType {
   name: string;
@@ -84,6 +85,8 @@ const ContactComponent = ({ settings }: { settings?: SettingsType }) => {
     <section ref={sectionRef} className="relative py-32">
       <div className="mx-auto max-w-4xl px-4 lg:px-0">
         <div className="mb-12 text-center text-4xl font-semibold lg:text-5xl">
+          <MdMarkChatUnread className="text-primary-green mx-auto size-10 lg:size-12" />
+
           <TextEffect
             per="word"
             as="h1"

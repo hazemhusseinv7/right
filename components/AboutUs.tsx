@@ -19,8 +19,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 import { urlFor } from "@/lib/sanity/image";
 import { PortableText } from "@portabletext/react";
 import ImagePreview from "./ImagePreview";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { useInView } from "motion/react";
+import HorizontalScroll from "./HorizontalScroll";
 
 const portableTextComponents = {
   types: {
@@ -52,9 +51,6 @@ const AboutUs = ({
   settings: SettingsType | null;
   aboutUs: AboutUsType | null;
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(containerRef, { once: true, margin: "-100px" });
-
   const heroRef = useRef<HTMLDivElement>(null);
   const revealVariants = {
     visible: (i: number) => ({
@@ -247,7 +243,7 @@ const AboutUs = ({
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           <div className="text-center md:col-span-2">
             <TimelineContent
-              as="p"
+              as="h2"
               animationNum={8}
               timelineRef={heroRef}
               customVariants={revealVariants}
@@ -371,104 +367,9 @@ const AboutUs = ({
             </div>
           </div>
         </div>
-
-        <div
-          className="mx-auto flex max-w-340 flex-col gap-20 px-4 py-40 sm:px-6 lg:px-8"
-          ref={containerRef}
-        >
-          {/* Grid */}
-          <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
-            <div>
-              {aboutUs?.ourVision.title && (
-                <TextEffect
-                  per="word"
-                  preset="blur"
-                  as="h2"
-                  speedReveal={0.3}
-                  speedSegment={0.3}
-                  trigger={inView}
-                  className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white"
-                >
-                  {aboutUs.ourVision.title}
-                </TextEffect>
-              )}
-              {aboutUs?.ourVision.description && (
-                <TextEffect
-                  per="word"
-                  preset="blur"
-                  speedReveal={0.3}
-                  speedSegment={0.3}
-                  trigger={inView}
-                  className="mt-3 text-lg text-gray-800 dark:text-neutral-400"
-                >
-                  {aboutUs.ourVision.description}
-                </TextEffect>
-              )}
-            </div>
-            {/* End Col */}
-
-            <div className="relative md:ms-4">
-              <Image
-                src={urlFor(aboutUs?.ourVision.image).url()}
-                width={1500}
-                height={1000}
-                alt="Our Vision"
-                className="w-full rounded-sm"
-              />
-
-              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-            </div>
-            {/* End Col */}
-          </div>
-          {/* End Grid */}
-
-          {/* Grid */}
-          <div className="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
-            <div className="md:order-2">
-              {aboutUs?.ourMission.title && (
-                <TextEffect
-                  per="word"
-                  preset="blur"
-                  as="h2"
-                  speedReveal={0.3}
-                  speedSegment={0.3}
-                  trigger={inView}
-                  className="text-primary-green block text-3xl font-bold sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white"
-                >
-                  {aboutUs.ourMission.title}
-                </TextEffect>
-              )}
-              {aboutUs?.ourMission.description && (
-                <TextEffect
-                  per="word"
-                  preset="blur"
-                  speedReveal={0.3}
-                  speedSegment={0.3}
-                  trigger={inView}
-                  className="mt-3 text-lg text-gray-800 dark:text-neutral-400"
-                >
-                  {aboutUs.ourMission.description}
-                </TextEffect>
-              )}
-            </div>
-            {/* End Col */}
-
-            <div className="relative md:order-1 md:me-4">
-              <Image
-                src={urlFor(aboutUs?.ourMission.image).url()}
-                width={1500}
-                height={1000}
-                alt="Our Mission"
-                className="w-full rounded-sm"
-              />
-
-              <div className="from-primary-green/40 absolute inset-0 -z-1 -ms-4 me-4 mt-4 -mb-4 size-full rounded-sm bg-linear-to-tr via-white/0 to-white/0 lg:-ms-6 lg:me-6 lg:mt-6 lg:-mb-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0" />
-            </div>
-            {/* End Col */}
-          </div>
-          {/* End Grid */}
-        </div>
       </div>
+
+      <HorizontalScroll aboutUs={aboutUs} />
     </section>
   );
 };

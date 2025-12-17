@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getIndustriesData } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
+import { BiSolidMessageSquareCheck } from "react-icons/bi";
+import { MdLibraryAddCheck } from "react-icons/md";
 
 const Industries = async () => {
   const data: IndustriesType | null = await getIndustriesData();
@@ -12,7 +14,10 @@ const Industries = async () => {
   if (!data || !industries) return;
 
   return (
-    <section id="industries" className="py-28 md:py-32 dark:bg-transparent">
+    <section
+      id="industries"
+      className="relative py-28 md:py-32 dark:bg-transparent"
+    >
       <div className="@container mx-auto max-w-350 px-6">
         <div className="text-center">
           <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl">
@@ -44,6 +49,18 @@ const Industries = async () => {
           ))}
         </Card>
       </div>
+
+      {/* SVG Element */}
+      <div className="absolute end-0 top-0 -translate-x-4 translate-y-4 lg:-translate-x-20 lg:translate-y-50">
+        <BiSolidMessageSquareCheck className="text-primary-green size-10 lg:size-14" />
+      </div>
+      {/* End SVG Element */}
+
+      {/* SVG Element */}
+      <div className="absolute start-0 bottom-0 translate-x-4 translate-y-10 lg:translate-x-20 lg:-translate-y-20">
+        <MdLibraryAddCheck className="text-primary-green size-10 lg:size-14" />
+      </div>
+      {/* End SVG Element */}
     </section>
   );
 };
@@ -54,7 +71,7 @@ const CardDecorator = ({ children }: { children: React.ReactNode }) => (
   <div className="relative mx-auto size-36 mask-radial-from-40% mask-radial-to-60% duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
     <div
       aria-hidden
-      className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px] dark:opacity-50"
+      className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
     />
 
     <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l">

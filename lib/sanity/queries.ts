@@ -39,15 +39,6 @@ export async function getSettingsData(): Promise<SettingsType | null> {
 
 export async function getHeroData(): Promise<HeroType | null> {
   const query = `*[_type == "main"][0]{
-    heroImage {
-      asset-> {
-        _id,
-        url,
-        metadata {
-          dimensions
-        }
-      }
-    },
     button {
       prefix,
       action,

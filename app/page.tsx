@@ -46,8 +46,8 @@ export default async function Home() {
   return (
     <main>
       <Hero hero={hero} partners={partners} />
-      <Services services={services} />
       <AboutUs settings={settings} aboutUs={aboutUs} />
+      <Services services={services} />
       <Stats stats={stats} />
       <Values values={values} />
       <Milestones milestones={milestones} />

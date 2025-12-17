@@ -3,6 +3,7 @@ import { getAboutData, getValuesData } from "@/lib/sanity/queries";
 import AboutUs from "./AboutUs";
 import Values from "@/components/Values";
 import Industries from "@/components/Industries";
+import HorizontalScroll from "@/components/HorizontalScroll";
 
 export default async function Page() {
   const [aboutUs, values] = await Promise.all([
@@ -29,9 +30,9 @@ export default async function Page() {
 
       <AboutUs aboutUs={aboutUs} />
 
-      <div className="-mt-20">
-        <Values values={values} />
-      </div>
+      <HorizontalScroll aboutUs={aboutUs} />
+
+      <Values values={values} />
 
       <Industries />
     </main>
