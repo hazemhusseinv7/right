@@ -3,7 +3,11 @@ import { getAboutData, getValuesData } from "@/lib/sanity/queries";
 import AboutUs from "./AboutUs";
 import Values from "@/components/Values";
 import Industries from "@/components/Industries";
-import HorizontalScroll from "@/components/HorizontalScroll";
+import Timeline3D, {
+  TimelineEvent,
+} from "@/components/3d-interactive-timeline";
+import { FaLightbulb } from "react-icons/fa6";
+import { BiSolidAward } from "react-icons/bi";
 
 export default async function Page() {
   const [aboutUs, values] = await Promise.all([
@@ -12,6 +16,23 @@ export default async function Page() {
   ]);
 
   const img = urlFor(aboutUs?.heroImage).url();
+
+  const timelineEvents: TimelineEvent[] = [
+    {
+      id: "1",
+      title: aboutUs?.ourVision.title,
+      description: aboutUs?.ourVision.description,
+      icon: <FaLightbulb className="size-5 text-white" />,
+      image: aboutUs?.ourVision.image,
+    },
+    {
+      id: "2",
+      title: aboutUs?.ourMission.title,
+      description: aboutUs?.ourMission.description,
+      icon: <BiSolidAward className="size-5 text-white" />,
+      image: aboutUs?.ourMission.image,
+    },
+  ];
 
   return (
     <main className="bg-linear-to-t from-emerald-50 pt-11">
@@ -30,7 +51,7 @@ export default async function Page() {
 
       <AboutUs aboutUs={aboutUs} />
 
-      <HorizontalScroll aboutUs={aboutUs} />
+      <Timeline3D events={timelineEvents} />
 
       <Values values={values} />
 

@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 import { useInView } from "motion/react";
-import { AnimatedNumber } from "./motion-primitives/animated-number";
-import { TextEffect } from "./motion-primitives/text-effect";
+import { AnimatedNumber } from "./ui/animated-number";
+import { TextEffect } from "./ui/text-effect";
 
 interface StatItemProps {
   value: string;

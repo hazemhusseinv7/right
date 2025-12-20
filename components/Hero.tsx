@@ -2,6 +2,7 @@ import ButtonHoverMultiple from "@/components/ButtonHoverMultiple";
 import NewItemsLoading from "@/components/new-items-loading";
 import WordAnimator from "@/components/word-animator";
 import Partners from "@/components/Partners";
+import AnimatedSVG from "./AnimatedSVG";
 
 const Hero = ({
   hero,
@@ -20,6 +21,7 @@ const Hero = ({
       id="hero"
       className="relative min-h-screen overflow-hidden bg-linear-to-b bg-[url('/background.webp')] from-blue-50 bg-cover bg-center bg-no-repeat"
     >
+      <AnimatedSVG />
       <div className="relative z-2 grid px-4 pt-32 pb-14 sm:px-0 lg:pt-56 lg:pb-24">
         <NewItemsLoading data={buttonData} />
         <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl dark:text-white">
@@ -52,7 +54,7 @@ const Hero = ({
         </div>
       </div>
 
-      <Partners className="relative z-10 mt-4 py-0! lg:mt-20" data={partners} />
+      <Partners className="relative z-10 mt-20 py-0!" data={partners} />
     </section>
   );
 };

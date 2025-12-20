@@ -1,4 +1,4 @@
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/text-effect";
 import { urlFor } from "@/lib/sanity/image";
 import { getPartnersData, getClientsData } from "@/lib/sanity/queries";
 import Image from "next/image";

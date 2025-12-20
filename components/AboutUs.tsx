@@ -19,7 +19,9 @@ import { RiWhatsappLine } from "react-icons/ri";
 import { urlFor } from "@/lib/sanity/image";
 import { PortableText } from "@portabletext/react";
 import ImagePreview from "./ImagePreview";
-import HorizontalScroll from "./HorizontalScroll";
+import Timeline3D, { TimelineEvent } from "./3d-interactive-timeline";
+import { FaLightbulb } from "react-icons/fa6";
+import { BiSolidAward } from "react-icons/bi";
 
 const portableTextComponents = {
   types: {
@@ -127,6 +129,23 @@ const AboutUs = ({
   ].filter((item) => item.link);
 
   const img = urlFor(aboutUs?.heroImage).url();
+
+  const timelineEvents: TimelineEvent[] = [
+    {
+      id: "1",
+      title: aboutUs?.ourVision.title,
+      description: aboutUs?.ourVision.description,
+      icon: <FaLightbulb className="size-5 text-white" />,
+      image: aboutUs?.ourVision.image,
+    },
+    {
+      id: "2",
+      title: aboutUs?.ourMission.title,
+      description: aboutUs?.ourMission.description,
+      icon: <BiSolidAward className="size-5 text-white" />,
+      image: aboutUs?.ourMission.image,
+    },
+  ];
 
   return (
     <section
@@ -367,9 +386,9 @@ const AboutUs = ({
             </div>
           </div>
         </div>
-      </div>
 
-      <HorizontalScroll aboutUs={aboutUs} />
+        <Timeline3D events={timelineEvents} />
+      </div>
     </section>
   );
 };

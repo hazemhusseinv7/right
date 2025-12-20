@@ -8,7 +8,7 @@ import { Button } from "@heroui/react";
 
 import { cn } from "@/lib/utils";
 import { FiArrowUpRight } from "react-icons/fi";
-import { AnimatedGroup } from "./motion-primitives/animated-group";
+import { AnimatedGroup } from "./ui/animated-group";
 
 export interface CardItem {
   title: string;

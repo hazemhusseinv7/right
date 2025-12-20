@@ -9,6 +9,8 @@ import { urlFor } from "@/lib/sanity/image";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
 import ImagePreview from "@/components/ImagePreview";
+import { TextEffect } from "@/components/ui/text-effect";
+import { useInView } from "motion/react";
 
 const portableTextComponents = {
   types: {
@@ -34,6 +36,9 @@ const portableTextComponents = {
 };
 
 const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, margin: "-100px" });
+
   const heroRef = useRef<HTMLDivElement>(null);
   const revealVariants = {
     visible: (i: number) => ({

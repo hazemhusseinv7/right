@@ -13,7 +13,7 @@ import { getBlogPosts } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
 
 import { GoChevronRight } from "react-icons/go";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/text-effect";
 
 const POSTS_PER_PAGE = 6;
 

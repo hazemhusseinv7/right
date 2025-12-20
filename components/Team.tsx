@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getTeamData } from "@/lib/sanity/queries";
 import { FaUserCheck } from "react-icons/fa6";
 import { urlFor } from "@/lib/sanity/image";
-import { TextEffect } from "./motion-primitives/text-effect";
+import { TextEffect } from "./ui/text-effect";
 
 const Team = async () => {
   const data: TeamType | null = await getTeamData();

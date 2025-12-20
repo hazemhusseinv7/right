@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity/image";
-import { TextEffect } from "./motion-primitives/text-effect";
+import { TextEffect } from "./ui/text-effect";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { AnimatedGroup } from "./motion-primitives/animated-group";
-import { RiShieldCheckFill } from "react-icons/ri";
-import { BsBookmarkCheckFill } from "react-icons/bs";
+import { AnimatedGroup } from "./ui/animated-group";
+import DecorativeBackground from "./DecorativeBackground";
 
 const Values = ({ values: data }: { values: ValuesType | null }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,7 +47,7 @@ const Values = ({ values: data }: { values: ValuesType | null }) => {
 
         <AnimatedGroup
           trigger={inView}
-          className="bg-background relative mx-auto grid divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3"
+          className="bg-background relative z-10 mx-auto grid divide-x divide-y border *:p-12 sm:grid-cols-2 lg:grid-cols-3"
           variants={{
             container: {
               hidden: { opacity: 0 },
@@ -92,17 +91,7 @@ const Values = ({ values: data }: { values: ValuesType | null }) => {
         </AnimatedGroup>
       </div>
 
-      {/* SVG Element */}
-      <div className="absolute end-0 top-0 -translate-x-4 translate-y-4 lg:-translate-x-20 lg:translate-y-50">
-        <RiShieldCheckFill className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
-
-      {/* SVG Element */}
-      <div className="absolute start-0 bottom-0 translate-x-4 translate-y-10 lg:translate-x-20 lg:-translate-y-20">
-        <BsBookmarkCheckFill className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
+      <DecorativeBackground />
     </section>
   );
 };

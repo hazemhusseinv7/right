@@ -11,7 +11,7 @@ import {
   StepperTrigger,
 } from "@/components/ui/stepper";
 import { Check, LoaderCircleIcon } from "lucide-react";
-import { TextEffect } from "./motion-primitives/text-effect";
+import { TextEffect } from "./ui/text-effect";
 import { useRef } from "react";
 import { useInView } from "motion/react";
 import { FaMapLocationDot } from "react-icons/fa6";

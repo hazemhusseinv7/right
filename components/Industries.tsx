@@ -3,8 +3,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getIndustriesData } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
-import { BiSolidMessageSquareCheck } from "react-icons/bi";
-import { MdLibraryAddCheck } from "react-icons/md";
+import DecorativeBackground from "./DecorativeBackground";
 
 const Industries = async () => {
   const data: IndustriesType | null = await getIndustriesData();
@@ -50,17 +49,7 @@ const Industries = async () => {
         </Card>
       </div>
 
-      {/* SVG Element */}
-      <div className="absolute end-0 top-0 -translate-x-4 translate-y-4 lg:-translate-x-20 lg:translate-y-50">
-        <BiSolidMessageSquareCheck className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
-
-      {/* SVG Element */}
-      <div className="absolute start-0 bottom-0 translate-x-4 translate-y-10 lg:translate-x-20 lg:-translate-y-20">
-        <MdLibraryAddCheck className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
+      <DecorativeBackground />
     </section>
   );
 };

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "motion/react";
 
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/text-effect";
 
 import { FaQuoteLeft, FaQuoteRight, FaUser } from "react-icons/fa6";
 import { RiChatCheckFill } from "react-icons/ri";

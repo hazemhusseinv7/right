@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getCareersData } from "@/lib/sanity/queries";
 import { GoChevronRight } from "react-icons/go";
 import { urlFor } from "@/lib/sanity/image";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/text-effect";
 
 export default async function Page() {
   const careers: CareersType | null = await getCareersData();

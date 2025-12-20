@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/text-effect";
 import { addToast, Button, Input, Textarea } from "@heroui/react";
 import { Card } from "@/components/ui/card";
 

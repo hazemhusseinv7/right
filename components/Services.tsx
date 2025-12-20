@@ -3,10 +3,9 @@
 import { urlFor } from "@/lib/sanity/image";
 import ExpandableCard, { CardList } from "./expandable-card";
 import { useRef } from "react";
-import { TextEffect } from "./motion-primitives/text-effect";
+import { TextEffect } from "./ui/text-effect";
 import { useInView } from "motion/react";
-import { BsCloudCheckFill } from "react-icons/bs";
-import { MdLibraryAddCheck } from "react-icons/md";
+import DecorativeBackground from "./DecorativeBackground";
 
 const Services = ({ services }: { services: ServicesType | null }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -52,17 +51,7 @@ const Services = ({ services }: { services: ServicesType | null }) => {
         <ExpandableCard items={servicesData} />
       </div>
 
-      {/* SVG Element */}
-      <div className="absolute end-0 top-0 -translate-x-4 translate-y-40 lg:-translate-x-20 lg:translate-y-50">
-        <BsCloudCheckFill className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
-
-      {/* SVG Element */}
-      <div className="absolute start-0 bottom-0 translate-x-4 -translate-y-10 lg:translate-x-20 lg:-translate-y-20">
-        <MdLibraryAddCheck className="text-primary-green size-10 lg:size-14" />
-      </div>
-      {/* End SVG Element */}
+      <DecorativeBackground />
     </section>
   );
 };

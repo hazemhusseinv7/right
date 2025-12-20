@@ -32,7 +32,7 @@ export default function RootLayout({
     gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className="overflow-x-hidden scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body className={`${poppins.variable} font-poppins antialiased`}>
         <Providers>
           <Header />
