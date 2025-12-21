@@ -15,9 +15,9 @@ const Industries = async () => {
   return (
     <section
       id="industries"
-      className="relative py-28 md:py-32 dark:bg-transparent"
+      className="relative z-200 py-28 md:py-32 dark:bg-transparent"
     >
-      <div className="@container mx-auto max-w-350 px-6">
+      <div className="@container relative z-10 mx-auto max-w-350 px-6">
         <div className="text-center">
           <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl">
             {data.title}
