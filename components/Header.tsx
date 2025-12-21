@@ -30,18 +30,22 @@ const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { href: "/about-us", label: "About us", icon: FaUser },
-    { href: "/services", label: "Services", icon: HiServer },
-    { href: "/partners", label: "Partners", icon: FaUserCheck },
-    { href: "/team", label: "Team", icon: RiTeamFill },
-    { href: "/blog", label: "Blog", icon: HiNewspaper },
-    { href: "/careers", label: "Careers", icon: FaBriefcase },
-  ];
+  const navItems = {
+    left: [
+      { href: "/about-us", label: "About us", icon: FaUser },
+      { href: "/services", label: "Services", icon: HiServer },
+      { href: "/partners", label: "Partners", icon: FaUserCheck },
+    ],
+    right: [
+      { href: "/team", label: "Team", icon: RiTeamFill },
+      { href: "/blog", label: "Blog", icon: HiNewspaper },
+      { href: "/careers", label: "Careers", icon: FaBriefcase },
+    ],
+  };
 
   return (
-    <header className="text-primary-foreground absolute top-0 z-200 w-full lg:flex lg:items-center lg:px-8 lg:py-0">
-      <div className="relative mx-auto flex h-18 w-full items-center justify-between rounded-b-sm border border-neutral-200 bg-white p-2 px-4 md:max-w-5xl lg:h-29 dark:border-neutral-800 dark:bg-zinc-950">
+    <header className="text-primary-foreground fixed top-0 z-200 w-full lg:flex lg:items-center lg:py-0">
+      <div className="relative mx-auto flex h-18 w-full items-center justify-between border border-neutral-200 bg-white p-2 px-4 lg:h-29 lg:px-14 dark:border-neutral-800 dark:bg-zinc-950">
         {isMobile && (
           <>
             <Drawer.Root
@@ -88,7 +92,7 @@ const Header = () => {
                         <X />
                       </button>
                     </div>
-                    {navItems.map((item) => (
+                    {[...navItems.left, ...navItems.right].map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -128,7 +132,23 @@ const Header = () => {
         )}
         {!isMobile && (
           <>
-            <nav className="flex items-center gap-2 font-medium">
+            <nav className="flex items-center gap-2">
+              {navItems.left.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "hover:text-base-blue text-primary-blue flex cursor-pointer items-center justify-center gap-1 border-b-2 p-2 text-xl transition-colors duration-200 select-none dark:text-white dark:hover:text-blue-200",
+                    pathname.startsWith(item.href) &&
+                      "border-primary-green text-primary-green border-b-2 dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
+                  )}
+                >
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-2 font-medium">
               <Link href="/" className="flex items-center pl-2">
                 <div className="flex items-center gap-2 text-zinc-950 dark:text-white">
                   <Image
@@ -141,10 +161,10 @@ const Header = () => {
                   />
                 </div>
               </Link>
-            </nav>
+            </div>
 
-            <div className="flex items-center gap-2">
-              {navItems.map((item) => (
+            <nav className="flex items-center gap-2">
+              {navItems.right.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -154,24 +174,17 @@ const Header = () => {
                       "border-primary-green text-primary-green border-b-2 dark:border-blue-950 dark:bg-neutral-900 dark:text-blue-200",
                   )}
                 >
-                  <item.icon
-                    size={20}
-                    className={cn(
-                      "text-primary-blue",
-                      pathname.startsWith(item.href) && "text-primary-green",
-                    )}
-                  />
                   <span>{item.label}</span>
                 </Link>
               ))}
-            </div>
 
-            <Link
-              href="/contact"
-              className="bg-primary-green hover:bg-primary-blue/90 flex h-10 items-center justify-center rounded-md border border-neutral-200 px-3 text-white transition-colors duration-300 dark:border-neutral-800"
-            >
-              Contact Us
-            </Link>
+              <Link
+                href="/contact"
+                className="bg-primary-green hover:bg-primary-blue/90 flex h-10 items-center justify-center rounded-md border border-neutral-200 px-3 text-white transition-colors duration-300 dark:border-neutral-800"
+              >
+                Contact Us
+              </Link>
+            </nav>
           </>
         )}
       </div>
