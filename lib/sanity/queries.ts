@@ -57,6 +57,22 @@ export async function getHeroData(): Promise<HeroType | null> {
     ctaButton {
       text,
       link
+    },
+    cards[]{
+      icon {
+        asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height
+            }
+          }
+        }
+      },
+      title,
+      description,
     }
   }`;
 

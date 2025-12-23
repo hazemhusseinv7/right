@@ -3,6 +3,7 @@ import NewItemsLoading from "@/components/new-items-loading";
 import WordAnimator from "@/components/word-animator";
 import Partners from "@/components/Partners";
 import AnimatedSVG from "./AnimatedSVG";
+import HeroCards from "./HeroCards";
 
 const Hero = ({
   hero,
@@ -53,6 +54,8 @@ const Hero = ({
           </ButtonHoverMultiple>
         </div>
       </div>
+
+      <HeroCards data={hero}/>
 
       <Partners className="relative z-10 mt-20 py-0!" data={partners} />
     </section>

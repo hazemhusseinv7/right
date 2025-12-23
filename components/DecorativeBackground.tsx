@@ -1,6 +1,6 @@
 import { FaDotCircle } from "react-icons/fa";
-import { FaCircle } from "react-icons/fa6";
-
+import { FaCircle,FaRegCircle  } from "react-icons/fa6";
+ 
 const DecorativeBackground = () => {
   return (
     <>
@@ -61,7 +61,7 @@ const DecorativeBackground = () => {
 
       {/* SVG Element */}
       <div className="absolute start-0 -bottom-10 translate-x-4 -translate-y-10 lg:translate-x-20 lg:-translate-y-20">
-        <FaCircle className="text-primary-green size-10 opacity-30 lg:size-14" />
+        <FaRegCircle className="text-primary-green size-10 opacity-30 lg:size-14" />
       </div>
       {/* End SVG Element */}
       {/* SVG Element */}

@@ -2,7 +2,7 @@
 
 import { Button } from "@heroui/react";
 
-import { RiWhatsappFill } from "react-icons/ri";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const ContactButtonComponent = ({ whatsapp }: { whatsapp: string }) => {
   return (
@@ -11,9 +11,8 @@ const ContactButtonComponent = ({ whatsapp }: { whatsapp: string }) => {
       href={whatsapp}
       target="_blank"
       rel="noopener noreferrer"
-      color="success"
-      endContent={<RiWhatsappFill className="size-4" />}
-      className="fixed end-4 bottom-4 z-90"
+      endContent={<FaWhatsapp className="size-6 text-white" />}
+      className="fixed end-4 bottom-4 z-90 bg-[#25D366] min-w-0 rounded-full size-12 px-0"
       aria-label="Contact us on WhatsApp"
     />
   );

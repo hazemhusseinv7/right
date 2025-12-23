@@ -41,6 +41,11 @@ interface HeroType {
     text: string;
     link: string;
   };
+  cards: {
+    icon?: ImageType;
+    title: string;
+    description: string;
+  }[];
 }
 
 interface ServicesType {

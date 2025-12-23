@@ -9,6 +9,7 @@ import {
   FaLinkedin,
   FaFacebook,
   FaYoutube,
+  FaLocationDot,
   FaRegCopyright,
 } from "react-icons/fa6";
 import { RiWhatsappLine } from "react-icons/ri";
@@ -95,8 +96,19 @@ const Footer = async () => {
   ].filter((item) => item.link);
 
   return (
-    <footer className="border-t py-16">
-      <div className="mx-auto max-w-5xl px-6">
+    <footer className="relative py-16">
+      {/* Teal Glow Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+        radial-gradient(125% 125% at 50% 90%, #ffffff 40%,  var(--color-primary-green) 100%)
+      `,
+          backgroundSize: "100% 100%",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-5xl px-6">
         <Link href="/" aria-label="go home" className="mx-auto block size-fit">
           <Image
             src="/logo/logo.png"
@@ -118,6 +130,7 @@ const Footer = async () => {
             </Link>
           ))}
         </div>
+
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           {socialMedia.map(({ name, link, icon: Icon }, i) => (
             <Link
@@ -131,6 +144,49 @@ const Footer = async () => {
               <Icon className="size-6" />
             </Link>
           ))}
+        </div>
+
+        <div className="my-8 flex flex-wrap justify-between gap-2 border-t text-sm">
+          <div className="flex flex-col justify-between space-y-8 p-4">
+            <div className="flex flex-col">
+              <h3 className="text-primary-blue mb-3 text-lg font-semibold">
+                Phone Number
+              </h3>
+
+              {settings?.phones.map((phone, i) => (
+                <p key={i} className="mt-3 text-sm">
+                  {phone}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-between space-y-8 p-4">
+            <div className="flex flex-col">
+              <h2 className="text-primary-blue mb-3 text-lg font-semibold">
+                Email Address
+              </h2>
+
+              {settings?.emails.map((email, i) => (
+                <Link
+                  key={i}
+                  href={email}
+                  className="text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  {email}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-4">
+            <span>Al Sawab Headquarter</span>
+
+            <div className="felx items-center justify-center">
+              <FaLocationDot className="text-primary-green me-2 inline" />
+              <p className="inline">{settings?.location}</p>
+            </div>
+          </div>
         </div>
 
         <p className="text-muted-foreground flex items-center justify-center text-center text-sm">

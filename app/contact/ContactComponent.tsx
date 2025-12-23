@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
+
 import { TextEffect } from "@/components/ui/text-effect";
 import { addToast, Button, Input, Textarea } from "@heroui/react";
 import { Card } from "@/components/ui/card";
 
-import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 import { useInView } from "motion/react";
 import { MdMarkChatUnread } from "react-icons/md";
