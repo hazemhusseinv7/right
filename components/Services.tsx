@@ -31,7 +31,7 @@ const Services = ({ services }: { services: ServicesType | null }) => {
       className="relative bg-linear-to-t from-emerald-50 py-24 lg:py-40"
     >
       {sectionTitle && (
-        <div className="min-h-16 lg:min-h-22">
+        <div className="relative z-10 min-h-16 lg:min-h-22">
           <h2>
             <TextEffect
               per="word"

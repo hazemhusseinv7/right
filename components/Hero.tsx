@@ -25,7 +25,7 @@ const Hero = ({
       <AnimatedSVG />
       <div className="relative z-2 grid px-4 pt-32 pb-14 sm:px-0 lg:pt-56 lg:pb-24">
         <NewItemsLoading data={buttonData} />
-        <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl dark:text-white">
+        <h1 className="text-primary-blue text-center text-3xl font-semibold tracking-tight sm:text-5xl xl:text-6xl 2xl:text-7xl dark:text-white">
           <span className="relative mt-4 flex translate-x-0 justify-center gap-2 max-lg:flex-col lg:mt-8">
             <div className="flex translate-x-0 justify-center gap-2">
               {headingData?.firstWord}{" "}
@@ -55,7 +55,7 @@ const Hero = ({
         </div>
       </div>
 
-      <HeroCards data={hero}/>
+      <HeroCards data={hero} />
 
       <Partners className="relative z-10 mt-20 py-0!" data={partners} />
     </section>

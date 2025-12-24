@@ -65,7 +65,10 @@ export default function ExpandableCard({
                 layoutId={`cardItem-${current.title}`}
               >
                 <div className="flex w-full items-start gap-4">
-                  <motion.div layoutId={`cardItemIcon-${current.title}`}>
+                  <motion.div
+                    layoutId={`cardItemIcon-${current.title}`}
+                    className="min-w-8"
+                  >
                     <Image
                       src={current.icon}
                       alt={current.title}
@@ -143,7 +146,7 @@ export default function ExpandableCard({
         )}
       >
         {items.map((list, i) => (
-          <div key={i}>
+          <div key={i} className="w-full">
             <h3 className="text-primary-green mx-auto mb-4 w-fit text-xl font-medium lg:text-2xl">
               {list.title}
             </h3>
@@ -182,7 +185,7 @@ export default function ExpandableCard({
                   key={item.title}
                   initial={{ scale: 1 }}
                   whileHover={{ scale: 1.02 }}
-                  className="bg-background flex w-full cursor-pointer flex-row items-center gap-4 border p-2 shadow-md max-lg:flex-col md:p-4"
+                  className="bg-background flex size-full cursor-pointer flex-row items-center gap-4 border p-2 shadow-md max-lg:flex-col md:p-4"
                   onClick={() => {
                     setCurrent(item);
                   }}
