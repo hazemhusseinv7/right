@@ -13,8 +13,7 @@ import { AnimatedGroup } from "./ui/animated-group";
 export interface CardItem {
   title: string;
   description: string;
-  link: string;
-  icon: string;
+   icon: string;
   items?: string[];
 }
 
@@ -130,7 +129,7 @@ export default function ExpandableCard({
                 <Button
                   className="bg-primary-green mx-auto mt-8 w-fit px-8 text-white"
                   as="a"
-                  href={current.link}
+                  href="/contact"
                 >
                   Request now <FiArrowUpRight className="size-5" />
                 </Button>

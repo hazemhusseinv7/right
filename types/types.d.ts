@@ -45,6 +45,7 @@ interface HeroType {
     icon?: ImageType;
     title: string;
     description: string;
+    link: string;
   }[];
 }
 
@@ -56,7 +57,6 @@ interface ServicesType {
     services: {
       title: string;
       description: string;
-      link: string;
       icon: ImageType;
       items?: string[];
     }[];

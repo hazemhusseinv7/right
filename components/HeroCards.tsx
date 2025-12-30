@@ -12,8 +12,8 @@ const HeroCards = ({ data }: { data: HeroType | null }) => {
 
   return (
     <div className="flex items-center justify-center gap-4 px-8 max-lg:flex-col">
-      {cards.map(({ title, description, icon }, i) => (
-        <Card as="a" href="/services" key={i} className="group max-w-100">
+      {cards.map(({ title, description, link, icon }, i) => (
+        <Card as="a" href={link} key={i} className="group max-w-100">
           <CardHeader className="bg-primary-blue group-hover:bg-primary-green flex gap-2 font-medium text-white transition-colors duration-300">
             {icon && (
               <Image
