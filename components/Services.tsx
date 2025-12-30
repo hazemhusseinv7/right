@@ -17,6 +17,7 @@ const Services = ({ services }: { services: ServicesType | null }) => {
       list: category.services.map((service) => ({
         title: service.title,
         description: service.description,
+        link: service.link,
         icon: urlFor(service.icon).url(),
         items: service.items,
       })),

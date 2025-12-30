@@ -56,6 +56,7 @@ interface ServicesType {
     services: {
       title: string;
       description: string;
+      link: string;
       icon: ImageType;
       items?: string[];
     }[];

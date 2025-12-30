@@ -10,7 +10,7 @@ import {
   HiMiniDocumentText,
 } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
- import {
+import {
   HiShieldCheck,
   HiCog,
   HiServer,
@@ -23,11 +23,18 @@ import {
   HiWrenchScrewdriver,
   HiArrowPath,
 } from "react-icons/hi2";
-
+import {
+  HiBuildingOffice,
+  HiUsers,
+  HiCube,
+  HiClock,
+  HiChatBubbleLeftRight,
+} from "react-icons/hi2";
+import Link from "next/link";
 export default function Page() {
   return (
     <main className="relative overflow-hidden py-24">
-      <section className="py-24 md:py-32 2xl:scale-140 2xl:py-52 z-10 relative">
+      <section className="relative z-10 py-24 md:py-32 2xl:scale-140 2xl:py-52">
         <div className="mx-auto max-w-5xl px-6">
           <div className="group relative mx-auto flex aspect-16/10 max-w-88 items-center justify-between sm:max-w-sm">
             <div
@@ -234,6 +241,188 @@ with Vision 2030 goals."
               {/* <Button variant="outline" size="sm" asChild>
                 <Link href="#">Get Started</Link>
               </Button> */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section D: Security & Trust */}
+      <section className="2xl:scale-140 2xl:py-52">
+        <div className="py-24 md:py-32">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="grid gap-12 md:grid-cols-2">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+                  Security & Trust
+                </h2>
+                <p className="text-primary-green text-lg font-medium">
+                  Your data never leaves your wall.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-primary-green/10 mt-1 flex size-6 items-center justify-center rounded-full">
+                      <HiShieldCheck className="text-primary-green size-4" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium">AI Models Protection</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Ensure continuous monitoring and scanning of models
+                        deployed on the internet.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-primary-green/10 mt-1 flex size-6 items-center justify-center rounded-full">
+                      <HiShieldCheck className="text-primary-green size-4" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium">Prevent Users Misuse</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Safeguard against attempts to manipulate or control AI
+                        responses.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-primary-green/10 mt-1 flex size-6 items-center justify-center rounded-full">
+                      <HiShieldCheck className="text-primary-green size-4" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium">
+                        Guard Against Malicious Data Injection
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Prevent attackers from introducing harmful or corrupt
+                        data into the system.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="bg-muted dark:bg-background/50 rounded-2xl border p-8">
+                  <div className="bg-primary-green absolute -top-4 left-8 rounded-full px-4 py-1">
+                    <span className="text-sm font-medium text-white">
+                      Secure by Design
+                    </span>
+                  </div>
+                  <div className="space-y-6 pt-4">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-primary-green/20 rounded-lg p-3">
+                        <HiServer className="text-primary-green size-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">
+                          On-Premise Infrastructure
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Complete data sovereignty
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="bg-primary-green/20 rounded-lg p-3">
+                        <HiShieldCheck className="text-primary-green size-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Compliance Ready</h3>
+                        <p className="text-muted-foreground text-sm">
+                          SDAIA, SAMA, NCA, ISO 27001
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="bg-primary-green/20 rounded-lg p-3">
+                        <HiCog className="text-primary-green size-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Continuous Monitoring</h3>
+                        <p className="text-muted-foreground text-sm">
+                          24/7 security oversight
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section E: Who Can Benefit */}
+      <section className="2xl:scale-140 2xl:py-52">
+        <div className="bg-muted dark:bg-background py-24 md:py-32">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+                Who Can Benefit?
+              </h2>
+              <p className="text-muted-foreground mt-4">
+                Ur AI is designed to empower every stakeholder in your
+                organization
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="bg-background dark:bg-background/50 rounded-xl border p-6 text-center">
+                <div className="bg-primary-green/10 mb-4 inline-flex size-16 items-center justify-center rounded-full">
+                  <HiBuildingOffice className="text-primary-green size-8" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Businesses</h3>
+                <p className="text-muted-foreground text-sm">
+                  Companies can automate their operations, reduce their cloud
+                  expenses, and improve data security. This is particularly
+                  important for industries handling sensitive information.
+                </p>
+              </div>
+
+              <div className="bg-background dark:bg-background/50 rounded-xl border p-6 text-center">
+                <div className="bg-primary-green/10 mb-4 inline-flex size-16 items-center justify-center rounded-full">
+                  <HiUsers className="text-primary-green size-8" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">End Users</h3>
+                <p className="text-muted-foreground text-sm">
+                  Your team gets faster, more responsive AI that respects your
+                  business&apos;s privacy, while enjoying the convenience of
+                  offline functionality.
+                </p>
+              </div>
+
+              <div className="bg-background dark:bg-background/50 rounded-xl border p-6 text-center">
+                <div className="bg-primary-green/10 mb-4 inline-flex size-16 items-center justify-center rounded-full">
+                  <HiCube className="text-primary-green size-8" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Developers</h3>
+                <p className="text-muted-foreground text-sm">
+                  Allowing them to create efficient/secure applications that
+                  provide faster experiences and work offline to build
+                  innovative features that depend on real-time processing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section F: Final CTA */}
+      <section className="2xl:scale-140 2xl:py-52">
+        <div className="py-24 md:py-32">
+          <div className="mx-auto max-w-4xl px-6 text-center">
+            <div className="bg-muted dark:bg-background/50 rounded-3xl border p-8 md:p-12">
+              <h2 className="text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+                Ready to see what Ur AI can do for your business?
+              </h2>
+              <p className="text-muted-foreground mt-4 text-lg">
+                Explore how it can be tailored to your business&apos;s need.
+              </p>
+
+              <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                <ButtonHoverMultiple link="/contact">
+                  Get Started
+                </ButtonHoverMultiple>
+              </div>
             </div>
           </div>
         </div>

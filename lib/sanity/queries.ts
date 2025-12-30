@@ -101,6 +101,7 @@ export async function getServicesData(): Promise<ServicesType | null> {
       services[] {
         title,
         description,
+        link,
         icon {
           asset-> {
             _id,
