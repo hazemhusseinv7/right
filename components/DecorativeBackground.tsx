@@ -50,23 +50,23 @@ const DecorativeBackground = () => {
       </svg>
       {/* SVG Element */}
       <div className="absolute end-0 top-0 -translate-x-4 translate-y-40 lg:-translate-x-20 lg:translate-y-50">
-        <FaCircle className="text-primary-green size-10 opacity-30 lg:size-14" />
+        <FaCircle className="text-primary-green size-10 opacity-10 lg:size-14" />
       </div>
       {/* End SVG Element */}
       {/* SVG Element */}
       <div className="absolute end-0 top-100 -translate-x-30 translate-y-40 lg:-translate-x-70 lg:translate-y-50">
-        <FaDotCircle className="text-primary-green size-10 animate-pulse opacity-30 lg:size-12" />
+        <FaDotCircle className="text-primary-green size-10 animate-pulse opacity-10 lg:size-12" />
       </div>
       {/* End SVG Element */}
 
       {/* SVG Element */}
       <div className="absolute start-0 -bottom-10 translate-x-4 -translate-y-10 lg:translate-x-20 lg:-translate-y-20">
-        <FaRegCircle className="text-primary-green size-10 opacity-30 lg:size-14" />
+        <FaRegCircle className="text-primary-green size-10 opacity-10 lg:size-14" />
       </div>
       {/* End SVG Element */}
       {/* SVG Element */}
       <div className="absolute start-0 top-80 translate-x-30 -translate-y-10 lg:translate-x-40 lg:-translate-y-20">
-        <FaDotCircle className="text-primary-green size-10 animate-pulse opacity-30 lg:size-12" />
+        <FaDotCircle className="text-primary-green size-10 animate-pulse opacity-10 lg:size-12" />
       </div>
       {/* End SVG Element */}
     </>

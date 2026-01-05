@@ -8,7 +8,6 @@ import DecorativeBackground from "@/components/DecorativeBackground";
 import Aurora from "@/components/Aurora";
 import { Card } from "@heroui/react";
 import { YouTubeEmbed } from "@next/third-parties/google";
-import { cn } from "@/lib/utils";
 import {
   Card as CardComponent,
   CardContent,
@@ -95,7 +94,7 @@ export default function Page() {
         <div className="mx-auto max-w-5xl px-6">
           <Image
             src="/services/ur-ai/logo.png"
-            className="relative z-10 mx-auto h-auto w-100"
+            className="relative z-10 mx-auto h-auto w-80 xl:w-100"
             alt="Logo"
             width={1207}
             height={929}
@@ -293,7 +292,7 @@ with Vision 2030 goals."
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 px-4 max-xl:flex-col xl:gap-10">
+        <div className="flex items-center justify-center gap-2 px-4 max-md:flex-col xl:gap-10">
           <div className="flex max-w-sm flex-col gap-4 py-10">
             <IntegrationCard
               title="AI Models Protection"
@@ -322,7 +321,7 @@ with Vision 2030 goals."
               width={200}
               height={200}
               alt="Image"
-              className="size-80 xl:size-140"
+              className="size-80 md:size-140"
             />
           </div>
         </div>
