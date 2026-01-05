@@ -221,7 +221,7 @@ export default function Aurora({
   return (
     <div
       ref={ctnDom}
-      className={cn(className, "absolute -top-16 h-full w-full")}
+      className={cn(className, "absolute -top-16 h-full w-full opacity-40")}
     />
   );
 }

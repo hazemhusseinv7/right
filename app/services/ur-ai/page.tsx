@@ -91,7 +91,7 @@ export default function Page() {
       <section className="relative py-24 md:py-32">
         <Aurora
           props={{
-            colorStops: ["#7CFF67", "#B19EEF", "#5227FF"],
+            colorStops: ["#66bc46", "#66bc46", "#155dfc"],
             blend: 0.5,
             amplitude: 1.0,
             speed: 0.5,
@@ -326,7 +326,7 @@ with Vision 2030 goals."
       </section>
 
       <section>
-        <div className="dark:bg-background py-24 md:py-32">
+        <div className="dark:bg-background pt-24">
           <div className="mx-auto max-w-5xl px-6">
             <div className="mx-auto mb-12 max-w-lg space-y-6 text-center">
               <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
@@ -335,52 +335,6 @@ with Vision 2030 goals."
               <p className="text-muted-foreground">
                 Your data never leaves your wall.
               </p>
-            </div>
-
-            <div className="relative mx-auto flex max-w-sm items-center justify-between 2xl:mt-32 2xl:scale-150">
-              <div className="space-y-6">
-                <IntegrationItems position="left-top">
-                  <HiDocumentMagnifyingGlass className="text-primary-green" />
-                </IntegrationItems>
-                <IntegrationItems position="left-middle">
-                  <HiDocumentCheck className="text-primary-green" />
-                </IntegrationItems>
-                <IntegrationItems position="left-bottom">
-                  <HiMiniDocumentText className="text-primary-green" />
-                </IntegrationItems>
-              </div>
-              <div className="mx-auto my-2 flex w-fit justify-center gap-2">
-                <div className="bg-muted relative z-20 rounded-2xl border p-1">
-                  <IntegrationCard
-                    className="shadow-black-950/10 dark:bg-background size-16 border-black/25 shadow-xl dark:border-white/25 dark:shadow-white/10"
-                    isCenter={true}
-                  >
-                    <Image
-                      src="/services/ur-ai/icon.png"
-                      width={32}
-                      height={32}
-                      alt="Logo"
-                      className="size-8"
-                    />
-                  </IntegrationCard>
-                </div>
-              </div>
-              <div
-                role="presentation"
-                className="absolute inset-1/3 bg-[radial-gradient(var(--dots-color)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] [background-size:16px_16px] opacity-50 [--dots-color:black] dark:[--dots-color:white]"
-              />
-
-              <div className="space-y-6">
-                <IntegrationItems position="right-top">
-                  <HiMiniDocumentPlus className="text-primary-green" />
-                </IntegrationItems>
-                <IntegrationItems position="right-middle">
-                  <HiMiniDocumentChartBar className="text-primary-green" />
-                </IntegrationItems>
-                <IntegrationItems position="right-bottom">
-                  <HiMiniDocumentArrowUp className="text-primary-green" />
-                </IntegrationItems>
-              </div>
             </div>
           </div>
         </div>
@@ -414,7 +368,7 @@ with Vision 2030 goals."
               width={200}
               height={200}
               alt="Image"
-              className="mt-20 size-120"
+              className="size-140"
             />
           </div>
         </div>
@@ -486,7 +440,7 @@ with Vision 2030 goals."
         <div>
           <Aurora
             props={{
-              colorStops: ["#7CFF67", "#B19EEF", "#5227FF"],
+              colorStops: ["#66bc46", "#66bc46", "#155dfc"],
               blend: 0.5,
               amplitude: 1.0,
               speed: 0.5,
