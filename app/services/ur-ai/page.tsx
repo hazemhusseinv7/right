@@ -16,12 +16,6 @@ import {
 } from "@/components/ui/card";
 
 import {
-  HiDocumentCheck,
-  HiDocumentMagnifyingGlass,
-  HiMiniDocumentArrowUp,
-  HiMiniDocumentChartBar,
-  HiMiniDocumentPlus,
-  HiMiniDocumentText,
   HiShieldCheck,
   HiServer,
   HiArrowPath,
@@ -87,7 +81,7 @@ export default function Page() {
   ];
 
   return (
-    <main className="relative overflow-hidden pt-24">
+    <main className="relative overflow-hidden pt-12">
       <section className="relative py-24 md:py-32">
         <Aurora
           props={{
@@ -99,66 +93,26 @@ export default function Page() {
         />
 
         <div className="mx-auto max-w-5xl px-6">
-          <div className="group relative mx-auto flex aspect-16/10 max-w-88 items-center justify-between sm:max-w-sm 2xl:mt-10 2xl:mb-40 2xl:scale-150">
-            <div
-              role="presentation"
-              className="border-foreground/5 absolute inset-0 z-10 aspect-square animate-spin items-center justify-center rounded-full border-t bg-linear-to-b from-lime-500/15 to-transparent to-25% opacity-0 duration-[3.5s] group-hover:opacity-100 dark:from-white/5"
-            />
-            <div
-              role="presentation"
-              className="border-foreground/5 absolute inset-16 z-10 aspect-square scale-90 animate-spin items-center justify-center rounded-full border-t bg-linear-to-b from-blue-500/15 to-transparent to-25% opacity-0 duration-[3.5s] group-hover:opacity-100"
-            />
-            <div className="from-muted-foreground/15 absolute inset-0 flex aspect-square items-center justify-center rounded-full border-t bg-linear-to-b to-transparent to-25%">
-              <IntegrationCard className="absolute top-1/4 left-0 -translate-x-1/6 -translate-y-1/4">
-                <HiDocumentMagnifyingGlass className="text-primary-green" />
-              </IntegrationCard>
-              <IntegrationCard className="absolute top-0 -translate-y-1/2">
-                <HiDocumentCheck className="text-primary-green" />
-              </IntegrationCard>
-              <IntegrationCard className="absolute top-1/4 right-0 translate-x-1/6 -translate-y-1/4">
-                <HiMiniDocumentText className="text-primary-green" />
-              </IntegrationCard>
-            </div>
-            <div className="from-muted-foreground/15 absolute inset-16 flex aspect-square scale-90 items-center justify-center rounded-full border-t bg-linear-to-b to-transparent to-25%">
-              <IntegrationCard className="absolute top-0 -translate-y-1/2">
-                <HiMiniDocumentPlus className="text-primary-green" />
-              </IntegrationCard>
-              <IntegrationCard className="absolute top-1/4 left-0 -translate-x-1/4 -translate-y-1/4">
-                <HiMiniDocumentChartBar className="text-primary-green" />
-              </IntegrationCard>
-              <IntegrationCard className="absolute top-1/4 right-0 translate-x-1/4 -translate-y-1/4">
-                <HiMiniDocumentArrowUp className="text-primary-green" />
-              </IntegrationCard>
-            </div>
-            <div className="absolute inset-x-0 bottom-0 mx-auto my-2 flex w-fit justify-center gap-2">
-              <div className="bg-muted relative z-20 rounded-full border p-1">
-                <IntegrationCard
-                  className="shadow-black-950/10 dark:bg-background size-16 border-black/20 shadow-xl dark:border-white/25 dark:shadow-white/15"
-                  isCenter={true}
-                >
-                  <Image
-                    src="/services/ur-ai/icon.png"
-                    width={32}
-                    height={32}
-                    alt="Logo"
-                    className="size-8"
-                  />
-                </IntegrationCard>
-              </div>
-            </div>
-          </div>
-          <div className="relative z-20 mx-auto mt-12 max-w-2xl space-y-6 text-center">
-            <h1 className="text-primary-green text-3xl font-semibold text-balance md:text-4xl xl:text-7xl">
+          <Image
+            src="/services/ur-ai/logo.png"
+            className="relative z-10 mx-auto h-auto w-100"
+            alt="Logo"
+            width={1207}
+            height={929}
+          />
+
+          <div className="relative z-20 mx-auto mt-12 max-w-4xl space-y-6 text-center">
+            {/* <h1 className="text-primary-green text-3xl font-semibold text-balance md:text-4xl xl:text-7xl">
               UR AI
-            </h1>
-            <div>
-              <p className="text-muted-foreground xl:text-2xl">
+            </h1> */}
+            <h1>
+              <p className="text-muted-foreground xl:text-3xl">
                 Ready to see what Ur AI can do for your business?
               </p>
-              <p className="text-muted-foreground xl:text-2xl">
+              <p className="text-muted-foreground xl:text-3xl">
                 Explore how it can be tailored to your business&apos;s need.
               </p>
-            </div>
+            </h1>
             <div className="mt-4 flex items-center justify-center gap-2">
               <ButtonHoverMultiple link="/contact">
                 Get Started
@@ -166,7 +120,7 @@ export default function Page() {
             </div>
           </div>
           {videoId && (
-            <div className="mx-auto mt-8 w-180 overflow-hidden rounded-2xl">
+            <div className="mx-auto mt-8 overflow-hidden rounded-2xl md:w-180 2xl:mt-70 2xl:scale-180">
               <YouTubeEmbed videoid={videoId} />
             </div>
           )}
@@ -175,7 +129,7 @@ export default function Page() {
 
       <section className="py-16 md:py-32">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
-          <h2 className="text-primary-blue relative z-10 max-w-xl text-4xl font-medium lg:text-5xl">
+          <h2 className="text-primary-blue relative z-10 max-w-xl text-4xl font-medium lg:text-5xl xl:text-7xl">
             What Ur AI?
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
@@ -226,10 +180,10 @@ export default function Page() {
 
       <section className="relative">
         <div className="relative z-10 py-24 md:py-32">
-          <div className="mx-auto flex flex-col px-6 md:grid md:max-w-5xl md:grid-cols-3 md:gap-12">
+          <div className="mx-auto flex flex-col px-6 md:grid md:max-w-5xl md:grid-cols-3 md:gap-24">
             <div className="order-last mt-6 flex flex-col gap-12 md:order-first">
               <div className="space-y-6">
-                <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+                <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
                   What Makes Ur AI Different?
                 </h2>
                 <p className="text-muted-foreground">
@@ -285,7 +239,7 @@ with Vision 2030 goals."
         <div className="bg-primary-green/10 dark:bg-background py-24 md:py-32">
           <div className="mx-auto max-w-5xl px-6">
             <div className="mx-auto mb-14 max-w-lg space-y-6 text-center">
-              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
                 How It Works?
               </h2>
               {/* <p className="text-muted-foreground"></p> */}
@@ -328,8 +282,8 @@ with Vision 2030 goals."
       <section>
         <div className="dark:bg-background pt-24">
           <div className="mx-auto max-w-5xl px-6">
-            <div className="mx-auto mb-12 max-w-lg space-y-6 text-center">
-              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl">
+            <div className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
+              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
                 Security & Trust
               </h2>
               <p className="text-muted-foreground">
@@ -339,27 +293,27 @@ with Vision 2030 goals."
           </div>
         </div>
 
-        <div className="flex justify-center gap-10">
+        <div className="flex items-center justify-center gap-2 px-4 max-xl:flex-col xl:gap-10">
           <div className="flex max-w-sm flex-col gap-4 py-10">
-            <IntegrationCardItem
+            <IntegrationCard
               title="AI Models Protection"
               description="Ensure continuous monitoring and scanning of models deployed on the internet."
             >
               <HiShieldCheck className="text-primary-green" />
-            </IntegrationCardItem>
+            </IntegrationCard>
 
-            <IntegrationCardItem
+            <IntegrationCard
               title="Prevent Users Misuse"
               description="Safeguard against attempts to manipulate or control AI responses."
             >
               <FaUserAltSlash className="text-primary-green" />
-            </IntegrationCardItem>
-            <IntegrationCardItem
+            </IntegrationCard>
+            <IntegrationCard
               title="Guard Against Malicious Data Injection"
               description="Prevent attackers from introducing harmful or corrupt data into the system."
             >
               <BsDatabaseFillCheck className="text-primary-green" />
-            </IntegrationCardItem>
+            </IntegrationCard>
           </div>
 
           <div className="flex items-end">
@@ -368,7 +322,7 @@ with Vision 2030 goals."
               width={200}
               height={200}
               alt="Image"
-              className="size-140"
+              className="size-80 xl:size-140"
             />
           </div>
         </div>
@@ -377,7 +331,7 @@ with Vision 2030 goals."
       <section className="relative z-20 py-28 md:py-32 dark:bg-transparent">
         <div className="@container relative z-10 mx-auto max-w-350 px-6">
           <div className="text-center">
-            <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl">
+            <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl xl:text-7xl">
               Who Can Benefit?
             </h2>
           </div>
@@ -417,7 +371,7 @@ with Vision 2030 goals."
       </section>
 
       <section className="relative min-h-180">
-        <div className="relative z-10 py-32">
+        <div className="relative z-10 px-4 py-32">
           <div className="container mx-auto">
             <div className="from-accent/40 to-accent/70 mx-auto flex w-full max-w-5xl flex-col items-center gap-16 overflow-hidden rounded-lg bg-linear-to-tr p-8 md:rounded-xl lg:p-12">
               <div className="flex flex-col items-center justify-center text-center">
@@ -452,36 +406,6 @@ with Vision 2030 goals."
     </main>
   );
 }
-
-const IntegrationCard = ({
-  children,
-  className,
-  isCenter = false,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  position?:
-    | "left-top"
-    | "left-middle"
-    | "left-bottom"
-    | "right-top"
-    | "right-middle"
-    | "right-bottom";
-  isCenter?: boolean;
-}) => {
-  return (
-    <div
-      className={cn(
-        "relative z-30 flex size-12 rounded-full border bg-white shadow-sm shadow-black/5 dark:bg-white/5 dark:backdrop-blur-md",
-        className,
-      )}
-    >
-      <div className={cn("m-auto size-fit *:size-5", isCenter && "*:size-8")}>
-        {children}
-      </div>
-    </div>
-  );
-};
 
 const Integration = ({
   icon,
@@ -532,62 +456,7 @@ const IntegrationItem = ({
   );
 };
 
-const IntegrationItems = ({
-  children,
-  className,
-  position,
-  isCenter = false,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  position?:
-    | "left-top"
-    | "left-middle"
-    | "left-bottom"
-    | "right-top"
-    | "right-middle"
-    | "right-bottom";
-  isCenter?: boolean;
-}) => {
-  return (
-    <div
-      className={cn(
-        "bg-background relative flex size-12 rounded-xl border dark:bg-transparent",
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          "relative z-20 m-auto size-fit *:size-6",
-          isCenter && "*:size-8",
-        )}
-      >
-        {children}
-      </div>
-      {position && !isCenter && (
-        <div
-          className={cn(
-            "to-muted-foreground/25 absolute z-10 h-px bg-linear-to-r",
-            position === "left-top" &&
-              "top-1/2 left-full w-[130px] origin-left rotate-[25deg]",
-            position === "left-middle" &&
-              "top-1/2 left-full w-[120px] origin-left",
-            position === "left-bottom" &&
-              "top-1/2 left-full w-[130px] origin-left rotate-[-25deg]",
-            position === "right-top" &&
-              "top-1/2 right-full w-[130px] origin-right rotate-[-25deg] bg-linear-to-l",
-            position === "right-middle" &&
-              "top-1/2 right-full w-[120px] origin-right bg-linear-to-l",
-            position === "right-bottom" &&
-              "top-1/2 right-full w-[130px] origin-right rotate-[25deg] bg-linear-to-l",
-          )}
-        />
-      )}
-    </div>
-  );
-};
-
-const IntegrationCardItem = ({
+const IntegrationCard = ({
   title,
   description,
   children,
