@@ -18,6 +18,8 @@ const Services = ({ services }: { services: ServicesType | null }) => {
         title: service.title,
         description: service.description,
         icon: urlFor(service.icon).url(),
+        content: service.content,
+        link: service.link,
         items: service.items,
       })),
     })) || [];

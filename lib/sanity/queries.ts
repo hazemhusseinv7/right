@@ -111,6 +111,8 @@ export async function getServicesData(): Promise<ServicesType | null> {
             }
           }
         },
+        content,
+        link,
         items
       }
     }
@@ -129,6 +131,143 @@ export async function getServicesData(): Promise<ServicesType | null> {
     );
   } catch (error) {
     console.error("Error fetching services data:", error);
+    return null;
+  }
+}
+
+export async function getURAiData(): Promise<URAiType | null> {
+  const query = `*[_type == "urAi"][0]{
+    hero {
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      description,
+      buttonTitle,
+      buttonLink,
+      videoUrl
+    },
+    about {
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      title,
+      description1,
+      description2
+    },
+    whatMakesItDifferent {
+      title,
+      description,
+      cards[] {
+        _key,
+        title,
+        description,
+        icon {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        }
+      }
+    },
+    howItWorks {
+      title,
+      description,
+      cards[] {
+        _key,
+        title,
+        description,
+        icon {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        }
+      }
+    },
+    securityTrust {
+      title,
+      description,
+      image {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      },
+      cards[] {
+        _key,
+        title,
+        description,
+        icon {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        }
+      }
+    },
+    whoCanBenefit {
+      title,
+      description,
+      cards[] {
+        _key,
+        title,
+        description,
+        icon {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        }
+      }
+    },
+    cta {
+      title,
+      description,
+      buttonTitle,
+      buttonLink
+    }
+  }`;
+
+  try {
+    return await sanityClient.fetch(
+      query,
+      {},
+      {
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["urAi", "content"],
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching UR AI data:", error);
     return null;
   }
 }

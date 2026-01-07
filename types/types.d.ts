@@ -51,16 +51,80 @@ interface HeroType {
 
 interface ServicesType {
   title: string;
-  titleColor: string;
   serviceCategories: {
     categoryTitle: string;
     services: {
       title: string;
       description: string;
       icon: ImageType;
+      content: string;
+      link: string;
       items?: string[];
     }[];
   }[];
+}
+
+interface URAiType {
+  hero: {
+    image: ImageType;
+    description: string;
+    buttonTitle: string;
+    buttonLink: string;
+    videoUrl?: string;
+  };
+  about: {
+    image: ImageType;
+    title: string;
+    description1: any[];
+    description2: any[];
+  };
+  whatMakesItDifferent: {
+    title: string;
+    description?: string;
+    cards: {
+      _key?: string;
+      title: string;
+      description: string;
+      icon: ImageType;
+    }[];
+  };
+  howItWorks: {
+    title: string;
+    description?: string;
+    cards: {
+      _key?: string;
+      title: string;
+      description: string;
+      icon: ImageType;
+    }[];
+  };
+  securityTrust: {
+    title: string;
+    description?: string;
+    image: ImageType;
+    cards: {
+      _key?: string;
+      title: string;
+      description: string;
+      icon: ImageType;
+    }[];
+  };
+  whoCanBenefit: {
+    title: string;
+    description?: string;
+    cards: {
+      _key?: string;
+      title: string;
+      description: string;
+      icon: ImageType;
+    }[];
+  };
+  cta: {
+    title: string;
+    description: string;
+    buttonTitle: string;
+    buttonLink: string;
+  };
 }
 
 interface AboutUsType {

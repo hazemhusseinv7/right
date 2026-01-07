@@ -171,7 +171,7 @@ const Footer = async () => {
                 <Link
                   key={i}
                   href={email}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
+                  className="text-blue-600 hover:underline dark:text-blue-400 py-1"
                 >
                   {email}
                 </Link>

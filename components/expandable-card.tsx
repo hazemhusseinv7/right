@@ -13,7 +13,9 @@ import { AnimatedGroup } from "./ui/animated-group";
 export interface CardItem {
   title: string;
   description: string;
-   icon: string;
+  icon: string;
+  content: string;
+  link: string;
   items?: string[];
 }
 
@@ -129,9 +131,10 @@ export default function ExpandableCard({
                 <Button
                   className="bg-primary-green mx-auto mt-8 w-fit px-8 text-white"
                   as="a"
-                  href="/contact"
+                  href={current.link}
                 >
-                  Request now <FiArrowUpRight className="size-5" />
+                  <span>{current.content}</span>{" "}
+                  <FiArrowUpRight className="size-5" />
                 </Button>
               </motion.div>
             </div>
