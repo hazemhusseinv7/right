@@ -96,6 +96,7 @@ interface URAiType {
       title: string;
       description: string;
       icon: ImageType;
+      image: ImageType;
     }[];
   };
   securityTrust: {
@@ -117,6 +118,7 @@ interface URAiType {
       title: string;
       description: string;
       icon: ImageType;
+      image: ImageType;
     }[];
   };
   cta: {

@@ -5,14 +5,14 @@ import { PortableText } from "@portabletext/react";
 import { getURAiData } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
 
-import ButtonHoverMultiple from "@/components/ButtonHoverMultiple";
-import DecorativeBackground from "@/components/DecorativeBackground";
-import Aurora from "@/components/Aurora";
-
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-import { FaCheck } from "react-icons/fa6";
+import Link from "next/link";
+import Clients from "@/components/Clients";
+import Grainient from "@/components/Grainient";
+import { Gallery } from "@/components/Gallery";
+import ExpandableCards from "@/components/ExpandableCards";
 
 const getVideoId = (url: string) => {
   if (!url) return null;
@@ -66,7 +66,7 @@ export default async function Page() {
     hero,
     about,
     whatMakesItDifferent,
-    howItWorks,
+    // howItWorks,
     securityTrust,
     whoCanBenefit,
     cta,
@@ -78,50 +78,80 @@ export default async function Page() {
 
   return (
     <main className="relative overflow-hidden pt-12">
-      <section className="relative py-24 md:py-32">
-        <Aurora
-          props={{
-            colorStops: ["#66bc46", "#66bc46", "#155dfc"],
-            blend: 0.5,
-            amplitude: 1.0,
-            speed: 0.5,
-          }}
-        />
-
-        <div className="mx-auto max-w-5xl px-6">
-          <Image
-            src={urlFor(hero.image).url()}
-            className="relative z-10 mx-auto h-auto w-80 xl:w-100"
-            alt="Logo"
-            width={1207}
-            height={929}
+      <section className="dark relative text-slate-50">
+        <div className="absolute top-0 h-full w-full overflow-hidden">
+          <Grainient
+            color1="#1f3c61"
+            color2="#1f3c61"
+            color3="#1f3c61"
+            timeSpeed={0.25}
+            colorBalance={0}
+            warpStrength={1}
+            warpFrequency={5}
+            warpSpeed={2}
+            warpAmplitude={50}
+            blendAngle={0}
+            blendSoftness={0.05}
+            rotationAmount={500}
+            noiseScale={2}
+            grainAmount={0.1}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.5}
+            gamma={1}
+            saturation={1}
+            centerX={0}
+            centerY={0}
+            zoom={0.9}
           />
-
-          <div className="relative z-20 mx-auto mt-12 max-w-210 space-y-6 text-center">
-            {/* <h1 className="text-primary-green text-3xl font-semibold text-balance md:text-4xl xl:text-7xl">
-              UR AI
-            </h1> */}
-            <h1>
-              <p className="text-muted-foreground xl:text-3xl">
+        </div>
+        <div className="relative pt-12 pb-24 md:pb-32 lg:pt-44 lg:pb-56">
+          <div className="relative mx-auto flex max-w-400 items-center justify-between gap-10 px-6 max-lg:flex-col">
+            <div className="mx-auto max-w-xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
+              <h1 className="mt-8 max-w-2xl text-5xl font-medium text-balance md:text-6xl lg:mt-16 xl:text-7xl">
+                UR AI
+              </h1>
+              <p className="mt-8 max-w-2xl text-lg text-pretty lg:text-4xl">
                 {hero.description}
               </p>
-            </h1>
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <ButtonHoverMultiple link={hero.buttonLink}>
-                {hero.buttonTitle}
-              </ButtonHoverMultiple>
+
+              <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
+                <Button asChild className="h-14 rounded-md px-8 text-2xl">
+                  <Link href={hero.buttonLink}>
+                    <span className="text-nowrap">{hero.buttonTitle}</span>
+                  </Link>
+                </Button>
+              </div>
             </div>
+            {videoId && (
+              <div className="w-full lg:w-1/2">
+                <YouTubeEmbed videoid={videoId} />
+              </div>
+            )}
           </div>
-          {videoId && (
-            <div className="mx-auto mt-8 overflow-hidden rounded-2xl md:w-180 2xl:mt-70 2xl:scale-180">
-              <YouTubeEmbed videoid={videoId} />
-            </div>
-          )}
         </div>
       </section>
 
+      <div className="relative -mt-1">
+        <div
+          className="absolute inset-0 top-0 z-0"
+          style={{
+            backgroundImage: `
+        radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #1f3c61 100%)
+      `,
+            backgroundSize: "100% 100%",
+          }}
+        />
+        <div className="relative top-15 z-10 mx-auto w-fit">
+          <h2 className="text-primary-blue max-w-xl text-4xl font-medium lg:text-5xl">
+            Our Clients
+          </h2>
+        </div>
+        <Clients />
+      </div>
+
       <section className="py-16 md:py-32">
-        <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
+        <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
           <h2 className="text-primary-blue relative z-10 max-w-xl text-4xl font-medium lg:text-5xl xl:text-7xl">
             {about.title}
           </h2>
@@ -172,122 +202,101 @@ export default async function Page() {
       </section>
 
       <section className="relative">
-        <div className="relative z-10 py-24 md:py-32">
-          <div className="mx-auto flex flex-col px-6 md:grid md:max-w-5xl md:grid-cols-3 md:gap-24">
-            <div className="order-last mt-6 flex flex-col gap-12 md:order-first">
-              <div className="space-y-6">
-                <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
-                  {whatMakesItDifferent.title}
-                </h2>
-                {whatMakesItDifferent.description && (
-                  <p className="text-muted-foreground">
-                    {whatMakesItDifferent.description}
-                  </p>
-                )}
-              </div>
+        <div className="relative z-10 py-32">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="text-center">
+              <h2 className="text-primary-blue text-4xl font-medium text-balance md:text-4xl lg:text-5xl xl:text-7xl">
+                {whatMakesItDifferent.title}
+              </h2>
+              <p className="text-muted-foreground mt-6">
+                {whatMakesItDifferent.description}
+              </p>
             </div>
 
-            <div className="-mx-6 mask-[radial-gradient(ellipse_100%_100%_at_50%_0%,#000_70%,transparent_100%)] px-6 sm:mx-auto sm:max-w-2xl md:col-span-2 md:-mx-6 md:mr-0 md:ml-auto">
-              <div className="bg-background dark:bg-muted/50 rounded-2xl border p-3 shadow-lg md:pb-12">
-                <div className="grid grid-cols-2 gap-2">
-                  {whatMakesItDifferent.cards.map(
-                    ({ title, description, icon }, i) => (
-                      <Integration
-                        key={i}
-                        icon={icon}
-                        name={title}
-                        description={description}
-                      />
-                    ),
-                  )}
-                </div>
-              </div>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2">
+              {whatMakesItDifferent.cards.map(
+                ({ title, description, icon }, i) => (
+                  <Cards
+                    key={i}
+                    icon={icon}
+                    title={title}
+                    description={description}
+                  />
+                ),
+              )}
             </div>
           </div>
         </div>
 
-        <DecorativeBackground />
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `
+        radial-gradient(125% 125% at 50% 10%, #ffffff 40%, #1f3c61 100%)
+      `,
+            backgroundSize: "100% 100%",
+          }}
+        />
       </section>
 
-      <section>
-        <div className="bg-primary-green/10 dark:bg-background py-24 md:py-32">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="mx-auto mb-14 max-w-lg space-y-6 text-center">
-              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
-                {howItWorks.title}
-              </h2>
-              {howItWorks.description && (
-                <p className="text-muted-foreground">
-                  {howItWorks.description}
-                </p>
-              )}
+      <Gallery data={data} />
 
-              {/* <Button variant="outline" size="sm" asChild>
-                <Link href="#">Get Started</Link>
-              </Button> */}
-            </div>
+      <section className="relative py-16 md:py-32">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
+          <h2 className="text-primary-blue relative z-10 max-w-xl text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
+            {securityTrust.title}
+          </h2>
+          <div className="relative">
+            <div className="relative z-10 space-y-4 md:w-1/2">
+              <p>
+                {securityTrust.description}
+                {securityTrust.title}
+              </p>
 
-            <div className="mx-auto max-w-2xl mask-[radial-gradient(ellipse_100%_100%_at_50%_0%,#000_70%,transparent_100%)] px-6">
-              <div className="bg-background dark:bg-muted/50 rounded-xl border px-6 pt-3 pb-12 shadow-xl">
-                {howItWorks.cards.map(({ title, description, icon }, i) => (
-                  <IntegrationItem
-                    key={i}
-                    icon={icon}
-                    name={title}
-                    description={description}
-                  />
+              <div className="grid grid-cols-2 gap-x-4 gap-y-8 pt-6">
+                {securityTrust.cards.map(({ title, description, icon }, i) => (
+                  <div className="space-y-3" key={i}>
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src={urlFor(icon).url()}
+                        width={32}
+                        height={32}
+                        alt={title}
+                        className="size-4"
+                      />
+                      <h3 className="text-sm font-medium">{title}</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm">
+                      {description}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="dark:bg-background pt-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
-              <h2 className="text-primary-blue text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
-                {securityTrust.title}
-              </h2>
-              {securityTrust.description && (
-                <p className="text-muted-foreground">
-                  {securityTrust.description}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 px-4 max-md:flex-col xl:gap-10">
-          <div className="flex max-w-sm flex-col gap-4 py-10">
-            {securityTrust.cards.map(({ title, description, icon }, i) => (
-              <IntegrationCard key={i} title={title} description={description}>
+            <div className="mt-12 h-fit md:absolute md:inset-x-0 md:-inset-y-12 md:mt-0 md:mask-l-from-35% md:mask-l-to-55%">
+              <div className="border-border/50 relative rounded-2xl border border-dotted p-2">
                 <Image
-                  src={urlFor(icon).url()}
-                  width={32}
-                  height={32}
-                  alt={title}
-                  className="size-8"
+                  src={urlFor(securityTrust.image).url()}
+                  className="hidden rounded-[12px] dark:block"
+                  alt="payments illustration dark"
+                  width={1207}
+                  height={929}
                 />
-              </IntegrationCard>
-            ))}
-          </div>
-
-          <div className="flex items-end">
-            <Image
-              src={urlFor(securityTrust.image).url()}
-              width={200}
-              height={200}
-              alt="Image"
-              className="size-80 md:size-140"
-            />
+                <Image
+                  src={urlFor(securityTrust.image).url()}
+                  className="rounded-[12px] shadow dark:hidden"
+                  alt="payments illustration light"
+                  width={1207}
+                  height={929}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="relative z-20 py-28 md:py-32 dark:bg-transparent">
-        <div className="@container relative z-10 mx-auto max-w-350 px-6">
+        <div className="@container relative z-10 mx-auto mb-8 max-w-350 px-6">
           <div className="space-y-6 text-center">
             <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl xl:text-7xl">
               {whoCanBenefit.title}
@@ -299,166 +308,106 @@ export default async function Page() {
               </p>
             )}
           </div>
-
-          <Card className="mx-auto mt-8 grid max-w-sm divide-y overflow-hidden rounded-2xl shadow-zinc-950/5 *:text-center md:mt-16 @min-4xl:max-w-full @min-4xl:grid-cols-3 @min-4xl:divide-x @min-4xl:divide-y-0">
-            {whoCanBenefit.cards.map(
-              ({ title, description, icon: Icon }, i) => (
-                <div key={i} className="group shadow-zinc-950/5">
-                  <CardHeader className="pb-3">
-                    {/* <CardDecorator>
-                    <Image
-                      src={urlFor(icon).url()}
-                      width={1000}
-                      height={1000}
-                      alt={title}
-                      className="size-5"
-                    />
-                  </CardDecorator> */}
-
-                    <CardDecorator>
-                      <Image
-                        src={urlFor(Icon).url()}
-                        width={28}
-                        height={28}
-                        alt="Image"
-                        className="size-7"
-                      />
-                    </CardDecorator>
-
-                    <h3 className="text-primary-blue mt-6 font-medium">
-                      {title}
-                    </h3>
-                  </CardHeader>
-
-                  <CardContent>
-                    <p className="text-sm">{description}</p>
-                  </CardContent>
-                </div>
-              ),
-            )}
-          </Card>
         </div>
 
-        <DecorativeBackground />
+        <ExpandableCards data={data} className="relative z-10" />
+
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `
+        radial-gradient(125% 125% at 50% 10%, #ffffff 40%, #1f3c61 100%)
+      `,
+            backgroundSize: "100% 100%",
+          }}
+        />
       </section>
 
-      <section className="relative min-h-180">
-        <div className="relative z-10 px-4 py-32">
-          <div className="container mx-auto">
-            <div className="from-accent/40 to-accent/70 mx-auto flex w-full max-w-5xl flex-col items-center gap-16 overflow-hidden rounded-lg bg-linear-to-tr p-8 md:rounded-xl lg:p-12">
-              <div className="flex flex-col items-center justify-center text-center">
-                <h2 className="text-primary-blue mb-3 text-2xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
-                  {cta.title}
-                </h2>
-                <p className="text-muted-foreground max-w-xl lg:text-lg">
-                  {cta.description}
-                </p>
-              </div>
+      <section className="dark relative py-32">
+        <div className="absolute top-0 h-full w-full rotate-180 overflow-hidden bg-slate-950">
+          <Grainient
+            color1="#1f3c61"
+            color2="#1f3c61"
+            color3="#1f3c61"
+            timeSpeed={0.25}
+            colorBalance={0}
+            warpStrength={1}
+            warpFrequency={5}
+            warpSpeed={2}
+            warpAmplitude={50}
+            blendAngle={0}
+            blendSoftness={0.05}
+            rotationAmount={500}
+            noiseScale={2}
+            grainAmount={0.1}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.5}
+            gamma={1}
+            saturation={1}
+            centerX={0}
+            centerY={0}
+            zoom={0.9}
+          />
+        </div>
+        <div className="relative container mx-auto">
+          <div className="flex w-full flex-col gap-16 overflow-hidden rounded-lg p-8 md:rounded-xl lg:flex-row lg:items-center lg:p-12">
+            <div className="flex-1">
+              <h3 className="mb-3 max-w-120 text-2xl font-semibold text-white md:mb-4 md:text-4xl lg:mb-6">
+                {cta.title}
+              </h3>
+              <p className="max-w-xl text-slate-200 lg:text-lg">
+                {cta.description}
+              </p>
 
-              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-                <ButtonHoverMultiple link={cta.buttonLink}>
-                  {cta.buttonTitle}
-                </ButtonHoverMultiple>
+              <Button asChild size="lg" className="mt-10 px-5 text-base">
+                <Link href={cta.buttonLink}>
+                  <span className="text-nowrap">{cta.buttonTitle}</span>
+                </Link>
+              </Button>
+            </div>
+            <div className="shrink-0">
+              <div className="flex flex-col justify-center gap-4 sm:flex-row sm:items-center">
+                <div className="relative h-32 w-32 overflow-hidden rounded-lg sm:h-40 sm:w-40">
+                  <img
+                    src={urlFor(about.image).url()}
+                    alt="Logo"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <Aurora
-            props={{
-              colorStops: ["#66bc46", "#66bc46", "#155dfc"],
-              blend: 0.5,
-              amplitude: 1.0,
-              speed: 0.5,
-            }}
-            className="top-0! rotate-180"
-          />
         </div>
       </section>
     </main>
   );
 }
 
-const Integration = ({
-  icon,
-  name,
-  description,
-}: {
-  icon: ImageType;
-  name: string;
-  description: string;
-}) => {
-  return (
-    <div className="hover:bg-muted dark:hover:bg-muted/50 space-y-4 rounded-lg border p-4 transition-colors">
-      <div className="flex size-fit items-center justify-center">
-        <Image
-          src={urlFor(icon).url()}
-          className="size-8"
-          alt={name}
-          width={32}
-          height={32}
-        />
-      </div>
-      <div className="space-y-1">
-        <h3 className="text-sm font-medium">{name}</h3>
-        <p className="text-muted-foreground line-clamp-1 min-h-24 text-sm md:line-clamp-2">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const IntegrationItem = ({
-  icon,
-  name,
-  description,
-}: {
-  icon: ImageType;
-  name: string;
-  description: string;
-}) => {
-  return (
-    <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-dashed py-3 last:border-b-0">
-      <div className="bg-muted border-foreground/5 flex size-12 items-center justify-center rounded-lg border">
-        <Image
-          src={urlFor(icon).url()}
-          className="size-6"
-          alt={name}
-          width={24}
-          height={24}
-        />
-      </div>
-      <div className="space-y-0.5">
-        <h3 className="text-sm font-medium">{name}</h3>
-        <p className="text-muted-foreground line-clamp-1 text-sm">
-          {description}
-        </p>
-      </div>
-      <Button variant="outline" size="icon" aria-label="Add integration">
-        <FaCheck className="text-primary-green size-4" />
-      </Button>
-    </div>
-  );
-};
-
-const IntegrationCard = ({
+const Cards = ({
   title,
   description,
-  children,
+  icon,
 }: {
   title: string;
   description: string;
-  children: React.ReactNode;
+  icon: ImageType;
 }) => {
   return (
-    <Card className="p-6 shadow-2xl">
+    <Card className="bg-gray-50/50 p-6">
       <div className="relative">
-        <div className="space-y-2 py-2">
-          <div className="flex items-center gap-3">
-            <div className="*:size-8">{children}</div>
-            <h3 className="text-base font-medium">{title}</h3>
-          </div>
+        <div className="shadow-primary-green/70 bg-primary-green/20 flex size-15 items-center justify-center rounded-lg border border-gray-100 shadow-2xl">
+          <Image
+            src={urlFor(icon).url()}
+            className="size-10"
+            alt={title}
+            width={24}
+            height={24}
+          />
+        </div>
+
+        <div className="space-y-2 py-6">
+          <h3 className="text-primary-blue text-base font-medium">{title}</h3>
           <p className="text-muted-foreground line-clamp-2 text-sm">
             {description}
           </p>
@@ -467,16 +416,3 @@ const IntegrationCard = ({
     </Card>
   );
 };
-
-const CardDecorator = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative mx-auto size-36 mask-radial-from-40% mask-radial-to-60% duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
-    <div
-      aria-hidden
-      className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
-    />
-
-    <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l">
-      {children}
-    </div>
-  </div>
-);

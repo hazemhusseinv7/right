@@ -152,3 +152,7 @@
 ::-webkit-scrollbar-thumb {
   @apply hover:bg-primary-blue bg-primary-green rounded-full;
 }
+
+lite-youtube {
+  @apply mx-auto rounded-xl ;
+}

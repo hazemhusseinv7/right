@@ -34,14 +34,10 @@ const Header = () => {
 
   const navItems = {
     left: [
-      { href: "/about-us", label: "About us", icon: FaUser },
       { href: "/services", label: "Services", icon: HiServer },
       { href: "/partners", label: "Partners", icon: FaUserCheck },
     ],
-    right: [
-      { href: "/team", label: "Team", icon: RiTeamFill },
-      { href: "/blog", label: "Blog", icon: HiNewspaper },
-    ],
+    right: [{ href: "/about-us", label: "About us", icon: FaUser }],
   };
 
   const navItemsMobile = [

@@ -28,7 +28,7 @@ const HeroCards = ({ data }: { data: HeroType | null }) => {
             <GoChevronRight className="transition-transform duration-300 group-hover:translate-x-2 group-hover:animate-pulse" />
           </CardHeader>
           <Divider className="bg-primary-green h-1" />
-          <CardBody className="group-hover:bg-primary-green/10 font-light transition-colors duration-300 max-lg:text-sm">
+          <CardBody className="group-hover:bg-primary-green/10 text-primary-blue font-light transition-colors duration-300 max-lg:text-sm">
             <p>{description}</p>
           </CardBody>
         </Card>
