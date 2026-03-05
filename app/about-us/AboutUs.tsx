@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/lib/sanity/image";
@@ -9,36 +8,10 @@ import { urlFor } from "@/lib/sanity/image";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import VerticalCutReveal from "@/components/ui/vertical-cut-reveal";
 import ImagePreview from "@/components/ImagePreview";
-import { TextEffect } from "@/components/ui/text-effect";
-import { useInView } from "motion/react";
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }: any) => {
-      return (
-        <div className="my-8">
-          <Image
-            src={urlFor(value).width(800).height(600).url()}
-            alt={value.alt || "Blog image"}
-            width={800}
-            height={600}
-            className="mx-auto rounded-lg"
-          />
-          {value.caption && (
-            <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-              {value.caption}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
-};
-
+import { PortableTextComponents } from "@/lib/PortableTextComponents";
+ 
 const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(containerRef, { once: true, margin: "-100px" });
-
+ 
   const heroRef = useRef<HTMLDivElement>(null);
   const revealVariants = {
     visible: (i: number) => ({
@@ -108,7 +81,7 @@ const AboutUs = ({ aboutUs }: { aboutUs: AboutUsType | null }) => {
             >
               <PortableText
                 value={aboutUs?.content}
-                components={portableTextComponents}
+                components={PortableTextComponents}
               />
             </TimelineContent>
             {/* <TimelineContent

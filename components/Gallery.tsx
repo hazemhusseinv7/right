@@ -15,6 +15,13 @@ import {
 import { urlFor } from "@/lib/sanity/image";
 import Grainient from "./Grainient";
 import Image from "next/image";
+import {
+  HiMagnifyingGlass,
+  HiOutlineLightBulb,
+  HiArrowPath,
+} from "react-icons/hi2";
+import { RiRobot3Fill } from "react-icons/ri";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const Gallery = ({
   data,
@@ -41,6 +48,14 @@ const Gallery = ({
       carouselApi.off("select", updateSelection);
     };
   }, [carouselApi]);
+
+  const iconList = [
+    HiMagnifyingGlass,
+    HiOutlineLightBulb,
+    MdOutlineDashboardCustomize,
+    HiArrowPath,
+  ];
+  const DefaultIcon = RiRobot3Fill;
 
   return (
     <section className={cn("relative bg-slate-950 py-32", className)}>
@@ -84,24 +99,22 @@ const Gallery = ({
           </div>
           <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
             <Button
-              size="icon"
               variant="outline"
               onClick={() => {
                 carouselApi?.scrollPrev();
               }}
               disabled={!canScrollPrev}
-              className="disabled:pointer-events-auto"
+              className="hover:from-primary-green hover:to-primary-green h-12 rounded-md border-none px-5 transition-colors duration-300 hover:bg-linear-to-tr disabled:pointer-events-auto"
             >
               <ArrowLeft className="size-5" />
             </Button>
             <Button
-              size="icon"
               variant="outline"
               onClick={() => {
                 carouselApi?.scrollNext();
               }}
               disabled={!canScrollNext}
-              className="disabled:pointer-events-auto"
+              className="hover:from-primary-green hover:to-primary-green h-12 rounded-md border-none px-5 transition-colors duration-300 hover:bg-linear-to-tr disabled:pointer-events-auto"
             >
               <ArrowRight className="size-5" />
             </Button>
@@ -124,40 +137,43 @@ const Gallery = ({
         >
           <CarouselContent className="hide-scrollbar -ml-4 w-full max-w-full gap-8 pr-8 pl-8 md:-mr-4 md:pr-8 md:pl-8 2xl:pr-[max(2rem,calc(50vw-700px+1rem))] 2xl:pl-[max(2rem,calc(50vw-700px+1rem))]">
             {data.howItWorks.cards.map(
-              ({ _key, title, description, icon, image }) => (
-                <CarouselItem key={_key} className="md:max-w-[452px]">
-                  <div className="group flex flex-col justify-between">
-                    <div>
-                      <div className="flex aspect-3/2 overflow-clip rounded-xl">
-                        <div className="flex-1">
-                          <div className="relative flex h-full w-full origin-bottom items-center justify-center bg-linear-to-tr from-slate-800 to-slate-600 transition duration-300 group-hover:scale-105">
-                            <Image
-                              src={urlFor(image).url()}
-                              alt={title}
-                              width={1024}
-                              height={1024}
-                              className="h-full w-full object-cover object-center"
-                            />
+              ({ _key, title, description, image }, i) => {
+                const IconComponent =
+                  i < iconList.length ? iconList[i] : DefaultIcon;
+
+                return (
+                  <CarouselItem key={_key} className="group md:max-w-[452px]">
+                    <div className="group flex flex-col justify-between">
+                      <div>
+                        <div className="flex aspect-3/2 overflow-clip rounded-xl">
+                          <div className="flex-1">
+                            <div className="relative flex h-full w-full origin-bottom items-center justify-center bg-linear-to-tr from-slate-800 to-slate-600 transition duration-300 group-hover:scale-105">
+                              <Image
+                                src={urlFor(image).url()}
+                                alt={title}
+                                width={1024}
+                                height={1024}
+                                className="h-full w-full object-cover object-center"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div className="group-hover:text-primary-green mb-2 line-clamp-3 flex items-center gap-2 pt-4 text-lg font-medium wrap-break-word text-white transition-colors duration-300 md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                        <div className="size-9">
+                          <IconComponent className="size-8 transition-all duration-300 group-hover:size-9" />
+                        </div>
+                        <span className="transition-all duration-300  group-hover:translate-x-1">
+                          {title}
+                        </span>
+                      </div>
+                      <div className="mb-8 line-clamp-2 text-sm text-slate-200 md:mb-12 md:text-base lg:mb-9">
+                        {description}
+                      </div>
                     </div>
-                    <div className="mb-2 line-clamp-3 flex items-center gap-2 pt-4 text-lg font-medium wrap-break-word text-white md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                      <Image
-                        src={urlFor(icon).url()}
-                        alt={title}
-                        width={32}
-                        height={32}
-                        className="size-8"
-                      />
-                      <span>{title}</span>
-                    </div>
-                    <div className="mb-8 line-clamp-2 text-sm text-slate-200 md:mb-12 md:text-base lg:mb-9">
-                      {description}
-                    </div>
-                  </div>
-                </CarouselItem>
-              ),
+                  </CarouselItem>
+                );
+              },
             )}
           </CarouselContent>
 

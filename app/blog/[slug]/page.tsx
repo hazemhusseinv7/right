@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 import { PortableText } from "@portabletext/react";
 
@@ -7,32 +6,9 @@ import Category from "../Category";
 import Author from "../Author";
 
 import { getBlogPost, getBlogPosts } from "@/lib/sanity/queries";
-import { urlFor } from "@/lib/sanity/image";
 
 import { GoChevronLeft } from "react-icons/go";
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }: any) => {
-      return (
-        <div className="my-8">
-          <Image
-            src={urlFor(value).width(800).height(600).url()}
-            alt={value.alt || "Blog image"}
-            width={800}
-            height={600}
-            className="mx-auto rounded-lg"
-          />
-          {value.caption && (
-            <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-              {value.caption}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
-};
+import { PortableTextComponents } from "@/lib/PortableTextComponents";
 
 // Generate static params for SSG
 export async function generateStaticParams() {
@@ -104,7 +80,7 @@ export default async function Page({
               <article className="prose prose-lg dark:prose-invert max-w-none">
                 <PortableText
                   value={post.body}
-                  components={portableTextComponents}
+                  components={PortableTextComponents}
                 />
               </article>
 

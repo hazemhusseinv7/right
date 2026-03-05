@@ -13,6 +13,7 @@ import Clients from "@/components/Clients";
 import Grainient from "@/components/Grainient";
 import { Gallery } from "@/components/Gallery";
 import ExpandableCards from "@/components/ExpandableCards";
+import { PortableTextComponents } from "@/lib/PortableTextComponents";
 
 const getVideoId = (url: string) => {
   if (!url) return null;
@@ -32,29 +33,6 @@ const getVideoId = (url: string) => {
   }
 
   return null;
-};
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }: any) => {
-      return (
-        <div className="my-8">
-          <Image
-            src={urlFor(value).width(800).height(600).url()}
-            alt={value.alt || "Blog image"}
-            width={800}
-            height={600}
-            className="mx-auto rounded-lg"
-          />
-          {value.caption && (
-            <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-              {value.caption}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
 };
 
 export default async function Page() {
@@ -168,11 +146,11 @@ export default async function Page() {
               </div>
             </div>
 
-            <div className="relative space-y-4">
+            <div className="relative space-y-4 2xl:ms-10 2xl:mt-20 2xl:scale-130">
               <div className="text-muted-foreground">
                 <PortableText
                   value={about.description1}
-                  components={portableTextComponents}
+                  components={PortableTextComponents}
                 />
               </div>
 
@@ -181,7 +159,7 @@ export default async function Page() {
                   <div>
                     <PortableText
                       value={about.description2}
-                      components={portableTextComponents}
+                      components={PortableTextComponents}
                     />
                   </div>
 
@@ -248,10 +226,7 @@ export default async function Page() {
           </h2>
           <div className="relative">
             <div className="relative z-10 space-y-4 md:w-1/2">
-              <p>
-                {securityTrust.description}
-                {securityTrust.title}
-              </p>
+              <p>{securityTrust.description}</p>
 
               <div className="grid grid-cols-2 gap-x-4 gap-y-8 pt-6">
                 {securityTrust.cards.map(({ title, description, icon }, i) => (
@@ -262,7 +237,7 @@ export default async function Page() {
                         width={32}
                         height={32}
                         alt={title}
-                        className="size-4"
+                        className="size-8"
                       />
                       <h3 className="text-sm font-medium">{title}</h3>
                     </div>
@@ -298,7 +273,7 @@ export default async function Page() {
       <section className="relative z-20 py-28 md:py-32 dark:bg-transparent">
         <div className="@container relative z-10 mx-auto mb-8 max-w-350 px-6">
           <div className="space-y-6 text-center">
-            <h2 className="text-primary-green text-4xl font-semibold text-balance lg:text-5xl xl:text-7xl">
+            <h2 className="text-primary-blue text-4xl font-semibold text-balance lg:text-5xl xl:text-7xl">
               {whoCanBenefit.title}
             </h2>
 

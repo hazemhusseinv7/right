@@ -22,29 +22,7 @@ import ImagePreview from "./ImagePreview";
 import Timeline3D, { TimelineEvent } from "./3d-interactive-timeline";
 import { FaLightbulb } from "react-icons/fa6";
 import { BiSolidAward } from "react-icons/bi";
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }: any) => {
-      return (
-        <div className="my-8">
-          <Image
-            src={urlFor(value).width(800).height(600).url()}
-            alt={value.alt || "Blog image"}
-            width={800}
-            height={600}
-            className="mx-auto rounded-lg"
-          />
-          {value.caption && (
-            <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-              {value.caption}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
-};
+import { PortableTextComponents } from "@/lib/PortableTextComponents";
 
 const AboutUs = ({
   settings,
@@ -304,7 +282,7 @@ const AboutUs = ({
               >
                 <PortableText
                   value={aboutUs?.content}
-                  components={portableTextComponents}
+                  components={PortableTextComponents}
                 />
               </TimelineContent>
               {/* <TimelineContent
