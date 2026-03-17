@@ -270,6 +270,17 @@ export async function getURAiData(): Promise<URAiType | null> {
       description,
       buttonTitle,
       buttonLink
+    },
+    clients {
+      logos[] {
+        asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        }
+      }
     }
   }`;
 

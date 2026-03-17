@@ -2,21 +2,33 @@ import { getClientsData } from "@/lib/sanity/queries";
 import { LogoCloud } from "./logo-cloud";
 import { urlFor } from "@/lib/sanity/image";
 
-const Clients = async () => {
-  const clients: ClientsType | null = await getClientsData();
+interface ClientsProps {
+  logos?: ImageType[];
+}
 
-  if (!clients?.logos?.length) return null;
+const Clients = async ({ logos: data }: ClientsProps = {}) => {
+  let logos: { url: string }[] = [];
 
-  let logos =
-    clients?.logos?.map((clientLogo) => ({
+  if (data && data.length > 0) {
+    logos = data.map((clientLogo) => ({
       url: urlFor(clientLogo).url(),
-    })) || [];
+    }));
+  } else {
+    const clients: ClientsType | null = await getClientsData();
+    if (clients?.logos?.length) {
+      logos = clients.logos.map((clientLogo) => ({
+        url: urlFor(clientLogo).url(),
+      }));
+    }
+  }
 
-  logos = [...logos, ...logos];
+  if (logos.length === 0) return null;
+
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
     <section className="py-20">
-      <LogoCloud logos={logos} />
+      <LogoCloud logos={duplicatedLogos} />
     </section>
   );
 };

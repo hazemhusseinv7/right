@@ -127,6 +127,9 @@ interface URAiType {
     buttonTitle: string;
     buttonLink: string;
   };
+  clients?: {
+    logos: ImageType[];
+  };
 }
 
 interface AboutUsType {
