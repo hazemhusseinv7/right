@@ -88,12 +88,19 @@ export default function HoverCards() {
             "radial-gradient(circle at 20% 50%, #2a4e7a 0%, #1f3c61 70%, #142844 100%)",
         }}
       >
-        <div className="size-full -rotate-3 bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat opacity-3" />
+        <div className="relative size-full overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[70%] animate-pulse rounded-full bg-[#1e2a78] opacity-40 blur-[140px] duration-[8s]" />
+            <div className="absolute -right-[10%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-[#66bc46] opacity-[0.5] blur-[120px]" />
+            <div className="absolute top-[30%] left-[20%] h-[40%] w-[40%] rounded-full bg-[#0ea5e9] opacity-[0.5] blur-[100px]" />
+            <div className="size-full -rotate-3 bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat opacity-3" />
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
         <div className="md:pr-10">
-          <h2 className="text-5xl font-extralight tracking-tighter text-white md:text-7xl">
+          <h2 className="text-3xl font-extralight tracking-tighter text-white md:text-4xl xl:text-7xl">
             Experience AI without{" "}
             <span className="relative mt-2 block font-black tracking-tighter text-[#66bc46] uppercase italic">
               Compromising
@@ -161,23 +168,23 @@ export default function HoverCards() {
                   )}
 
                   <div className="relative z-10 flex items-baseline gap-6">
-                    <span
+                    {/* <span
                       className={`font-mono text-[10px] ${isHovered ? "text-[#66bc46]" : "text-white/20"}`}
                     >
                       {"//0"}
                       {index + 1}
-                    </span>
+                    </span> */}
                     <div className="flex flex-col">
                       <p
                         className={`text-2xl font-bold transition-all duration-500 ${isHovered ? "translate-x-1 text-white" : "text-white/40"}`}
                       >
                         {feature}
                       </p>
-                      <span
+                      {/* <span
                         className={`mt-2 font-mono text-[9px] tracking-[0.4em] uppercase transition-all duration-700 ${isHovered ? "translate-y-0 opacity-50" : "-translate-y-1 opacity-0"}`}
                       >
                         System_Core_Active
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 </div>

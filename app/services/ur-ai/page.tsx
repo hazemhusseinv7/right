@@ -124,9 +124,9 @@ export default async function Page() {
             </div>
           </div>
 
-          <h1 className="text-primary-blue mb-8 max-w-5xl text-5xl font-light tracking-tight md:text-7xl">
+          <h1 className="text-primary-blue mb-8 text-3xl font-light tracking-tight md:text-5xl">
             Own your enterprise{" "}
-            <span className="font-medium uppercase opacity-90">
+            <span className="from-primary-blue to-primary-green bg-linear-to-r bg-clip-text font-medium text-transparent uppercase opacity-90">
               Intelligence
             </span>
           </h1>
@@ -215,19 +215,26 @@ export default async function Page() {
 
         <Cards />
 
-        <section className="relative flex min-h-screen items-center justify-center p-4 md:p-10">
+        <section className="relative flex min-h-screen flex-col items-center justify-center p-4 md:p-10">
+          <div className="flex flex-col items-center justify-center gap-4 py-10 pt-14">
+            <h2 className="text-primary-blue relative z-10 max-w-xl text-3xl font-semibold text-balance md:text-4xl lg:text-5xl xl:text-7xl">
+              {securityTrust.title}
+            </h2>
+            <p>{securityTrust.description}</p>
+          </div>
+
           <div className="relative flex w-full max-w-[1600px] flex-col justify-center overflow-hidden rounded-[48px] border border-white/[0.08] bg-[#0d1124] px-8 py-20 shadow-[0_0_80px_rgba(0,0,0,0.6)] md:px-24">
             <div className="absolute inset-0 z-0 overflow-hidden">
               <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[70%] animate-pulse rounded-full bg-[#1e2a78] opacity-40 blur-[140px] duration-[8s]" />
-              <div className="absolute -right-[10%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-[#66bc46] opacity-[0.4] blur-[120px]" />
-              <div className="absolute top-[30%] left-[20%] h-[40%] w-[40%] rounded-full bg-[#0ea5e9] opacity-[0.4] blur-[100px]" />
+              <div className="absolute -right-[10%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-[#66bc46] opacity-[0.5] blur-[120px]" />
+              <div className="absolute top-[30%] left-[20%] h-[40%] w-[40%] rounded-full bg-[#0ea5e9] opacity-[0.5] blur-[100px]" />
             </div>
 
             <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-20">
               {securityData.map((item, index) => (
                 <div key={index} className="flex flex-col space-y-12">
                   {item.icon}
-                  <div className="space-y-8">
+                  <div className="space-y-8 h-full">
                     <span className="block text-[11px] font-bold tracking-[0.3em] text-white/40 uppercase">
                       {item.category}
                     </span>
@@ -236,7 +243,7 @@ export default async function Page() {
                       {item.title}
                     </h3>
 
-                    <p className="max-w-[320px] text-base leading-relaxed text-white/50">
+                    <p className="max-w-[320px] text-base leading-relaxed text-white/70">
                       {item.description}
                     </p>
                   </div>
@@ -246,33 +253,14 @@ export default async function Page() {
           </div>
         </section>
 
-        <section className="dark relative bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat py-32">
-          <div className="absolute top-0 h-full w-full overflow-hidden opacity-95">
-            <Grainient
-              color1="#1f3c61"
-              color2="#1f3c61"
-              color3="#1f3c61"
-              timeSpeed={0.25}
-              colorBalance={0}
-              warpStrength={1}
-              warpFrequency={5}
-              warpSpeed={2}
-              warpAmplitude={50}
-              blendAngle={0}
-              blendSoftness={0.05}
-              rotationAmount={500}
-              noiseScale={2}
-              grainAmount={0.1}
-              grainScale={2}
-              grainAnimated={false}
-              contrast={1.5}
-              gamma={1}
-              saturation={1}
-              centerX={0}
-              centerY={0}
-              zoom={0.9}
-            />
+        <section className="relative overflow-hidden bg-[#0d1124] bg-cover bg-center bg-no-repeat py-32">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[70%] animate-pulse rounded-full bg-[#1e2a78] opacity-40 blur-[140px] duration-[8s]" />
+            <div className="absolute -right-[10%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-[#66bc46] opacity-[0.5] blur-[120px]" />
+            <div className="absolute top-[30%] left-[20%] h-[40%] w-[40%] rounded-full bg-[#0ea5e9] opacity-[0.5] blur-[100px]" />
+            <div className="size-full -rotate-3 bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat opacity-3" />
           </div>
+
           <div className="relative container mx-auto">
             <div className="flex w-full flex-col gap-16 overflow-hidden rounded-lg p-8 md:rounded-xl lg:flex-row lg:items-center lg:p-12">
               <div className="flex-1">
@@ -283,7 +271,12 @@ export default async function Page() {
                   {cta.description}
                 </p>
 
-                <Button asChild size="lg" className="mt-10 px-5 text-base">
+                <Button
+                  asChild
+                  size="lg"
+                  className="mt-10 px-5 text-base"
+                  variant="outline"
+                >
                   <Link href={cta.buttonLink}>
                     <span className="text-nowrap">{cta.buttonTitle}</span>
                   </Link>

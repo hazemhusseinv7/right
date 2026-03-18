@@ -149,7 +149,7 @@ const Card = ({
           scale,
           top: `calc(-5% + ${i * 25}px)`,
         }}
-        className="relative min-h-[650px] w-full overflow-hidden rounded-[32px] border border-white/10 bg-[#0A0B1A]/80 p-6 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl md:p-12 lg:h-[600px] lg:p-16"
+        className="relative min-h-[650px] w-full overflow-hidden rounded-4xl border border-white/10 p-6 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl md:p-12 lg:h-[600px] lg:p-16"
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[70%] animate-pulse rounded-full bg-[#1e2a78] opacity-40 blur-[140px] duration-[8s]" />
@@ -207,7 +207,7 @@ const Card = ({
                 <div className="mb-2 h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <div className="flex items-center justify-between px-2">
                   <span className="font-mono text-[8px] tracking-widest text-white/40 uppercase">
-                    System_Active // {category}
+                    {category}
                   </span>
                   <div className="size-1.5 animate-pulse rounded-full bg-[#66bc46]" />
                 </div>

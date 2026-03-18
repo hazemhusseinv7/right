@@ -13,7 +13,7 @@ interface LogoCloudProps {
 
 export const LogoCloud = ({ logos }: LogoCloudProps) => {
   return (
-    <section className="overflow-hidden pb-28 md:pb-12" dir="ltr">
+    <section className="relative z-10 overflow-hidden pb-28 md:pb-12" dir="ltr">
       <div className="group relative m-auto max-md:px-0">
         <div className="flex flex-col items-center md:flex-row">
           <div className="relative w-full py-6">
