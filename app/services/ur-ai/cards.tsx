@@ -3,86 +3,33 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import { urlFor } from "@/lib/sanity/image";
 
-const cards = [
-  {
-    category: "Discover",
-    title: "AI Opportunity Assessment",
-    description:
-      "Understand the organization's workflows, systems, and data landscape while identifying areas within your business where AI can deliver measurable value.",
-    outcomeLabel: "Outcome:",
-    points: [
-      "Process and workflow analysis",
-      "Security and compliance requirements review",
-      "ROI and feasibility evaluation",
-      "AI opportunity and use-case identification",
-    ],
-    img: "/about-us/vision.jpg",
-  },
-  {
-    category: "Strategy",
-    title: "Strategy & Solution Design",
-    description:
-      "Based on the assessment, we design a tailored AI strategy aligned with your systems, data architecture, and operational goals.",
-    outcomeLabel: "Deliverables:",
-    points: [
-      "AI implementation roadmap",
-      "Security and governance framework",
-      "Model and technology selection",
-      "Proof-of-concept alignment",
-    ],
-    img: "/about-us/vision.jpg",
-  },
-  {
-    category: "Build",
-    title: "Development & Deployment",
-    description:
-      "Develop and deploy AI solutions within the organization's existing systems and workflows. Our team ensures seamless integration.",
-    outcomeLabel: "Key considerations:",
-    points: [
-      "On-premise and air-gapped environments",
-      "System integration",
-      "Workflow automation",
-      "Secure model deployment",
-    ],
-    img: "/about-us/vision.jpg",
-  },
-  {
-    category: "Enablement",
-    title: "Adoption & Training",
-    description:
-      "Successful AI transformation requires people to adopt the technology. We help organizations build AI capability across all levels.",
-    outcomeLabel: "Key considerations:",
-    points: [
-      "Awareness campaigns",
-      "User onboarding",
-      "Leadership enablement",
-      "Documentation and support",
-    ],
-    img: "/about-us/vision.jpg",
-  },
-  {
-    category: "Optimize & Scale",
-    title: "Continuous Improvement",
-    description:
-      "AI systems improve over time. We continuously monitor performance, refine models, and expand AI capabilities.",
-    outcomeLabel: "This includes:",
-    points: [
-      "Performance monitoring",
-      "Model retraining",
-      "Capability development",
-      "Organization-wide transformation",
-    ],
-    img: "/about-us/vision.jpg",
-  },
-];
-
-export default function Cards() {
+export default function Cards({
+  data,
+}: {
+  data: {
+    cards: {
+      _key?: string;
+      highlight: string;
+      title: string;
+      description: string;
+      image: ImageType;
+      listTitle: string;
+      items: {
+        _key?: string;
+        content: string;
+      }[];
+    }[];
+  };
+}) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
   });
+
+  const cards = data.cards;
 
   return (
     <main ref={container} className="relative bg-[#0d1124] py-20">
@@ -113,12 +60,15 @@ export default function Cards() {
 
 interface CardProps {
   i: number;
-  category: string;
+  highlight: string;
   title: string;
   description: string;
-  outcomeLabel: string;
-  points: string[];
-  img: string;
+  listTitle: string;
+  items: {
+    _key?: string;
+    content: string;
+  }[];
+  image: ImageType;
   progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
@@ -126,12 +76,12 @@ interface CardProps {
 
 const Card = ({
   i,
-  category,
+  highlight,
   title,
   description,
-  outcomeLabel,
-  points,
-  img,
+  listTitle,
+  items,
+  image,
   progress,
   range,
   targetScale,
@@ -163,7 +113,7 @@ const Card = ({
             <div className="space-y-4">
               <div className="space-y-2">
                 <span className="text-[10px] font-bold tracking-[0.3em] text-[#66bc46] uppercase">
-                  {category}
+                  {highlight}
                 </span>
                 <h2 className="text-3xl leading-tight font-light tracking-tight md:text-5xl lg:text-6xl">
                   {title}
@@ -176,14 +126,14 @@ const Card = ({
 
               <div className="space-y-3">
                 <p className="text-sm font-semibold text-white/90 italic">
-                  {outcomeLabel}
+                  {listTitle}
                 </p>
                 <ul className="grid grid-cols-1 gap-x-4 gap-y-2 md:grid-cols-2">
-                  {points.map((point, index) => (
-                    <li key={index} className="flex items-start gap-3">
+                  {items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
                       <div className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#66bc46]" />
                       <p className="text-[12px] leading-snug text-white/70 md:text-[13px]">
-                        {point}
+                        {item.content}
                       </p>
                     </li>
                   ))}
@@ -196,7 +146,7 @@ const Card = ({
           <div className="relative order-1 flex h-48 w-full items-center justify-center sm:h-64 lg:order-2 lg:h-full lg:justify-end">
             <div className="group relative aspect-video w-full max-w-[460px] overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 hover:border-[#66bc46]/30 lg:aspect-[4/3]">
               <Image
-                src={img}
+                src={urlFor(image).url()}
                 alt={title}
                 fill
                 className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
@@ -207,7 +157,7 @@ const Card = ({
                 <div className="mb-2 h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <div className="flex items-center justify-between px-2">
                   <span className="font-mono text-[8px] tracking-widest text-white/40 uppercase">
-                    {category}
+                    {highlight}
                   </span>
                   <div className="size-1.5 animate-pulse rounded-full bg-[#66bc46]" />
                 </div>

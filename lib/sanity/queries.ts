@@ -138,6 +138,10 @@ export async function getServicesData(): Promise<ServicesType | null> {
 export async function getURAiData(): Promise<URAiType | null> {
   const query = `*[_type == "urAi"][0]{
     hero {
+      title {
+        text,
+        highlight
+      },
       image {
         asset-> {
           _id,
@@ -149,97 +153,24 @@ export async function getURAiData(): Promise<URAiType | null> {
       },
       description,
       buttonTitle,
-      buttonLink,
-      videoUrl
+      buttonLink
     },
-    about {
-      image {
+    clients {
+      logos[] {
         asset-> {
           _id,
           url,
           metadata {
             dimensions
-          }
-        }
-      },
-      title,
-      description1,
-      description2
-    },
-    whatMakesItDifferent {
-      title,
-      description,
-      cards[] {
-        _key,
-        title,
-        description,
-        icon {
-          asset-> {
-            _id,
-            url,
-            metadata {
-              dimensions
-            }
-          }
-        }
-      }
-    },
-    howItWorks {
-      title,
-      description,
-      cards[] {
-        _key,
-        title,
-        description,
-        icon {
-          asset-> {
-            _id,
-            url,
-            metadata {
-              dimensions
-            }
-          }
-        },
-        image {
-          asset-> {
-            _id,
-            url,
-            metadata {
-              dimensions
-            }
-          }
-        }
-      }
-    },
-    securityTrust {
-      title,
-      description,
-      image {
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
-          }
-        }
-      },
-      cards[] {
-        _key,
-        title,
-        description,
-        icon {
-          asset-> {
-            _id,
-            url,
-            metadata {
-              dimensions
-            }
           }
         }
       }
     },
     whoCanBenefit {
-      title,
+      title {
+        text,
+        highlight
+      },
       description,
       cards[] {
         _key,
@@ -255,6 +186,60 @@ export async function getURAiData(): Promise<URAiType | null> {
           }
         },
         image {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        }
+      }
+    },
+    video {
+      videoUrl
+    },
+    scrollCards {
+      cards[] {
+        _key,
+        highlight,
+        title,
+        description,
+        image {
+          asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions
+            }
+          }
+        },
+        listTitle,
+        items[] {
+          _key,
+          content
+        }
+      }
+    },
+    experienceAi {
+      title {
+        text,
+        highlight
+      },
+      cards[] {
+        _key,
+        content
+      }
+    },
+    securityTrust {
+      title,
+      description,
+      cards[] {
+        _key,
+        category,
+        title,
+        description,
+        icon {
           asset-> {
             _id,
             url,
@@ -270,17 +255,6 @@ export async function getURAiData(): Promise<URAiType | null> {
       description,
       buttonTitle,
       buttonLink
-    },
-    clients {
-      logos[] {
-        asset-> {
-          _id,
-          url,
-          metadata {
-            dimensions
-          }
-        }
-      }
     }
   }`;
 

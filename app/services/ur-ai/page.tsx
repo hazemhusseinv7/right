@@ -1,20 +1,14 @@
 import Image from "next/image";
-
+import Link from "next/link";
+import { YouTubeEmbed } from "@next/third-parties/google";
+import ReactLenis from "lenis/react";
+import { Button } from "@/components/ui/button";
+import Clients from "@/components/Clients";
 import { getURAiData } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import Clients from "@/components/Clients";
-import Grainient from "@/components/Grainient";
-import ExpandableCards from "@/components/ExpandableCards";
-// import { PortableTextComponents } from "@/lib/PortableTextComponents";
+import AccordionModal from "./image-accordion";
 import HoverCards from "./HoverCards";
-import { YouTubeEmbed } from "@next/third-parties/google";
 import Cards from "./cards";
-import ReactLenis from "lenis/react";
-import { IoShieldCheckmark } from "react-icons/io5";
-import { BsDatabaseFillCheck } from "react-icons/bs";
-import { FaUserCheck } from "react-icons/fa6";
 
 const getVideoId = (url: string) => {
   if (!url) return null;
@@ -44,66 +38,15 @@ export default async function Page() {
   const {
     hero,
     clients,
-    about,
-    whatMakesItDifferent,
-    howItWorks,
-    securityTrust,
     whoCanBenefit,
+    experienceAi,
+    video,
+    securityTrust,
+    scrollCards,
     cta,
   } = data;
 
-  const features = [
-    {
-      title: "Deploy Locally",
-      description: "Install on your own infrastructure, with full control",
-    },
-    {
-      title: "Configure Easily",
-      description:
-        "Customize workflows, processes, and AI behavior to fit your needs",
-    },
-    {
-      title: "Integrate Seamlessly",
-      description:
-        "Connect with your existing systems, including ERP, CRM, and more",
-    },
-    {
-      title: "Stay Compliant",
-      description:
-        "Align with local regulations and standards such as SDAIA and NCA",
-    },
-    {
-      title: "Scale Effortlessly",
-      description:
-        "Expand AI capabilities as your business grows, without complications",
-    },
-  ];
-
-  const securityData = [
-    {
-      category: "AI SECURITY",
-      title: "AI Models Protection",
-      description:
-        "Ensure continuous monitoring and scanning of models deployed on the internet.",
-      icon: <IoShieldCheckmark className="size-12 text-white" />,
-    },
-    {
-      category: "AI ORCHESTRATION",
-      title: "Prevent Users Misuse",
-      description:
-        "Safeguard against attempts to manipulate or control AI responses.",
-      icon: <BsDatabaseFillCheck className="size-12 text-white" />,
-    },
-    {
-      category: "AI GOVERNANCE",
-      title: "Guard Against Malicious Data Injection",
-      description:
-        "Prevent attackers from introducing harmful or corrupt data into the system.",
-      icon: <FaUserCheck className="size-12 text-white" />,
-    },
-  ];
-
-  const videoUrl = hero.videoUrl;
+  const videoUrl = video.videoUrl;
 
   const videoId = videoUrl ? getVideoId(videoUrl) : null;
 
@@ -125,20 +68,17 @@ export default async function Page() {
           </div>
 
           <h1 className="text-primary-blue mb-8 text-3xl font-light tracking-tight md:text-5xl">
-            Own your enterprise{" "}
+            {hero.title.text}{" "}
             <span className="from-primary-blue to-primary-green bg-linear-to-r bg-clip-text font-medium text-transparent uppercase opacity-90">
-              Intelligence
+              {hero.title.highlight}
             </span>
           </h1>
 
-          <p className="mb-12 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            Deploy AI built for your systems and data, with customizable models,
-            automated workflows, and secure on-premise and air-gapped
-            environment — Delivering enterprise intelligence fully under your
-            control.
+          <p className="mb-12 max-w-3xl text-justify text-lg leading-relaxed text-slate-600 [text-align-last:center] md:text-2xl">
+            {hero.description}
           </p>
 
-          <button className="group relative overflow-hidden rounded-sm bg-gradient-to-r from-[#006050] to-[#164e63] px-10 py-4 text-xl font-semibold text-white shadow-2xl transition-all hover:scale-105 active:scale-95">
+          <button className="group relative cursor-pointer overflow-hidden rounded-sm bg-gradient-to-r from-[#006050] to-[#164e63] px-10 py-4 text-xl font-semibold text-white shadow-2xl transition-all hover:scale-105 active:scale-95">
             <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity group-hover:opacity-100" />
             {hero.buttonTitle}
           </button>
@@ -165,44 +105,24 @@ export default async function Page() {
         <section className="relative z-20 py-14 md:py-32 dark:bg-transparent">
           <div className="@container relative z-10 mx-auto mb-8 max-w-350 px-6">
             <div className="space-y-6 text-center">
-              {/* <h2 className="text-primary-blue text-4xl font-semibold text-balance lg:text-5xl xl:text-7xl">
-                {whoCanBenefit.title}
-              </h2> */}
-
               <div className="mb-16 text-center">
                 <h2 className="text-3xl font-light tracking-tight text-[#1f3c61] md:text-4xl">
-                  Adopt AI the{" "}
-                  <span className="font-extrabold text-[#66bc46]">
-                    RIGHT WAY
+                  {whoCanBenefit.title.text}{" "}
+                  <span className="font-extrabold text-[#66bc46] uppercase">
+                    {whoCanBenefit.title.highlight}
                   </span>
                 </h2>
                 <p className="mt-3 text-sm font-medium tracking-widest text-[#1f3c61] uppercase opacity-60">
-                  Ur AI is built differently for you
-                </p>
-              </div>
-
-              {whoCanBenefit.description && (
-                <p className="text-muted-foreground">
                   {whoCanBenefit.description}
                 </p>
-              )}
+              </div>
             </div>
           </div>
 
-          <ExpandableCards data={data} className="relative z-10" />
-
-          {/* <div
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: `
-        radial-gradient(125% 125% at 50% 10%, #ffffff 40%, #1f3c61 100%)
-      `,
-              backgroundSize: "100% 100%",
-            }}
-          /> */}
+          <AccordionModal data={whoCanBenefit} className="relative z-10" />
         </section>
 
-        <HoverCards />
+        <HoverCards data={experienceAi} />
 
         {videoId && (
           <div className="relative z-10 mt-32 mb-14 w-full px-4 py-20">
@@ -213,7 +133,7 @@ export default async function Page() {
           </div>
         )}
 
-        <Cards />
+        <Cards data={scrollCards} />
 
         <section className="relative flex min-h-screen flex-col items-center justify-center p-4 md:p-10">
           <div className="flex flex-col items-center justify-center gap-4 py-10 pt-14">
@@ -231,24 +151,32 @@ export default async function Page() {
             </div>
 
             <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-20">
-              {securityData.map((item, index) => (
-                <div key={index} className="flex flex-col space-y-12">
-                  {item.icon}
-                  <div className="space-y-8 h-full">
-                    <span className="block text-[11px] font-bold tracking-[0.3em] text-white/40 uppercase">
-                      {item.category}
-                    </span>
+              {securityTrust.cards.map(
+                ({ category, title, description, icon }, index) => (
+                  <div key={index} className="flex flex-col space-y-12">
+                    <Image
+                      src={urlFor(icon.asset).url()}
+                      width={48}
+                      height={48}
+                      alt={title}
+                      className="size-12 brightness-0 invert"
+                    />
+                    <div className="h-full space-y-8">
+                      <span className="block text-[11px] font-bold tracking-[0.3em] text-white/40 uppercase">
+                        {category}
+                      </span>
 
-                    <h3 className="text-4xl leading-[1.1] font-light tracking-tight text-white lg:text-5xl">
-                      {item.title}
-                    </h3>
+                      <h3 className="text-4xl leading-[1.1] font-light tracking-tight text-white lg:text-5xl">
+                        {title}
+                      </h3>
 
-                    <p className="max-w-[320px] text-base leading-relaxed text-white/70">
-                      {item.description}
-                    </p>
+                      <p className="max-w-[320px] text-base leading-relaxed text-white/70">
+                        {description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ),
+              )}
             </div>
           </div>
         </section>
@@ -286,7 +214,7 @@ export default async function Page() {
                 <div className="flex flex-col justify-center gap-4 sm:flex-row sm:items-center">
                   <div className="relative h-32 w-32 overflow-hidden rounded-lg sm:h-40 sm:w-40">
                     <img
-                      src={urlFor(about.image).url()}
+                      src="/services/ur-ai/icon.png"
                       alt="Logo"
                       className="object-cover"
                     />

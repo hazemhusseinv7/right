@@ -64,32 +64,24 @@ interface ServicesType {
   }[];
 }
 
+type HighlightedTitle = {
+  text: string;
+  highlight: string;
+};
+
 interface URAiType {
   hero: {
+    title: HighlightedTitle;
     image: ImageType;
     description: string;
     buttonTitle: string;
     buttonLink: string;
-    videoUrl?: string;
   };
-  about: {
-    image: ImageType;
-    title: string;
-    description1: any[];
-    description2: any[];
+  clients?: {
+    logos: ImageType[];
   };
-  whatMakesItDifferent: {
-    title: string;
-    description?: string;
-    cards: {
-      _key?: string;
-      title: string;
-      description: string;
-      icon: ImageType;
-    }[];
-  };
-  howItWorks: {
-    title: string;
+  whoCanBenefit: {
+    title: HighlightedTitle;
     description?: string;
     cards: {
       _key?: string;
@@ -97,28 +89,41 @@ interface URAiType {
       description: string;
       icon: ImageType;
       image: ImageType;
+    }[];
+  };
+  video: {
+    videoUrl: string;
+  };
+  scrollCards: {
+    cards: {
+      _key?: string;
+      highlight: string;
+      title: string;
+      description: string;
+      image: ImageType;
+      listTitle: string;
+      items: {
+        _key?: string;
+        content: string;
+      }[];
+    }[];
+  };
+  experienceAi: {
+    title: HighlightedTitle;
+    cards: {
+      _key?: string;
+      content: string;
     }[];
   };
   securityTrust: {
     title: string;
     description?: string;
-    image: ImageType;
     cards: {
       _key?: string;
+      category?: string;
       title: string;
       description: string;
       icon: ImageType;
-    }[];
-  };
-  whoCanBenefit: {
-    title: string;
-    description?: string;
-    cards: {
-      _key?: string;
-      title: string;
-      description: string;
-      icon: ImageType;
-      image: ImageType;
     }[];
   };
   cta: {
@@ -126,9 +131,6 @@ interface URAiType {
     description: string;
     buttonTitle: string;
     buttonLink: string;
-  };
-  clients?: {
-    logos: ImageType[];
   };
 }
 

@@ -104,7 +104,8 @@ export default function ExpandableCards({
             data-card-id={card.id}
             key={card.id}
             layout
-            onClick={() => handleCardClick(card.id)}
+            // onClick={() => handleCardClick(card.id)}
+            onHoverStart={() => handleCardClick(card.id)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();

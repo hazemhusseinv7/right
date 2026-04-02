@@ -2,18 +2,23 @@
 
 import { useState, useEffect, useRef } from "react";
 
-export default function HoverCards() {
+export default function HoverCards({
+  data,
+}: {
+  data: {
+    title: HighlightedTitle;
+    cards: {
+      _key?: string;
+      content: string;
+    }[];
+  };
+}) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isInside, setIsInside] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const features = [
-    "Control",
-    "Data Sovereignty",
-    "Security & Privacy",
-    "Compliance",
-  ];
+  const features = data.cards;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -26,93 +31,44 @@ export default function HoverCards() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 w-full cursor-none overflow-hidden py-32"
+      className="relative z-10 flex min-h-200 w-full items-center overflow-hidden py-32"
       onMouseEnter={() => setIsInside(true)}
       onMouseLeave={() => setIsInside(false)}
     >
-      {/* 1. REALISTIC LENS CURSOR */}
+      {/* GRADIENT BACKGROUND */}
       <div
-        className={`pointer-events-none fixed z-1000 transition-opacity duration-300 ${
-          isInside ? "opacity-100" : "opacity-0"
-        }`}
-        style={{
-          left: mousePos.x,
-          top: mousePos.y,
-          transform: `translate(-21.5px, -21.5px)`,
-        }}
-      >
-        <div className="relative h-12 w-12 scale-150">
-          {/* THE LENS GLASS */}
-          <div
-            className="absolute top-[5px] left-[5px] h-[20px] w-[20px] overflow-hidden rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 80%)",
-              backdropFilter: "blur(3px) brightness(1.2) contrast(1.2)",
-              boxShadow:
-                "inset 0 0 4px rgba(255,255,255,0.3), 0 0 15px rgba(102,188,70,0.15)",
-            }}
-          >
-            <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
-          </div>
-
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#66bc46"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="relative z-10"
-          >
-            <circle cx="11" cy="11" r="8" className="stroke-[#66bc46]" />
-            <line
-              x1="21"
-              y1="21"
-              x2="16.65"
-              y2="16.65"
-              className="opacity-90"
-            />
-          </svg>
-        </div>
-      </div>
-
-      {/* 2. GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0 bg-[#1f3c61]"
+        className="absolute inset-0 bg-[#0d1124]"
         style={{
           clipPath: "polygon(0 8%, 100% 0, 100% 92%, 0 100%)",
           background:
-            "radial-gradient(circle at 20% 50%, #2a4e7a 0%, #1f3c61 70%, #142844 100%)",
+            "radial-gradient(circle at 20% 50%, #2a4e7a 0%, #0d1124 70%, #142844 100%)",
         }}
       >
-        <div className="relative size-full overflow-hidden">
+        <div className="relative z-200 size-full overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[70%] animate-pulse rounded-full bg-[#1e2a78] opacity-40 blur-[140px] duration-[8s]" />
             <div className="absolute -right-[10%] -bottom-[20%] h-[60%] w-[60%] rounded-full bg-[#66bc46] opacity-[0.5] blur-[120px]" />
             <div className="absolute top-[30%] left-[20%] h-[40%] w-[40%] rounded-full bg-[#0ea5e9] opacity-[0.5] blur-[100px]" />
-            <div className="size-full -rotate-3 bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat opacity-3" />
+            <div className="size-full -rotate-3 bg-[url('/img.svg')] bg-cover bg-center bg-no-repeat opacity-1" />
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
+      <div className="relative z-10 mx-auto flex flex-col items-center gap-24 px-6">
         <div className="md:pr-10">
           <h2 className="text-3xl font-extralight tracking-tighter text-white md:text-4xl xl:text-7xl">
-            Experience AI without{" "}
+            {data.title.text}{" "}
             <span className="relative mt-2 block font-black tracking-tighter text-[#66bc46] uppercase italic">
-              Compromising
+              {data.title.highlight}
               {/* Neon Glow Layer */}
               <span className="absolute inset-0 -z-10 text-[#66bc46] opacity-40 blur-xl select-none">
-                Compromising
+                {data.title.highlight}
               </span>
             </span>
           </h2>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 gap-6 2xl:grid-cols-4">
           {features.map((feature, index) => {
             const isHovered = hoveredIndex === index;
 
@@ -140,7 +96,7 @@ export default function HoverCards() {
                 />
 
                 <div
-                  className={`relative overflow-hidden border-l-[3px] p-8 transition-all duration-500 ${
+                  className={`relative flex items-center justify-center overflow-hidden border-l-[3px] p-8 transition-all duration-500 ${
                     isHovered
                       ? "border-[#66bc46] bg-white/[0.05] shadow-[0_0_30px_rgba(102,188,70,0.15)]"
                       : "border-white/10 bg-transparent"
@@ -176,9 +132,9 @@ export default function HoverCards() {
                     </span> */}
                     <div className="flex flex-col">
                       <p
-                        className={`text-2xl font-bold transition-all duration-500 ${isHovered ? "translate-x-1 text-white" : "text-white/40"}`}
+                        className={`text-2xl font-semibold transition-all duration-500 md:text-4xl ${isHovered ? "translate-x-1 text-white" : "text-white/40"}`}
                       >
-                        {feature}
+                        {feature.content}
                       </p>
                       {/* <span
                         className={`mt-2 font-mono text-[9px] tracking-[0.4em] uppercase transition-all duration-700 ${isHovered ? "translate-y-0 opacity-50" : "-translate-y-1 opacity-0"}`}
