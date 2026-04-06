@@ -105,14 +105,14 @@ export default async function Page() {
         <section className="relative z-20 py-14 md:py-32 dark:bg-transparent">
           <div className="@container relative z-10 mx-auto mb-8 max-w-350 px-6">
             <div className="space-y-6 text-center">
-              <div className="mb-16 text-center">
-                <h2 className="text-3xl font-light tracking-tight text-[#1f3c61] md:text-4xl">
-                  {whoCanBenefit.title.text}{" "}
+              <div className="mb-2 text-center">
+                <h2 className="text-3xl font-light tracking-tight text-[#1f3c61] md:text-5xl">
+                  {whoCanBenefit.title.text}
                   <span className="font-extrabold text-[#66bc46] uppercase">
                     {whoCanBenefit.title.highlight}
                   </span>
                 </h2>
-                <p className="mt-3 text-sm font-medium tracking-widest text-[#1f3c61] uppercase opacity-60">
+                <p className="mt-3 text-lg font-medium tracking-widest text-[#1f3c61] uppercase opacity-60">
                   {whoCanBenefit.description}
                 </p>
               </div>
