@@ -87,7 +87,6 @@ interface URAiType {
       _key?: string;
       title: string;
       description: string;
-      icon: ImageType;
       image: ImageType;
     }[];
   };

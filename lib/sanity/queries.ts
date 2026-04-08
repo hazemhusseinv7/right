@@ -176,15 +176,6 @@ export async function getURAiData(): Promise<URAiType | null> {
         _key,
         title,
         description,
-        icon {
-          asset-> {
-            _id,
-            url,
-            metadata {
-              dimensions
-            }
-          }
-        },
         image {
           asset-> {
             _id,

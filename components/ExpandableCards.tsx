@@ -13,7 +13,7 @@ const EASE_OUT_QUINT = [0.23, 1, 0.32, 1] as const;
 export interface Card {
   id: number;
   title: string;
-  icon: string;
+  // icon: string;
   image: string;
   content: string;
 }
@@ -36,7 +36,7 @@ export default function ExpandableCards({
   const cards: Card[] = data.whoCanBenefit.cards.map((card, index) => ({
     id: index,
     title: card.title,
-    icon: urlFor(card.icon?.asset).url(),
+    // icon: urlFor(card.icon?.asset).url(),
     image: urlFor(card.image?.asset).url(),
     content: card.description,
   }));
@@ -215,13 +215,13 @@ export default function ExpandableCards({
                     }
                   >
                     <div className="flex items-center gap-2">
-                      <Image
+                      {/* <Image
                         alt={card.title}
                         className="size-5"
                         height={20}
                         width={20}
                         src={card.icon}
-                      />
+                      /> */}
                       <h3 className="text-primary-blue font-semibold">
                         {card.title}
                       </h3>

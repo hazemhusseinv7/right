@@ -14,7 +14,6 @@ function Gallery({
     _key?: string;
     title: string;
     description: string;
-    icon: ImageType;
     image: ImageType;
   }[];
   setIndex: (index: number) => void;
@@ -24,9 +23,6 @@ function Gallery({
     <div className="mx-auto flex w-full flex-col gap-2 overflow-x-auto rounded-md px-4 pt-10 pb-20 md:max-w-fit md:flex-row md:overflow-visible md:px-0">
       {items.slice(0, 11).map((item, i) => {
         const isActive = index === i;
-        const iconUrl = item.icon?.asset
-          ? urlFor(item.icon?.asset).url()
-          : null;
 
         return (
           <motion.div
@@ -46,30 +42,9 @@ function Gallery({
               layoutId={item._key}
             />
 
-            {!isActive && iconUrl && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="flex items-center justify-center rounded-2xl bg-black/30 md:bg-transparent">
-                  <Image
-                    src={iconUrl}
-                    width={24}
-                    height={24}
-                    alt={item.title}
-                    className="size-6 object-contain opacity-80 brightness-0 invert md:size-8 md:opacity-0 lg:opacity-60"
-                  />
-                </div>
-              </div>
-            )}
-
             {isActive && (
               <article className="absolute -bottom-1 left-0 w-full rounded-b-2xl bg-white/80 p-4 backdrop-blur-md dark:bg-black/70">
                 <div className="flex items-center gap-2">
-                  <Image
-                    src={iconUrl}
-                    width={24}
-                    height={24}
-                    alt={item.title}
-                    className="size-6"
-                  />
                   <motion.h3
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -107,7 +82,6 @@ export default function AccordionModal({
       _key?: string;
       title: string;
       description: string;
-      icon: ImageType;
       image: ImageType;
     }[];
   };
