@@ -84,23 +84,25 @@ export default async function Page() {
           </button>
         </section>
 
-        <div className="relative -mt-1">
-          <div
-            className="absolute inset-0 top-0 z-0 opacity-40"
-            style={{
-              backgroundImage: `
+        {clients && (
+          <div className="relative -mt-1">
+            <div
+              className="absolute inset-0 top-0 z-0 opacity-40"
+              style={{
+                backgroundImage: `
         radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #1f3c61 100%)
       `,
-              backgroundSize: "100% 100%",
-            }}
-          />
-          <div className="relative top-15 z-10 mx-auto w-fit">
-            <h2 className="text-primary-blue max-w-xl text-4xl font-medium lg:text-5xl">
-              Our Clients
-            </h2>
+                backgroundSize: "100% 100%",
+              }}
+            />
+            <div className="relative top-15 z-10 mx-auto w-fit">
+              <h2 className="text-primary-blue max-w-xl text-4xl font-medium lg:text-5xl">
+                Our Clients
+              </h2>
+            </div>
+            <Clients logos={clients?.logos} />
           </div>
-          <Clients logos={clients?.logos} />
-        </div>
+        )}
 
         <section className="relative z-20 py-14 md:py-32 dark:bg-transparent">
           <div className="@container relative z-10 mx-auto mb-8 max-w-350 px-6">
